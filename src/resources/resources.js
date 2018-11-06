@@ -33,6 +33,29 @@ class Resources {
   }
 
   /**
+   * @function getRoomInformations
+   * @desc Get informations for a room
+   * @param {number} hotelCode The hotel code associated with the room
+   * @param {number} roomCode The room code from which to get information
+   * @param {string} startDate The start date of the stay (YYYY-MM-DD)
+   * @param {string} endDate The end date of the stay (YYYY-MM-DD)
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+   * @return The Json containing informations of the room
+   **/
+  async getRoomInformations(hotelCode, roomCode, startDate, endDate, callback) {
+    return await this.get(
+      'hotel/room',
+      {
+        hotelCode,
+        roomCode,
+        dateA : startDate,
+        dateB : endDate
+      },
+      callback
+    )
+  }
+
+  /**
    * @function addResource
    * @desc Add resource to the offchain
    * @param {Json} resource The information about the resource to add, see Resources class for mor information
