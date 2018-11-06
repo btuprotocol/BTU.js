@@ -2,7 +2,7 @@
   "name": "btujs",
   "version": "0.1.1",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/src/index.js",
   "directories": {
     "doc": "doc"
   },
@@ -10,9 +10,13 @@
     "build": "babel src --out-dir dist/src",
     "buildtest": "npm run build && babel tests --out-dir dist/tests",
     "test": "npm run buildtest && node dist/tests/test.js",
+    "prepare": "npm run buildtest",
     "start": "npm run build && node dist/src/index.js",
     "doc": "jsdoc -c conf.json"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://gitlab.com/btu-protocol/btujs.git"
