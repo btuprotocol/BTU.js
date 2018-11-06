@@ -21,6 +21,15 @@ class Agenda {
     this.fetch = fetch
   }
 
+  /**
+   * @function getAvailableRooms
+   * @desc Get rooms available
+   * @param {number} hotelCode The hotel code associated with the room
+   * @param {string} startDate The start date of the stay (YYYY-MM-DD)
+   * @param {string} endDate The end date of the stay (YYYY-MM-DD)
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+   * @return The Json containing available rooms
+   **/
   async getAvailableRooms(hotelCode, startDate, endDate, callback) {
     return await this.get(
       'hotel/avail',
@@ -28,6 +37,40 @@ class Agenda {
         hotelCode,
         dateA : startDate,
         dateB : endDate
+      },
+      callback
+    )
+  }
+
+  /**
+   * @function getReservationInformations
+   * @desc Get informations for a reservation
+   * @param {number} reservationId The id of the reservation
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+   * @return The Json containing informations about the reservation
+   **/
+  async getReservationInformations(reservationId, callback) {
+    return await this.get(
+      'hotel/res/info',
+      {
+        resId : reservationId
+      },
+      callback
+    )
+  }
+
+  /**
+   * @function cancelReservation
+   * @desc Cancel a reservation
+   * @param {number} reservationId The id of the reservation
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+   * @return The Json containing informations about the cancellation
+   **/
+  async cancelReservation(reservationId, callback) {
+    return await this.get(
+      'hotel/cancel',
+      {
+        resId : reservationId
       },
       callback
     )
