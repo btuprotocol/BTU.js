@@ -60,6 +60,31 @@ class Agenda {
   }
 
   /**
+   * @function createReservation
+   * @desc Create a reservation
+   * @param {number} hotelCode The hotel code associated with the room
+   * @param {number} roomCode The room code from which to get information
+   * @param {string} startDate The start date of the stay (YYYY-MM-DD)
+   * @param {string} endDate The end date of the stay (YYYY-MM-DD)
+   * @param {Json} user The user who will make the reservation
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+   * @return The Json containing informations about the reservation
+   **/
+  async createReservation(hotelCode, roomCode, startDate, endDate, user, callback) {
+    return await this.postParameters(
+      'hotel/room/res',
+      {
+        hotelCode,
+        roomCode,
+        dateA : startDate,
+        dateB : endDate
+      },
+      user,
+      callback
+    )
+  }
+
+  /**
    * @function cancelReservation
    * @desc Cancel a reservation
    * @param {number} reservationId The id of the reservation
@@ -135,7 +160,29 @@ class Agenda {
    * @return A Promise with the return of the call
    **/
   async post(url, body, successFn) {
-    return await this.http(this.serverUrl, url, body, successFn, 'POST')
+    return await this.postParameters(url, undefined, body, successFn)
+    // return await this.http(this.serverUrl, url, body, successFn, 'POST')
+  }
+
+  /**
+   * @function post
+   * @desc Call a HTTP POST request
+   * @param {string} url The url to call
+   * @param {Object} parameters The dictionary for key/value paramaters of the call
+   * @param {Json} body The body of the call
+   * @param {callback} successFn The callback called in case of a success
+   * @return A Promise with the return of the call
+   **/
+  async postParameters(url, parameters, body, successFn) {
+    let stringParams = this.stringParams(parameters)
+
+    return await this.http(
+      this.serverUrl,
+      url + stringParams,
+      body,
+      successFn,
+      'POST'
+    )
   }
 
   /**
@@ -147,11 +194,7 @@ class Agenda {
    * @return A Promise with the return of the call
    **/
   async get(url, parameters, successFn) {
-    const objectKeys = Object.keys(parameters)
-    let stringParams = objectKeys
-      .map(key => key + '=' + parameters[key])
-      .join('&')
-    stringParams = (objectKeys.length === 0 ? '' : '?') + stringParams
+    let stringParams = this.stringParams(parameters)
 
     return await this.http(
       this.serverUrl,
@@ -160,6 +203,14 @@ class Agenda {
       successFn,
       'GET'
     )
+  }
+
+  stringParams(parameters) {
+    const objectKeys = Object.keys(parameters)
+    let stringParams = objectKeys
+      .map(key => key + '=' + parameters[key])
+      .join('&')
+    return (objectKeys.length === 0 ? '' : '?') + stringParams
   }
 }
 

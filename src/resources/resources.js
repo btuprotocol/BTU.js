@@ -134,7 +134,29 @@ class Resources {
    * @return A Promise with the return of the call
    **/
   async post(url, body, successFn) {
-    return await this.http(this.serverUrl, url, body, successFn, 'POST')
+    return await this.postParameters(url, undefined, body, successFn)
+    // return await this.http(this.serverUrl, url, body, successFn, 'POST')
+  }
+
+  /**
+   * @function post
+   * @desc Call a HTTP POST request
+   * @param {string} url The url to call
+   * @param {Object} parameters The dictionary for key/value paramaters of the call
+   * @param {Json} body The body of the call
+   * @param {callback} successFn The callback called in case of a success
+   * @return A Promise with the return of the call
+   **/
+  async postParameters(url, parameters, body, successFn) {
+    let stringParams = this.stringParams(parameters)
+
+    return await this.http(
+      this.serverUrl,
+      url + stringParams,
+      body,
+      successFn,
+      'POST'
+    )
   }
 
   /**
@@ -146,11 +168,7 @@ class Resources {
    * @return A Promise with the return of the call
    **/
   async get(url, parameters, successFn) {
-    const objectKeys = Object.keys(parameters)
-    let stringParams = objectKeys
-      .map(key => key + '=' + parameters[key])
-      .join('&')
-    stringParams = (objectKeys.length === 0 ? '' : '?') + stringParams
+    let stringParams = this.stringParams(parameters)
 
     return await this.http(
       this.serverUrl,
@@ -159,6 +177,14 @@ class Resources {
       successFn,
       'GET'
     )
+  }
+
+  stringParams(parameters) {
+    const objectKeys = Object.keys(parameters)
+    let stringParams = objectKeys
+      .map(key => key + '=' + parameters[key])
+      .join('&')
+    return (objectKeys.length === 0 ? '' : '?') + stringParams
   }
 }
 
