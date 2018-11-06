@@ -1,13 +1,16 @@
 {
   "name": "btujs",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "user.js",
+  "main": "index.js",
   "directories": {
     "doc": "doc"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src --out-dir dist/src",
+    "buildtest": "npm run build && babel tests --out-dir dist/tests",
+    "test": "npm run buildtest && node dist/tests/test.js",
+    "start": "npm run build && node dist/src/index.js",
     "doc": "jsdoc -c conf.json"
   },
   "repository": {
@@ -23,9 +26,12 @@
   "dependencies": {
     "docdash": "^1.0.0",
     "ink-docstrap": "^1.3.2",
-    "jsdoc": "^3.5.5"
+    "jsdoc": "^3.5.5",
+    "cross-fetch": "^2.1.1"
   },
   "devDependencies": {
-    "@pixi/jsdoc-template": "^2.4.2"
+    "@pixi/jsdoc-template": "^2.4.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
   }
 }

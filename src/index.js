@@ -5,9 +5,13 @@
  * @requires User
 **/
 
-var User = require('./user/user.js');
-var Resources = require('./resources/resources.js');
-var Agenda = require('./agenda/agenda.js');
+import User from './user/user.js'
+import Resources from './resources/resources.js'
+import Agenda from './agenda/agenda.js'
+import fetch from 'cross-fetch'
+
+const defaultServerUrl = 'http://ec2-35-180-109-183.eu-west-3.compute.amazonaws.com:8080'
+// const VERSION = require('.././package.json').version
 
 class Btujs {
 
@@ -15,9 +19,15 @@ class Btujs {
    * @constructor Btujs
    * @desc Constructor for the Btujs class
   **/
-  constructor() {
+  constructor({
+  	serverUrl = defaultServerUrl
+  } = {}) {
+  	this.resources = new Resources({
+  		serverUrl,
+  		fetch
+  	});
+
     this.user = new User();
-    this.resources = new Resources();
     this.agenda = new Agenda();
   }
 }

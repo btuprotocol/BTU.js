@@ -1,4 +1,11 @@
 var Btujs = require('../src/index.js');
 
 var btujs = new Btujs();
-btujs.User.add_user('0x55');
+
+// Promise
+btujs.resources.getHotelInformations('AMDLWPAR008').then(json => console.log(json)).catch(err => console.log(err))
+
+// Callback
+btujs.resources.getHotelInformations('AMDLWPAR008', function(json) {
+	console.log(json)
+})
