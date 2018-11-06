@@ -18,6 +18,7 @@ class Btujs {
   /**
    * @constructor Btujs
    * @desc Constructor for the Btujs class
+   * @param {string} serverUrl The base url of the server
   **/
   constructor({
   	serverUrl = defaultServerUrl
@@ -27,8 +28,12 @@ class Btujs {
   		fetch
   	});
 
+  	this.agenda = new Agenda({
+  		serverUrl,
+  		fetch
+  	});
+
     this.user = new User();
-    this.agenda = new Agenda();
   }
 }
 

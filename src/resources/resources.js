@@ -13,36 +13,8 @@ class Resources {
   /**
    * @constructor Resources
    * @desc Constructor for the Resources class
-   * @example <caption>The JSON Schema for all the resources</caption>
-   * {
-   *   "title": "resource",
-   *   "type": "object",
-   *   "properties": {
-   *     "type": {
-   *       "type": "string",
-   *       "description": "The type of the resource, like car/hostel/computer ..."
-   *     },
-   *     "rent": {
-   *       "type": "boolean",
-   *       "description": "Is the resource rentable ?",
-   *       "default": "true"
-   *     },
-   *     "name": {
-   *       "type": "string",
-   *       "description": "The name of the resource"
-   *     },
-   *     "price": {
-   *       "type": "number",
-   *       "description": "The price for the resource"
-   *     },
-   *     "priceDuration": {
-   *       "type": "string",
-   *       "description": "The duration for the price if the resource is rentable, like hour/day/mounth",
-   *       "default": "day"
-   *     }
-   *   },
-   *   "required": ["type", "price"]
-   * }
+   * @param {string} serverUrl The base url of the server
+   * @param {Object} fetch The library used to make http calls
   **/
   constructor({serverUrl, fetch}) {
     this.serverUrl = serverUrl
@@ -57,16 +29,7 @@ class Resources {
    * @return The Json containing informations of the hotel
    **/
   async getHotelInformations(hotelCode, callback) {
-    if(callback == undefined) {
-      return this.promiseGetHotelInformations(hotelCode)
-    }
-    
-    this.promiseGetHotelInformations(hotelCode)
-    .then(callback)
-    .catch(err => console.log(err))
-  }
-  async promiseGetHotelInformations(hotelCode) {
-    return await this.get('hotel/info', { hotelCode })
+    return await this.get('hotel/info', { hotelCode }, callback)
   }
 
   /**
