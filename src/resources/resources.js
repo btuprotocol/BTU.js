@@ -4,8 +4,6 @@
  * @module Resources
 **/
 
-const request = require('request')
-
 const appendSlash = url => {
   return url.substr(-1) === '/' ? url : url + '/'
 }
@@ -31,8 +29,7 @@ class Resources {
    * @return The Json containing informations of the hotel
    **/
   async getHotelInformations(hotelCode, callback) {
-    //return await this.get('hotel/info', { hotelCode }, callback)
-    request.get({ url: this.serverUrl + '/hotel/info?hotelCode=' + hotelCode},function(error , response, body){callback(body)} );
+    return await this.get('hotel/info', { hotelCode }, callback)
   }
 
   /**
@@ -118,7 +115,8 @@ class Resources {
     const response = await this.fetch(appendSlash(baseUrl) + url, {
       method,
       body: body ? JSON.stringify(body) : undefined,
-      headers: { 'content-type': 'application/json' }
+      headers: { 'content-type': 'application/json' },
+      credentials: 'omit'
     })
     const json = await response.json()
     if (response.ok) {

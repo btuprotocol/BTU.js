@@ -141,7 +141,8 @@ class Agenda {
     const response = await this.fetch(appendSlash(baseUrl) + url, {
       method,
       body: body ? JSON.stringify(body) : undefined,
-      headers: { 'content-type': 'application/json' }
+      headers: { 'content-type': 'application/json' },
+      credentials: 'omit'
     })
     const json = await response.json()
     if (response.ok) {
