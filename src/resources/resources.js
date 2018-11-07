@@ -4,6 +4,8 @@
  * @module Resources
 **/
 
+const request = require('request')
+
 const appendSlash = url => {
   return url.substr(-1) === '/' ? url : url + '/'
 }
@@ -29,7 +31,8 @@ class Resources {
    * @return The Json containing informations of the hotel
    **/
   async getHotelInformations(hotelCode, callback) {
-    return await this.get('hotel/info', { hotelCode }, callback)
+    //return await this.get('hotel/info', { hotelCode }, callback)
+    request.get({ url: this.serverUrl + '/hotel/info?hotelCode=' + hotelCode},function(error , response, body){callback(body)} );
   }
 
   /**
