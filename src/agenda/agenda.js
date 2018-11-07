@@ -142,7 +142,7 @@ class Agenda {
       method,
       body: body ? JSON.stringify(body) : undefined,
       headers: { 'content-type': 'application/json' },
-      credentials: 'same-origin'
+      credentials: 'omit'
     })
     const json = await response.json()
     if (response.ok) {
