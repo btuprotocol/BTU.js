@@ -19,14 +19,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/btu-protocol/btujs.git"
+    "url": "git+https://github.com/btuprotocol/BTU.js.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/btu-protocol/btujs/issues"
+    "url": "https://github.com/btuprotocol/BTU.js/issues"
   },
-  "homepage": "https://gitlab.com/btu-protocol/btujs#README",
+  "homepage": "https://github.com/btuprotocol/BTU.js/blob/master/README.md",
   "dependencies": {
     "docdash": "^1.0.0",
     "ink-docstrap": "^1.3.2",
