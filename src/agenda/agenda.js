@@ -16,9 +16,10 @@ class Agenda {
    * @param {string} serverUrl The base url of the server
    * @param {Object} fetch The library used to make http calls
   **/
-  constructor({serverUrl, fetch}) {
+  constructor({serverUrl, fetch, serverHttps}) {
     this.serverUrl = serverUrl
     this.fetch = fetch
+    this.serverHttps = serverHttps
   }
 
   /**
