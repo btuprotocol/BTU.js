@@ -10,7 +10,7 @@ import Resources from './resources/resources.js'
 import Agenda from './agenda/agenda.js'
 import fetch from 'cross-fetch'
 
-const defaultServerUrl = 'http://ec2-35-180-109-183.eu-west-3.compute.amazonaws.com:8080'
+const defaultServerUrl = 'http://ec2-52-47-198-244.eu-west-3.compute.amazonaws.com:8080'
 // const VERSION = require('.././package.json').version
 
 class Btujs {
