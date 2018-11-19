@@ -22,7 +22,7 @@ class Btujs {
    * @param {string} serverUrl The base url of the server
   **/
   constructor({
-  	serverUrl = defaultServerUrl
+  	serverUrl = defaultServerUrl,
     serverHttps = defaultServerUrlHttps
   } = {}) {
   	this.resources = new Resources({
