@@ -10,8 +10,7 @@ import Resources from './resources/resources.js'
 import Agenda from './agenda/agenda.js'
 import fetch from 'cross-fetch'
 
-const defaultServerUrl = 'http://www.btu-api.btu-direct.com'
-const defaultServerUrlHttps = 'https://www.btu-api.btu-direct.com'
+const defaultServerUrl = 'https://btu-api.btu-direct.com'
 // const VERSION = require('.././package.json').version
 
 class Btujs {
@@ -22,18 +21,15 @@ class Btujs {
    * @param {string} serverUrl The base url of the server
   **/
   constructor({
-  	serverUrl = defaultServerUrl,
-    serverHttps = defaultServerUrlHttps
+  	serverUrl = defaultServerUrl
   } = {}) {
   	this.resources = new Resources({
   		serverUrl,
-      serverHttps,
   		fetch
   	});
 
   	this.agenda = new Agenda({
   		serverUrl,
-      serverHttps,
   		fetch
   	});
 
