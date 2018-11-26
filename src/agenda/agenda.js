@@ -27,17 +27,19 @@ class Agenda {
    * @param {number} hotelCode The hotel code associated with the room
    * @param {string} startDate The start date of the stay (YYYY-MM-DD)
    * @param {string} endDate The end date of the stay (YYYY-MM-DD)
+   * @param {options} Additionnal informations
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing available rooms
    **/
-  async getAvailableRooms(hotelCode, startDate, endDate, callback) {
-    return await this.get(
+  async getAvailableRooms(hotelCode, startDate, endDate, options, callback) {
+    return await this.postParameters(
       'hotel/avail',
       {
         hotelCode,
         dateA : startDate,
         dateB : endDate
       },
+      options,
       callback
     )
   }
@@ -46,15 +48,17 @@ class Agenda {
    * @function getReservationInformations
    * @desc Get informations for a reservation
    * @param {number} reservationId The id of the reservation
+   * @param {options} Additionnal informations
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing informations about the reservation
    **/
-  async getReservationInformations(reservationId, callback) {
-    return await this.get(
+  async getReservationInformations(reservationId, options, callback) {
+    return await this.postParameters(
       'hotel/res/info',
       {
         resId : reservationId
       },
+      options,
       callback
     )
   }
@@ -66,11 +70,11 @@ class Agenda {
    * @param {number} roomCode The room code from which to get information
    * @param {string} startDate The start date of the stay (YYYY-MM-DD)
    * @param {string} endDate The end date of the stay (YYYY-MM-DD)
-   * @param {Json} user The user who will make the reservation
+   * @param {options} Additionnal informations
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing informations about the reservation
    **/
-  async createReservation(hotelCode, roomCode, startDate, endDate, user, callback) {
+  async createReservation(hotelCode, roomCode, startDate, endDate, options, callback) {
     return await this.postParameters(
       'hotel/room/res',
       {
@@ -79,7 +83,7 @@ class Agenda {
         dateA : startDate,
         dateB : endDate
       },
-      user,
+      options,
       callback
     )
   }
@@ -88,15 +92,17 @@ class Agenda {
    * @function cancelReservation
    * @desc Cancel a reservation
    * @param {number} reservationId The id of the reservation
+   * @param {options} Additionnal informations
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing informations about the cancellation
    **/
-  async cancelReservation(reservationId, callback) {
-    return await this.get(
+  async cancelReservation(reservationId, options, callback) {
+    return await this.postParameters(
       'hotel/cancel',
       {
         resId : reservationId
       },
+      options,
       callback
     )
   }

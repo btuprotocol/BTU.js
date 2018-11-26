@@ -25,11 +25,12 @@ class Resources {
    * @function getHotelInformations
    * @desc Get informations for a hotel
    * @param {number} hotelCode The hotel code from which to get information
+   * @param {options} Additionnal informations
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing informations of the hotel
    **/
-  async getHotelInformations(hotelCode, callback) {
-    return await this.get('hotel/info', { hotelCode }, callback)
+  async getHotelInformations(hotelCode, options, callback) {
+    return await this.postParameters('hotel/info', { hotelCode }, options, callback)
   }
 
   /**
@@ -39,11 +40,12 @@ class Resources {
    * @param {number} roomCode The room code from which to get information
    * @param {string} startDate The start date of the stay (YYYY-MM-DD)
    * @param {string} endDate The end date of the stay (YYYY-MM-DD)
+   * @param {options} Additionnal informations
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing informations of the room
    **/
-  async getRoomInformations(hotelCode, roomCode, startDate, endDate, callback) {
-    return await this.get(
+  async getRoomInformations(hotelCode, roomCode, startDate, endDate, options, callback) {
+    return await this.postParameters(
       'hotel/room',
       {
         hotelCode,
@@ -51,6 +53,7 @@ class Resources {
         dateA : startDate,
         dateB : endDate
       },
+      options,
       callback
     )
   }
