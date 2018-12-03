@@ -34,7 +34,7 @@ class Agenda {
    **/
   async getAvailableRessources(ressourceId, type, startDate, endDate, options, callback) {
     return await this.postParameters(
-      'avail',
+      type + '/avail',
       {
         ressourceId,
         type,
@@ -57,7 +57,7 @@ class Agenda {
    **/
   async getReservationInformation(reservationId, type, options, callback) {
     return await this.postParameters(
-      'res/info',
+      type + '/res/info',
       {
         reservationId,
         type
@@ -81,7 +81,7 @@ class Agenda {
    **/
   async requestReservation(ressourceId, type, itemId, startDate, endDate, options, callback) {
     return await this.postParameters(
-      'res/request',
+      type + '/res/request',
       {
         ressourceId,
         type,
@@ -105,7 +105,7 @@ class Agenda {
    **/
   async cancelReservation(reservationId, type, options, callback) {
     return await this.postParameters(
-      'res/cancel',
+      type + '/res/cancel',
       {
         reservationId,
         type
@@ -127,7 +127,7 @@ class Agenda {
    **/
   async addAvailibility(ressourceId, type, itemId, dateA, dateB, options, callback) {
     return await this.postParameters(
-      'agenda/add',
+      type + '/agenda/add',
       {
         ressourceId,
         type,
@@ -152,7 +152,7 @@ class Agenda {
    **/
   async removeAvailability(ressourceId, type, itemId, dateA, dateB, options, callback) {
     return await this.postParameters(
-      'agenda/remove',
+      type + '/agenda/remove',
       {
         ressourceId,
         type,
