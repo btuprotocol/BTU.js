@@ -22,20 +22,22 @@ class Agenda {
   }
 
   /**
-   * @function getAvailableRooms
-   * @desc Get rooms available
-   * @param {number} hotelCode The hotel code associated with the room
+   * @function getAvailableRessources
+   * @desc Get ressources available
+   * @param {string} ressourceId The id of the ressources
+   * @param {string} type The type of ressource
    * @param {string} startDate The start date of the stay (YYYY-MM-DD)
-   * @param {string} endDate The end date of the stay (YYYY-MM-DD)
-   * @param {options} Additionnal informations
+   * @param {string} endDate The end date of the stay (YYYY-MM-DD) (Null allowed)
+   * @param {options} Ressource type and Additionnal information
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing available rooms
    **/
-  async getAvailableRooms(hotelCode, startDate, endDate, options, callback) {
+  async getAvailableRessources(ressourceId, type, startDate, endDate, options, callback) {
     return await this.postParameters(
-      'hotel/avail',
+      'avail',
       {
-        hotelCode,
+        ressourceId,
+        type,
         dateA : startDate,
         dateB : endDate
       },
@@ -45,18 +47,20 @@ class Agenda {
   }
 
   /**
-   * @function getReservationInformations
-   * @desc Get informations for a reservation
-   * @param {number} reservationId The id of the reservation
-   * @param {options} Additionnal informations
+   * @function getReservationInformation
+   * @desc Get information for a reservation
+   * @param {string} reservationId The id of the reservation
+   * @param {string} type The type of ressource
+   * @param {options} Additionnal information
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-   * @return The Json containing informations about the reservation
+   * @return The Json containing information about the reservation
    **/
-  async getReservationInformations(reservationId, options, callback) {
+  async getReservationInformation(reservationId, type, options, callback) {
     return await this.postParameters(
-      'hotel/res/info',
+      'res/info',
       {
-        resId : reservationId
+        reservationId,
+        type
       },
       options,
       callback
@@ -64,22 +68,24 @@ class Agenda {
   }
 
   /**
-   * @function createReservation
-   * @desc Create a reservation
-   * @param {number} hotelCode The hotel code associated with the room
-   * @param {number} roomCode The room code from which to get information
+   * @function requestReservation
+   * @desc Request a reservation
+   * @param {string} ressourceId The id of the ressource
+   * @param {string} type The type of ressource
+   * @param {string} itemId The id of item
    * @param {string} startDate The start date of the stay (YYYY-MM-DD)
-   * @param {string} endDate The end date of the stay (YYYY-MM-DD)
-   * @param {options} Additionnal informations
+   * @param {string} endDate The end date of the stay (YYYY-MM-DD) (Null allowed)
+   * @param {options} Additionnal information
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-   * @return The Json containing informations about the reservation
+   * @return The Json containing information about the reservation
    **/
-  async createReservation(hotelCode, roomCode, startDate, endDate, options, callback) {
+  async requestReservation(ressourceId, type, itemId, startDate, endDate, options, callback) {
     return await this.postParameters(
-      'hotel/room/res',
+      'res/request',
       {
-        hotelCode,
-        roomCode,
+        ressourceId,
+        type,
+        itemId,
         dateA : startDate,
         dateB : endDate
       },
@@ -91,16 +97,18 @@ class Agenda {
   /**
    * @function cancelReservation
    * @desc Cancel a reservation
-   * @param {number} reservationId The id of the reservation
-   * @param {options} Additionnal informations
+   * @param {string} reservationId The id of the reservation
+   * @param {string} type The type of ressource
+   * @param {options} Additionnal information   * @param {string} type The type of ressource
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-   * @return The Json containing informations about the cancellation
+   * @return The Json containing information about the cancellation
    **/
-  async cancelReservation(reservationId, options, callback) {
+  async cancelReservation(reservationId, type, options, callback) {
     return await this.postParameters(
-      'hotel/cancel',
+      'res/cancel',
       {
-        resId : reservationId
+        reservationId,
+        type
       },
       options,
       callback
@@ -110,28 +118,53 @@ class Agenda {
   /**
    * @function addAvailability
    * @desc Add availability for a ressource, if the resource was already available, this function do nothing
-   * @param {number} id The id of the resource
+   * @param {string} ressourceId The id of the resource
+   * @param {string} type The type of ressource
+   * @param {string} itemId The id of item
    * @param {string} dateA The inclusive begin date of the avaibility, format "mm-dd-yyyy"
-   * @param {string} dateB The inclusive end date of the avaibility, format "mm-dd-yyyy"
+   * @param {string} dateB The inclusive end date of the avaibility, format "mm-dd-yyyy" (Null allowed)
    * @return True if the avaibility is saved, false otherwise
    **/
-  addAvailibility(id, dateA, dateB) {
-    console.log(id);
-    return null;
+  async addAvailibility(ressourceId, type, itemId, dateA, dateB, options, callback) {
+    return await this.postParameters(
+      'agenda/add',
+      {
+        ressourceId,
+        type,
+        itemId,
+        dateA,
+        dateB
+      },
+      options,
+      callback
+      )
   }
 
   /**
    * @function removeAvailability
    * @desc Remove availability for a ressource, if the resource was already unavailable, this function do nothing
-   * @param {number} id The id of the resource
-   * @param {string} dateA The inclusive begin date of the unavaibility, format "mm-dd-yyyy"
-   * @param {string} dateB The inclusive end date of the unavaibility, format "mm-dd-yyyy"
+   * @param {string} ressourceId The id of the resource
+   * @param {string} type The type of ressource
+   * @param {string} itemId The id of item
+   * @param {string} dateA The inclusive begin date of the avaibility, format "mm-dd-yyyy"
+   * @param {string} dateB The inclusive end date of the avaibility, format "mm-dd-yyyy" (Null allowed)
    * @return True if the unavaibility is saved, false otherwise
    **/
-  removeAvailibility(id, dateA, dateB) {
-    console.log(id);
-    return null;
+  async removeAvailability(ressourceId, type, itemId, dateA, dateB, options, callback) {
+    return await this.postParameters(
+      'agenda/remove',
+      {
+        ressourceId,
+        type,
+        itemId,
+        dateA,
+        dateB
+      },
+      options,
+      callback
+      )
   }
+
 
   /**
    * @function http

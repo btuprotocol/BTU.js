@@ -22,36 +22,35 @@ class Resources {
   }
 
   /**
-   * @function getHotelInformations
-   * @desc Get informations for a hotel
-   * @param {number} hotelCode The hotel code from which to get information
-   * @param {options} Additionnal informations
+   * @function getRessourceInformation
+   * @desc Get information for a ressource
+   * @param {string} ressourceId The id of the ressources
+   * @param {string} type The type of ressource
+   * @param {options} Additionnal information
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-   * @return The Json containing informations of the hotel
+   * @return The Json containing information of the ressource
    **/
-  async getHotelInformations(hotelCode, options, callback) {
-    return await this.postParameters('hotel/info', { hotelCode }, options, callback)
+  async getRessourceInformation(ressourceId, type, options, callback) {
+    return await this.postParameters('info', { ressourceId, type }, options, callback)
   }
 
   /**
-   * @function getRoomInformations
-   * @desc Get informations for a room
-   * @param {number} hotelCode The hotel code associated with the room
-   * @param {number} roomCode The room code from which to get information
-   * @param {string} startDate The start date of the stay (YYYY-MM-DD)
-   * @param {string} endDate The end date of the stay (YYYY-MM-DD)
-   * @param {options} Additionnal informations
+   * @function getRessourceItemInformation
+   * @desc Get information for an item 
+   * @param {string} ressourceId The id of the ressources
+   * @param {string} type The type of ressource
+   * @param {string} itemId The id of item
+   * @param {options} Additionnal information
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-   * @return The Json containing informations of the room
+   * @return The Json containing information of the item
    **/
-  async getRoomInformations(hotelCode, roomCode, startDate, endDate, options, callback) {
+  async getRessourceItemInformation(ressourceId, type, itemId, options, callback) {
     return await this.postParameters(
-      'hotel/room',
+      'item/info',
       {
-        hotelCode,
-        roomCode,
-        dateA : startDate,
-        dateB : endDate
+        ressourceId,
+        type,
+        itemId
       },
       options,
       callback
@@ -61,47 +60,83 @@ class Resources {
   /**
    * @function addResource
    * @desc Add resource to the offchain
-   * @param {Json} resource The information about the resource to add, see Resources class for mor information
+   * @param {string} type The type of ressource
+   * @param {options} Additionnal information
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The id of the resource
    **/
-  addResource(resource) {
-    console.log(resource);
-    return null;
+  async addResource(type, options, callback) {
+    return await this.postParameters(
+      'add',
+      {
+        type
+      },
+      options,
+      callback
+    )
   }
 
   /**
    * @function deleteResource
    * @desc Delete the resource to the offchain
-   * @param {number} id The id of the resource to delete
+   * @param {string} ressourceId The id of the ressources
+   * @param {string} type The type of ressource
+   * @param {options} Additionnal information
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return True if the resource was deleted, false otherwise
    **/
-  deleteResource(id) {
-    console.log(id);
-    return null;
+  async deleteResource(ressourceId, type, options, callback) {
+    return await this.postParameters(
+      'remove',
+      {
+        ressourceId,
+        type
+      },
+      options,
+      callback
+    )
   }
 
   /**
    * @function editResource
    * @desc Edit the resource in the offchain
-   * @param {number} id The id of the resource to edit
-   * @param {Json} resource The information about the resource to add, see Resources class for mor information
+   * @param {string} ressourceId The id of the ressources
+   * @param {string} type The type of ressource
+   * @param {options} Additionnal information
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return True if the resource was edited, false otherwise
    **/
-  editResource(id, resource) {
-    console.log(id);
-    console.log(resource);
-    return null;
+  async editResource(ressourceId, type, options, callback) {
+    return await this.postParameters(
+      'edit',
+      {
+        ressourceId,
+        type
+      },
+      options,
+      callback
+    )
   }
 
   /**
    * @function getResource
    * @desc Get a resource from the offchain
-   * @param {number} id The id of the resource to get
+   * @param {string} ressourceId The id of the ressources
+   * @param {string} type The type of ressource
+   * @param {options} Additionnal information
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json of the resource, see Resources class for mor information
    **/
-  getResource(id) {
-    console.log(id);
-    return null;
+  async getResource(ressourceId, type, options, callback) {
+    return await this.postParameters(
+      'get',
+      {
+        ressourceId,
+        type
+      },
+      options,
+      callback
+    )
   }
 
   /**
