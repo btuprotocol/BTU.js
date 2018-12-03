@@ -35,12 +35,25 @@ class Resources {
   }
 
   /**
-   * @function getRessourceItemInformation
-   * @desc Get information for an item 
-   * @param {string} ressourceId The id of the ressources
-   * @param {string} type The type of ressource
-   * @param {string} itemId The id of item
-   * @param {options} Additionnal information
+   * @function searchHotels
+   * @desc Get informations for a hotel
+   * @param {string} search The hotel name search query
+   * @param {options} Additionnal informations
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+   * @return The Json containing informations of the hotel
+   **/
+  async searchHotels(search, options, callback) {
+    return await this.postParameters('hotel/name', { name: search }, options, callback)
+  }
+
+  /**
+   * @function getRoomInformations
+   * @desc Get informations for a room
+   * @param {number} hotelCode The hotel code associated with the room
+   * @param {number} roomCode The room code from which to get information
+   * @param {string} startDate The start date of the stay (YYYY-MM-DD)
+   * @param {string} endDate The end date of the stay (YYYY-MM-DD)
+   * @param {options} Additionnal informations
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing information of the item
    **/
