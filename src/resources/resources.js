@@ -31,12 +31,12 @@ class Resources {
    * @return The Json containing information of the ressource
    **/
   async getRessourceInformation(ressourceId, type, options, callback) {
-    return await this.postParameters('info', { ressourceId, type }, options, callback)
+    return await this.postParameters(type + '/info', { ressourceId, type }, options, callback)
   }
 
   /**
    * @function getRessourceItemInformation
-   * @desc Get information for an item 
+   * @desc Get information for an item
    * @param {string} ressourceId The id of the ressources
    * @param {string} type The type of ressource
    * @param {string} itemId The id of item
@@ -46,7 +46,7 @@ class Resources {
    **/
   async getRessourceItemInformation(ressourceId, type, itemId, options, callback) {
     return await this.postParameters(
-      'item/info',
+      type + '/item/info',
       {
         ressourceId,
         type,
@@ -67,7 +67,7 @@ class Resources {
    **/
   async addResource(type, options, callback) {
     return await this.postParameters(
-      'add',
+      type + '/add',
       {
         type
       },
@@ -87,7 +87,7 @@ class Resources {
    **/
   async deleteResource(ressourceId, type, options, callback) {
     return await this.postParameters(
-      'remove',
+      type + '/remove',
       {
         ressourceId,
         type
@@ -108,7 +108,7 @@ class Resources {
    **/
   async editResource(ressourceId, type, options, callback) {
     return await this.postParameters(
-      'edit',
+      type + '/edit',
       {
         ressourceId,
         type
@@ -129,7 +129,7 @@ class Resources {
    **/
   async getResource(ressourceId, type, options, callback) {
     return await this.postParameters(
-      'get',
+      type + '/get',
       {
         ressourceId,
         type
