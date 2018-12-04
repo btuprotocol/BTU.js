@@ -25,27 +25,17 @@ class Resources {
     }
 
     /**
-     * @function searchHotels
+     * @function searchResources
      * @desc Get informations for a hotel
      * @param {string} search The hotel name search query
+     * @param {string} type The type of ressource
+     * @param {string} searchType The hotel name search query
      * @param {options} Additionnal informations
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
      * @return The Json containing informations of the hotel
      **/
-    async searchHotels(search, options, callback) {
-        return await this.postParameters('hotel/name', { name: search }, options, callback)
-    }
-
-    /**
-     * @function searchHotelsByCity
-     * @desc Get list of hotels
-     * @param {string} search City name search query
-     * @param {options} Additionnal informations
-     * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-     * @return The Json containing informations of the hotel in this city
-     **/
-    async searchHotelsByCity(search, options, callback) {
-        return await this.postParameters('hotel/city', { name: search }, options, callback)
+    async searchResources(search, type, searchType, options, callback) {
+        return await this.postParameters(type + '/search', { type, name: search, searchType }, options, callback)
     }
 
     /**
