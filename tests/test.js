@@ -2,36 +2,34 @@ var BTUjs = require('../src/index.js');
 
 var btujs = new BTUjs();
 
-// Promise
-//btujs.resources.getHotelInformations('AMDLWPAR008').then(json => console.log(json)).catch(err => console.log(err))
+var options = new Object();
+options.hotelCode = 'AMDLWPAR008';
+var roomCode = 'BOC1568729/156872907_115270104_2_2_0-NB'
 
-// Callback
+
+//btujs.resources.getRessourceInformation('', 'hotel', options).then(json => console.log(json)).catch(err => console.log(err))
+
+//btujs.agenda.getAvailableRessources('', 'hotel', '2019-05-05', '2019-05-06', options).then(json => console.log(json)).catch(err => console.log(err))
+
+//btujs.agenda.getReservationInformation('GPQLMU_0000', 'hotel').then(json => console.log(json)).catch(err => console.log(err))
 /*
-btujs.resources.getHotelInformations('AMDLWPAR008', function(json) {
-	console.log(json)
-})
+options.firstName = 'toto'
+options.lastName = 'titi'
+options.phone = '+330644'
+options.cardNumber = '444'
+options.cardUser = 'xxxxx'
+options.ccCode = 'AX'
+options.ccv = '1234'
+options.email = 'toto@gmail.com'
+options.expireDate = '1218'
+
+btujs.agenda.requestReservation('', 'hotel', roomCode,
+                                '2018-11-24', '2018-11-25', options).then(json => console.log(json)).catch(err => console.log(err))
 */
 
-btujs.agenda.getAvailableRooms('AMDLWPAR008', '2018-12-01', '2018-12-03').then(json => console.log(json)).catch(err => console.log(err))
+//btujs.agenda.cancelReservation('GPQLMU_0000', 'hotel').then(json => console.log(json)).catch(err => console.log(err))
 /*
-var user = new Object()
-user.firstName = 'toto'
-user.lastName = 'titi'
-user.phone = '+330644'
-user.cardNumber = '444'
-user.cardUser = 'xxxxx'
-user.ccCode = 'AX'
-user.ccv = '1234'
-user.email = 'toto@gmail.com'
-user.expireDate = '1218'
-
-btujs.agenda.createReservation('BOC304806', 'BOC304806/30480601_97855825_0_1_0-NB',
-                                '2018-11-24', '2018-11-25', user).then(json => console.log(json)).catch(err => console.log(err))
-*/
-/*
-btujs.resources.getRoomInformations('AMDLWPAR008', 'BOC304806/30480602_97855825_0_1_0-NB', '2018-12-01', '2018-12-03').then(json => console.log(json)).catch(err => console.log(err))
-
-btujs.agenda.getReservationInformations('GPQLMU_0000').then(json => console.log(json)).catch(err => console.log(err))
-
-btujs.agenda.cancelReservation('GPQLMU_0000').then(json => console.log(json)).catch(err => console.log(err))
+options.dateA = '2019-05-05'
+options.dateB = '2019-05-06'
+btujs.resources.getRessourceItemInformation('', 'hotel', roomCode, options).then(json => console.log(json)).catch(err => console.log(err))
 */
