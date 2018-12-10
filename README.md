@@ -21,24 +21,25 @@ var btujs = new BTUjs();
 ```
 For almost each function call to resources or agenda module you will need to pass the type of the resource. Moreover, each function take a JSON object ```options``` which contains additionnal information such as the language of the response. Only ```fr``` and ```en``` are supported for the moment, default is ```en```. All function are asynchronous and can take a callback at the last argument or return a promise to call ```.then()``` and ```.catch()```.
 
-### Hotel example
+### Functions
 
-First to get information about an hotel you will need the hotelCode. In order to retrieve this code you can use the function
-*searchResources* defined in the module *resources*.
+The first function you may use is the *searchResources* function defined in the module *resources* in order to resources of a certain type. 
 
 ```searchResources(search, type, searchType, options)```
 
-The ```search``` argument is what you search, the ```type``` is the type of the resource, here it's ```hotel```.
+The ```search``` argument is what you search, the ```type``` is the type of the resource, example of type ```hotel```.
 Next you must specified the ```searchType```, for hotel it can be ```hotel``` or ```city```.
-The response ```res``` is a list of hotels. Each of hotel object have some properties such as ```name, hotelCode, position, stars, address, descriptionEN or descriptionFR, ...```
+The response ```res``` is a list of resources. The content of object in the list depends of the resource type. For an hotel object it has some properties such as ```name, hotelCode, position, stars, address, descriptionEN or descriptionFR, ...```
 
-You can next do a research on this resource whith the ```hotelCode``` and get more information.
+```ressourceId``` is the primary key to identify the resource and it's necessary to call the other functions. Except for the type ```hotel``` where this ressourceId variable is not supported, so you will need to add a field ```hotelCode``` to ```options```.
+
+
+You can next do a research on this resource whith the ressourceId and get more information. For ```hotel``` use the value of ```hotelCode```, you can pqss empty string to ressourceId.
 
 ```getRessourceInformation(ressourceId, type, options)```
 
-Here the ```type``` is the same as before and options must now contains the ```hotelCode```.
-The ```ressourceId``` is not necessary for the hotels request, you can pass an empty string.
-The response contain more information such as ```hotelName, chainHotelName, stars, hotelDesc, CityName, Address, emailm phone, picturesDescription (a list of the hotel pictures), ...```
+Here the ```type``` is the same as before.
+The response contain more information. For ```hotel``` it contains ```hotelName, chainHotelName, stars, hotelDesc, CityName, Address, emailm phone, picturesDescription (a list of the hotel pictures), ...```
 
 ```javascript
 var BTUjs = require('btujs');
@@ -63,13 +64,16 @@ btujs.resources.searchResources('Paris', 'hotel', 'city', options).then((respons
   });
 }).catch((err) => {console.log(err)});                                                                       
 ```
+
 Next, you can retrieve avaibility for a resource and get more information on this availability or on the item.
 In order to to that you have to use ```getAvailableRessources(ressourceId, type, startDate, endDate, options)``` defined in the module *agenda*.
-Again the ```ressourceId``` is not needed for the hotel type but you need to pass the ```hotelCode``` trough the ```options``` object. ```startDate and endDate``` represents the two dates between you want to get the avaibilities.
-This function returns a ```roomAllInfo``` list fot the hotel type which contains list of rooms available, each room have bascis information such as ```id, price, and booleans for breakfast, lunch and dinner```.
 
-Next you can retrieve more information on the room with the function ```getRessourceItemInformation(ressourceId, type, itemId, options)``` defined in *resources*.
-Here the ```itemId``` is the id of the item, here it's the id of the hotel room. This function return the same data structure as ```getAvailableRessources``` but with fields non null or undefined like ```name, options, conditions, desc```.
+For the ```ressourceId``` and ```type``` follow the instructions above.
+```startDate``` and ```endDate``` represents the avaibilities range.
+This function returns a list of items. For the ```hotel``` type the list is called ```roomAllInfo``` and contains the rooms available, these object have bascis information such as ```id, price, and booleans for breakfast, lunch and dinner```.
+
+Next you can retrieve more information on the item with the function ```getRessourceItemInformation(ressourceId, type, itemId, options)``` defined in *resources*.
+Here the ```itemId``` is the id of the item, for ```hotel``` it's the id of the hotel room. This function return the same data structure as ```getAvailableRessources``` but with fields non null or undefined. For ```hotel``` it can be ```name, options, conditions, desc```.
 
 ```javascript
 
@@ -104,7 +108,10 @@ btujs.agenda.getAvailableRessources('', 'hotel', dateA, dateB, options).then((re
 
 The ```date``` fields are at the format **YYYY-MM-DD**.
 
-The final step you can do is to reserve the item. You will need the ```requestReservation(ressourceId, type, itemId, startDate, endDate, options``` function defined in *agenda*. Be carrefull, this function needs some additionnal information in options for the payment if it's needed like for the hotel type. You will see in the example bellow the fields for options needed by the type hotel.
+
+The final step you can do is to reserve the item. You will need the ```requestReservation(ressourceId, type, itemId, startDate, endDate, options``` function defined in *agenda*.
+Be carrefull, this function needs some additionnal information in options for the payment if it's needed like for the ```hotel``` type.
+You will see in the example bellow the fields for options needed by the type ```hotel```.
 This function returns information about reservation and in the ```resParse``` field, a list of ids of the reservation with their provider.
 
 ```javascript
@@ -137,4 +144,4 @@ btujs.agenda.requestReservation('', 'hotel', itemId, dateA, dateB,options).then(
   console.log(err);
 })
 ```
-You can also cancel a reservation with ```cancelReservation(reservationId, type, options)``` where ```reservationId``` is the ids of the provider *CDS* and the ```type``` is like above the type of the resource, here it's ```hotel```.
+You can also cancel a reservation with ```cancelReservation(reservationId, type, options)``` where ```reservationId``` is the id of reservation and the ```type``` is like above the type of the resource.
