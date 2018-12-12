@@ -39,6 +39,20 @@ class Resources {
     }
 
     /**
+     * @function getResourcesAroundLocation
+     * @desc Get resources around a given location
+     * @param {object} location Location of the research
+     * @param {number} distance Max distance around location
+     * @param {string} type The type of ressource
+     * @param {options} Additionnal informations
+     * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+     * @return The Json containing informations of the resource
+     **/
+    async getResourcesAroundLocation(type, options, callback) {
+        return await this.postParameters(type + '/aroundLocation', { type }, options, callback)
+    }
+
+    /**
      * @function getRessourceItemInformation
      * @desc Get information for an item
      * @param {string} ressourceId The id of the ressources
