@@ -12,30 +12,30 @@ class Resources {
     }
 
     /**
-     * @function getRessourceInformation
-     * @desc Get information for a ressource
-     * @param {string} ressourceId The id of the ressources
-     * @param {string} type The type of ressource
-     * @param {options} Additionnal information
+     * @function getResourceDetails
+     * @desc Get details for a ressource
+     * @param {string} resourceId The id of the resource
+     * @param {string} resourceType The type of resource
+     * @param {options} Additionnal informations
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-     * @return The Json containing information of the ressource
+     * @return The Json containing details of the resource
      **/
-    async getRessourceInformation(ressourceId, type, options, callback) {
-        return await this.postParameters(type + '/info', { ressourceId, type }, options, callback)
+    async getResourceDetails(resourceId, resourceType, options, callback) {
+        return await this.postParameters(resourceType + '/info', { resourceId }, options, callback)
     }
 
     /**
      * @function searchResources
-     * @desc Get informations for a hotel
-     * @param {string} search The hotel name search query
-     * @param {string} type The type of ressource
-     * @param {string} searchType The search query
+     * @desc Get resources of a certain type
+     * @param {string} searchQuery The query to retrieve resources
+     * @param {string} resourceType The type of ressource
+     * @param {string} searchType The filter to apply for the type of resource 
      * @param {options} Additionnal informations
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
      * @return The Json containing informations of the hotel
      **/
-    async searchResources(search, type, searchType, options, callback) {
-        return await this.postParameters(type + '/search', { type, name: search, searchType }, options, callback)
+    async searchResources(searchQuery, resourceType, searchType, options, callback) {
+        return await this.postParameters(resourceType + '/search', { searchQuery, searchType }, options, callback)
     }
 
     /**
@@ -43,31 +43,29 @@ class Resources {
      * @desc Get resources around a given location
      * @param {object} location Location of the research
      * @param {number} distance Max distance around location
-     * @param {string} type The type of ressource
+     * @param {string} resourceType The type of ressource
      * @param {options} Additionnal informations
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
      * @return The Json containing informations of the resource
      **/
-    async getResourcesAroundLocation(type, options, callback) {
-        return await this.postParameters(type + '/aroundLocation', { type }, options, callback)
+    async getResourcesAroundLocation(resourceType, options, callback) {
+        return await this.postParameters(resourceType + '/aroundLocation', { resourceType }, options, callback)
     }
 
     /**
      * @function getRessourceItemInformation
      * @desc Get information for an item
      * @param {string} ressourceId The id of the ressources
-     * @param {string} type The type of ressource
      * @param {string} itemId The id of item
      * @param {options} Additionnal information
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
      * @return The Json containing information of the item
      **/
-    async getRessourceItemInformation(ressourceId, type, itemId, options, callback) {
+    async getItemDetailsForResource(resourceId, itemId, options, callback) {
         return await this.postParameters(
-            type + '/item/info',
+            '/item/info',
             {
-                ressourceId,
-                type,
+                resourceId,
                 itemId
             },
             options,
@@ -78,16 +76,16 @@ class Resources {
     /**
      * @function addResource
      * @desc Add resource to the offchain
-     * @param {string} type The type of ressource
+     * @param {string} resourceType The type of ressource
      * @param {options} Additionnal information
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
      * @return The id of the resource
      **/
-    async addResource(type, options, callback) {
+    async addResource(resourceType, options, callback) {
         return await this.postParameters(
             type + '/add',
             {
-                type
+                resourceType
             },
             options,
             callback
@@ -103,12 +101,12 @@ class Resources {
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
      * @return True if the resource was deleted, false otherwise
      **/
-    async deleteResource(ressourceId, type, options, callback) {
+    async deleteResource(ressourceId, resourceType, options, callback) {
         return await this.postParameters(
             type + '/remove',
             {
                 ressourceId,
-                type
+                resourceType
             },
             options,
             callback

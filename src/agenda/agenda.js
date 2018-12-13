@@ -22,22 +22,20 @@ class Agenda {
   }
 
   /**
-   * @function getAvailableRessources
+   * @function getAvailability
    * @desc Get ressources available
-   * @param {string} ressourceId The id of the ressources
-   * @param {string} type The type of ressource
+   * @param {string} ressourceId The id of the resource
    * @param {string} startDate The start date of the stay (YYYY-MM-DD)
    * @param {string} endDate The end date of the stay (YYYY-MM-DD) (Null allowed)
    * @param {options} Ressource type and Additionnal information
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing available rooms
    **/
-  async getAvailableRessources(ressourceId, type, startDate, endDate, options, callback) {
+  async getAvailability(ressourceId, startDate, endDate, options, callback) {
     return await this.postParameters(
-      type + '/avail',
+      '/avail',
       {
         ressourceId,
-        type,
         dateA : startDate,
         dateB : endDate
       },
@@ -55,12 +53,11 @@ class Agenda {
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing information about the reservation
    **/
-  async getReservationInformation(reservationId, type, options, callback) {
+  async getReservationDetails(reservationId, options, callback) {
     return await this.postParameters(
-      type + '/res/info',
+      '/res/info',
       {
-        reservationId,
-        type
+        reservationId
       },
       options,
       callback
@@ -71,7 +68,6 @@ class Agenda {
    * @function requestReservation
    * @desc Request a reservation
    * @param {string} ressourceId The id of the ressource
-   * @param {string} type The type of ressource
    * @param {string} itemId The id of item
    * @param {string} startDate The start date of the stay (YYYY-MM-DD)
    * @param {string} endDate The end date of the stay (YYYY-MM-DD) (Null allowed)
@@ -79,12 +75,11 @@ class Agenda {
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing information about the reservation
    **/
-  async requestReservation(ressourceId, type, itemId, startDate, endDate, options, callback) {
+  async requestReservation(ressourceId, itemId, startDate, endDate, options, callback) {
     return await this.postParameters(
-      type + '/res/request',
+      '/res/request',
       {
         ressourceId,
-        type,
         itemId,
         dateA : startDate,
         dateB : endDate
@@ -98,17 +93,15 @@ class Agenda {
    * @function cancelReservation
    * @desc Cancel a reservation
    * @param {string} reservationId The id of the reservation
-   * @param {string} type The type of ressource
    * @param {options} Additionnal information   * @param {string} type The type of ressource
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing information about the cancellation
    **/
-  async cancelReservation(reservationId, type, options, callback) {
+  async cancelReservation(reservationId, options, callback) {
     return await this.postParameters(
-      type + '/res/cancel',
+      '/res/cancel',
       {
-        reservationId,
-        type
+        reservationId
       },
       options,
       callback
