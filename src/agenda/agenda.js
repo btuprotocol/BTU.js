@@ -47,6 +47,20 @@ class Agenda {
   }
 
   /**
+   * @function searchAvailResources
+   * @desc Get informations and availability
+   * @param {string} search The name search query
+   * @param {string} type The type of ressource
+   * @param {string} searchType The search query
+   * @param {options} Additionnal informations
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+   * @return The Json containing informations of the hotel
+   **/
+  async searchAvailResources(search, type, searchType, options, callback) {
+      return await this.postParameters(type + '/searchAvail', { type, name: search, searchType }, options, callback)
+  }
+
+  /**
    * @function getReservationInformation
    * @desc Get information for a reservation
    * @param {string} reservationId The id of the reservation
