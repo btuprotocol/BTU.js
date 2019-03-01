@@ -12,18 +12,6 @@ class Resources {
     }
 
     /**
-     * @function searchResources
-     * @desc Get ressources of any type
-     * @param {string} resourceType The type of ressource
-     * @param {object} body The body containing informations of the query
-     * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-     * @return The Json containing informations of the hotel
-     **/
-    async searchResources(resourceType, body, callback) {
-        return await this.postParameters(resourceType + '/search', {}, body, callback)
-    }
-
-    /**
      * @function getRessourceInformation
      * @desc Get information for a ressource
      * @param {string} ressourceId The id of the ressources
@@ -32,8 +20,36 @@ class Resources {
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
      * @return The Json containing information of the ressource
      **/
-    async getResource(resourceType, resourceId, body, callback) {
-        return await this.postParameters(resourceType + '/' + resourceId, {}, body, callback)
+    async getRessourceInformation(ressourceId, type, options, callback) {
+        return await this.postParameters(type + '/info', { ressourceId, type }, options, callback)
+    }
+
+    /**
+     * @function searchResources
+     * @desc Get informations for a hotel
+     * @param {string} search The hotel name search query
+     * @param {string} type The type of ressource
+     * @param {string} searchType The search query
+     * @param {options} Additionnal informations
+     * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+     * @return The Json containing informations of the hotel
+     **/
+    async searchResources(search, type, searchType, options, callback) {
+        return await this.postParameters(type + '/search', { type, name: search, searchType }, options, callback)
+    }
+
+    /**
+     * @function getResourcesAroundLocation
+     * @desc Get resources around a given location
+     * @param {object} location Location of the research
+     * @param {number} distance Max distance around location
+     * @param {string} type The type of ressource
+     * @param {options} Additionnal informations
+     * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+     * @return The Json containing informations of the resource
+     **/
+    async getResourcesAroundLocation(type, options, callback) {
+        return await this.postParameters(type + '/aroundLocation', { type }, options, callback)
     }
 
     /**
@@ -46,11 +62,15 @@ class Resources {
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
      * @return The Json containing information of the item
      **/
-    async getResourceItem(resourceType, resourceId, itemId, body, callback) {
+    async getRessourceItemInformation(ressourceId, type, itemId, options, callback) {
         return await this.postParameters(
-            resourceType + '/' + resourceId + '/' + itemId,
-            {},
-            body,
+            type + '/item/info',
+            {
+                ressourceId,
+                type,
+                itemId
+            },
+            options,
             callback
         )
     }
@@ -63,11 +83,13 @@ class Resources {
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
      * @return The id of the resource
      **/
-    async addResource(resourceType, body, callback) {
+    async addResource(type, options, callback) {
         return await this.postParameters(
-            resourceType + '/add',
-            {},
-            body,
+            type + '/add',
+            {
+                type
+            },
+            options,
             callback
         )
     }
@@ -81,11 +103,14 @@ class Resources {
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
      * @return True if the resource was deleted, false otherwise
      **/
-    async deleteResource(resourceType, resourceId, body, callback) {
+    async deleteResource(ressourceId, type, options, callback) {
         return await this.postParameters(
-            resourceType + '/remove/' + resourceId,
-            {},
-            body,
+            type + '/remove',
+            {
+                ressourceId,
+                type
+            },
+            options,
             callback
         )
     }
@@ -99,16 +124,38 @@ class Resources {
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
      * @return True if the resource was edited, false otherwise
      **/
-    async editResource(resourceType, resourceId, body, callback) {
+    async editResource(ressourceId, type, options, callback) {
         return await this.postParameters(
-            resourceType + '/edit/' + resourceId,
-            {},
-            body,
+            type + '/edit',
+            {
+                ressourceId,
+                type
+            },
+            options,
             callback
         )
     }
 
-    // TODO : Mettre tout ça dans un Utils + mettre en place retry (paramètrable)
+    /**
+     * @function getResource
+     * @desc Get a resource from the offchain
+     * @param {string} ressourceId The id of the ressources
+     * @param {string} type The type of ressource
+     * @param {options} Additionnal information
+     * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+     * @return The Json of the resource, see Resources class for mor information
+     **/
+    async getResource(ressourceId, type, options, callback) {
+        return await this.postParameters(
+            type + '/get',
+            {
+                ressourceId,
+                type
+            },
+            options,
+            callback
+        )
+    }
 
     /**
      * @function http
