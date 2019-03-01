@@ -8,7 +8,7 @@ const appendSlash = url => {
   return url.substr(-1) === '/' ? url : url + '/'
 }
 
-class Agenda {
+class Availabilities {
 
   /**
    * @constructor Agenda
@@ -22,6 +22,20 @@ class Agenda {
   }
 
   /**
+   * @function searchAvailResources
+   * @desc Get informations and availability
+   * @param {string} search The name search query
+   * @param {string} type The type of ressource
+   * @param {string} searchType The search query
+   * @param {options} Additionnal informations
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+   * @return The Json containing informations of the hotel
+   **/
+  async searchAvailableResources(resourceType, body, callback) {
+      return await this.postParameters(resourceType + '/search/availabilities', {}, body, callback)
+  }
+
+  /**
    * @function getAvailableRessources
    * @desc Get ressources available
    * @param {string} ressourceId The id of the ressources
@@ -32,32 +46,13 @@ class Agenda {
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing available rooms
    **/
-  async getAvailableRessources(ressourceId, type, startDate, endDate, options, callback) {
+  async getResourceAvailabilities(resourceType, resourceId, body, callback) {
     return await this.postParameters(
-      type + '/avail',
-      {
-        ressourceId,
-        type,
-        dateA : startDate,
-        dateB : endDate
-      },
-      options,
+      resourceType + '/' + resourceId + '/availabilities/',
+      {},
+      body,
       callback
     )
-  }
-
-  /**
-   * @function searchAvailResources
-   * @desc Get informations and availability
-   * @param {string} search The name search query
-   * @param {string} type The type of ressource
-   * @param {string} searchType The search query
-   * @param {options} Additionnal informations
-   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-   * @return The Json containing informations of the hotel
-   **/
-  async searchAvailResources(search, type, searchType, options, callback) {
-      return await this.postParameters(type + '/searchAvail', { type, name: search, searchType }, options, callback)
   }
 
   /**
@@ -69,14 +64,11 @@ class Agenda {
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing information about the reservation
    **/
-  async getReservationInformation(reservationId, type, options, callback) {
+  async getBookingDetails(resourceType, bookingId, body, callback) {
     return await this.postParameters(
-      type + '/res/info',
-      {
-        reservationId,
-        type
-      },
-      options,
+      resourceType + '/booking/' + bookingId,
+      {},
+      body,
       callback
     )
   }
@@ -93,17 +85,11 @@ class Agenda {
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing information about the reservation
    **/
-  async requestReservation(ressourceId, type, itemId, startDate, endDate, options, callback) {
+  async bookResource(resourceType, ressourceId, body, callback) {
     return await this.postParameters(
-      type + '/res/request',
-      {
-        ressourceId,
-        type,
-        itemId,
-        dateA : startDate,
-        dateB : endDate
-      },
-      options,
+      resourceType + '/booking/' + resourceId + '/book',
+      {},
+      body,
       callback
     )
   }
@@ -117,14 +103,11 @@ class Agenda {
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing information about the cancellation
    **/
-  async cancelReservation(reservationId, type, options, callback) {
+  async cancelBooking(resourceType, bookingId, body, callback) {
     return await this.postParameters(
-      type + '/res/cancel',
-      {
-        reservationId,
-        type
-      },
-      options,
+      resourceType + '/booking/' + bookingId + '/cancel',
+      {},
+      body,
       callback
     )
   }
@@ -139,17 +122,11 @@ class Agenda {
    * @param {string} dateB The inclusive end date of the avaibility, format "mm-dd-yyyy" (Null allowed)
    * @return True if the avaibility is saved, false otherwise
    **/
-  async addAvailibility(ressourceId, type, itemId, dateA, dateB, options, callback) {
+  async addAvailability(resourceType, ressourceId, body, callback) {
     return await this.postParameters(
-      type + '/agenda/add',
-      {
-        ressourceId,
-        type,
-        itemId,
-        dateA,
-        dateB
-      },
-      options,
+      resourceType + '/booking/' + resourceId + '/add',
+      {},
+      body,
       callback
       )
   }
@@ -164,20 +141,16 @@ class Agenda {
    * @param {string} dateB The inclusive end date of the avaibility, format "mm-dd-yyyy" (Null allowed)
    * @return True if the unavaibility is saved, false otherwise
    **/
-  async removeAvailability(ressourceId, type, itemId, dateA, dateB, options, callback) {
+  async removeAvailability(resourceType, ressourceId, body, callback) {
     return await this.postParameters(
-      type + '/agenda/remove',
-      {
-        ressourceId,
-        type,
-        itemId,
-        dateA,
-        dateB
-      },
-      options,
+      resourceType + '/booking/' + resourceId + '/remove',
+      {},
+      body,
       callback
       )
   }
+
+  // TODO : Mettre tout ça dans un Utils + mettre en place retry (paramètrable)
 
 
   /**
