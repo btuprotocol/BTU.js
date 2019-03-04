@@ -2,22 +2,16 @@
  * @file index.js
  * @desc This is Btujs definition file, main entry point of the library
  * @module Btujs
- * @requires User
 **/
 
-import User from './user/user.js'
 import Resources from './resources/resources.js'
-import Agenda from './agenda/agenda.js'
-import fetch from 'cross-fetch'
-import http from './utils/http.js'
-// import package from '../package.json'
+import Availabilities from './availabilities/availabilities.js'
 
 const defaultServerUrl = 'https://btu-api.btu-direct.com'
-// const VERSION = require('.././package.json').version
 
 // TODO : Récupérer version
 // TODO : Mettre en place retry (paramètrable)
-const version = '1.3'
+const version = '1.3.1'
 
 class Btujs {
 
@@ -29,20 +23,16 @@ class Btujs {
   constructor({
   	serverUrl = defaultServerUrl
   } = {}) {
-    // TODO : Vérifier que l'url est bien formattée
+
     let versionUrl = serverUrl + '/' + version
 
   	this.resources = new Resources({
-  		serverUrl: versionUrl,
-  		fetch
+  		serverUrl: versionUrl
   	});
 
-  	this.agenda = new Agenda({
-  		serverUrl: versionUrl,
-  		fetch
-  	});
-
-    this.user = new User();
+    this.avaibilities = new Availabilities({
+        serverUrl: versionUrl
+    })
   }
 }
 

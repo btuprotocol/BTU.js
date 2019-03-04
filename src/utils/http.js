@@ -1,9 +1,5 @@
 import fetch from 'cross-fetch'
 
-const appendSlash = url => {
-  return url.substr(-1) === '/' ? url : url + '/'
-}
-
 /**
  * @function http
  * @desc Call a HTTP request
@@ -32,6 +28,7 @@ const http = async (baseUrl, url, body, successFn, method) => {
 /**
  * @function post
  * @desc Call a HTTP POST request
+ * @param {string} baseUrl The baseUrl of the server
  * @param {string} url The url to call
  * @param {Json} body The body of the call
  * @param {callback} successFn The callback called in case of a success
@@ -45,6 +42,7 @@ const post = async (baseUrl, url, body, successFn) => {
 /**
  * @function post
  * @desc Call a HTTP POST request
+ * @param {string} baseUrl The baseUrl of the server
  * @param {string} url The url to call
  * @param {Object} parameters The dictionary for key/value paramaters of the call
  * @param {Json} body The body of the call
@@ -53,9 +51,6 @@ const post = async (baseUrl, url, body, successFn) => {
  **/
 const postParameters = async (baseUrl, url, parameters, body, successFn) => {
     let paramsToString = stringParams(parameters)
-
-    console.log('body')
-    console.log(body)
 
     return await http(
         baseUrl,
@@ -69,6 +64,7 @@ const postParameters = async (baseUrl, url, parameters, body, successFn) => {
 /**
  * @function post
  * @desc Call a HTTP GET request
+ * @param {string} baseUrl The baseUrl of the server
  * @param {string} url The url to call
  * @param {Object} parameters The dictionary for key/value paramaters of the call
  * @param {callback} successFn The callback called in case of a success
@@ -92,6 +88,10 @@ const stringParams = (parameters) => {
         .map(key => key + '=' + parameters[key])
         .join('&')
     return (objectKeys.length === 0 ? '' : '?') + paramsToString
+}
+
+const appendSlash = url => {
+  return url.substr(-1) === '/' ? url : url + '/'
 }
 
 module.exports = {
