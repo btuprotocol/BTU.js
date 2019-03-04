@@ -1,12 +1,10 @@
+import http from '../utils/http.js'
+
 /**
  * @file agenda.js
  * @desc This is the User class definition file
  * @module Agenda
 **/
-
-const appendSlash = url => {
-  return url.substr(-1) === '/' ? url : url + '/'
-}
 
 class Availabilities {
 
@@ -32,7 +30,7 @@ class Availabilities {
    * @return The Json containing informations of the hotel
    **/
   async searchAvailableResources(resourceType, body, callback) {
-      return await this.postParameters(resourceType + '/search/availabilities', {}, body, callback)
+      return await http.postParameters(resourceType + '/search/availabilities', {}, body, callback)
   }
 
   /**
@@ -47,7 +45,7 @@ class Availabilities {
    * @return The Json containing available rooms
    **/
   async getResourceAvailabilities(resourceType, resourceId, body, callback) {
-    return await this.postParameters(
+    return await http.postParameters(
       resourceType + '/' + resourceId + '/availabilities/',
       {},
       body,
@@ -65,7 +63,7 @@ class Availabilities {
    * @return The Json containing information about the reservation
    **/
   async getBookingDetails(resourceType, bookingId, body, callback) {
-    return await this.postParameters(
+    return await http.postParameters(
       resourceType + '/booking/' + bookingId,
       {},
       body,
@@ -85,8 +83,8 @@ class Availabilities {
    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
    * @return The Json containing information about the reservation
    **/
-  async bookResource(resourceType, ressourceId, body, callback) {
-    return await this.postParameters(
+  async bookResource(resourceType, resourceId, body, callback) {
+    return await http.postParameters(
       resourceType + '/booking/' + resourceId + '/book',
       {},
       body,
@@ -104,7 +102,7 @@ class Availabilities {
    * @return The Json containing information about the cancellation
    **/
   async cancelBooking(resourceType, bookingId, body, callback) {
-    return await this.postParameters(
+    return await http.postParameters(
       resourceType + '/booking/' + bookingId + '/cancel',
       {},
       body,
@@ -122,8 +120,8 @@ class Availabilities {
    * @param {string} dateB The inclusive end date of the avaibility, format "mm-dd-yyyy" (Null allowed)
    * @return True if the avaibility is saved, false otherwise
    **/
-  async addAvailability(resourceType, ressourceId, body, callback) {
-    return await this.postParameters(
+  async addAvailability(resourceType, resourceId, body, callback) {
+    return await http.postParameters(
       resourceType + '/booking/' + resourceId + '/add',
       {},
       body,
@@ -141,102 +139,13 @@ class Availabilities {
    * @param {string} dateB The inclusive end date of the avaibility, format "mm-dd-yyyy" (Null allowed)
    * @return True if the unavaibility is saved, false otherwise
    **/
-  async removeAvailability(resourceType, ressourceId, body, callback) {
-    return await this.postParameters(
+  async removeAvailability(resourceType, resourceId, body, callback) {
+    return await http.postParameters(
       resourceType + '/booking/' + resourceId + '/remove',
       {},
       body,
       callback
       )
-  }
-
-  // TODO : Mettre tout ça dans un Utils + mettre en place retry (paramètrable)
-
-
-  /**
-   * @function http
-   * @desc Call a HTTP request
-   * @param {string} baseUrl The baseUrl of the server
-   * @param {string} url The url to call
-   * @param {Json} body The body of the call
-   * @param {callback} successFn The callback called in case of a success
-   * @param {string} method The http method
-   * @return A Promise with the return of the call
-   **/
-  async http(baseUrl, url, body, successFn, method) {
-    const response = await this.fetch(appendSlash(baseUrl) + url, {
-      method,
-      body: body ? JSON.stringify(body) : undefined,
-      headers: { 'content-type': 'application/json' },
-      credentials: 'omit'
-    })
-    const json = await response.json()
-    if (response.ok) {
-      return successFn ? successFn(json) : json
-    }
-    return Promise.reject(JSON.stringify(json))
-  }
-
-  /**
-   * @function post
-   * @desc Call a HTTP POST request
-   * @param {string} url The url to call
-   * @param {Json} body The body of the call
-   * @param {callback} successFn The callback called in case of a success
-   * @return A Promise with the return of the call
-   **/
-  async post(url, body, successFn) {
-    return await this.postParameters(url, undefined, body, successFn)
-    // return await this.http(this.serverUrl, url, body, successFn, 'POST')
-  }
-
-  /**
-   * @function post
-   * @desc Call a HTTP POST request
-   * @param {string} url The url to call
-   * @param {Object} parameters The dictionary for key/value paramaters of the call
-   * @param {Json} body The body of the call
-   * @param {callback} successFn The callback called in case of a success
-   * @return A Promise with the return of the call
-   **/
-  async postParameters(url, parameters, body, successFn) {
-    let stringParams = this.stringParams(parameters)
-
-    return await this.http(
-      this.serverUrl,
-      url + stringParams,
-      body,
-      successFn,
-      'POST'
-    )
-  }
-
-  /**
-   * @function post
-   * @desc Call a HTTP GET request
-   * @param {string} url The url to call
-   * @param {Object} parameters The dictionary for key/value paramaters of the call
-   * @param {callback} successFn The callback called in case of a success
-   * @return A Promise with the return of the call
-   **/
-  async get(url, parameters, successFn) {
-    let stringParams = this.stringParams(parameters)
-
-    return await this.http(
-      this.serverUrl,
-      url + stringParams,
-      undefined,
-      successFn,
-      'GET'
-    )
-  }
-
-  stringParams(parameters) {
-    const objectKeys = Object.keys(parameters)
-    let stringParams = objectKeys
-      .map(key => key + '=' + parameters[key])
-      .join('&')
-    return (objectKeys.length === 0 ? '' : '?') + stringParams
   }
 }
 

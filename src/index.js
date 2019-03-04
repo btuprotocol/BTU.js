@@ -9,13 +9,15 @@ import User from './user/user.js'
 import Resources from './resources/resources.js'
 import Agenda from './agenda/agenda.js'
 import fetch from 'cross-fetch'
-import package from '../package.json'
+import http from './utils/http.js'
+// import package from '../package.json'
 
 const defaultServerUrl = 'https://btu-api.btu-direct.com'
 // const VERSION = require('.././package.json').version
 
 // TODO : Récupérer version
-let version = '1.3'
+// TODO : Mettre en place retry (paramètrable)
+const version = '1.3'
 
 class Btujs {
 
@@ -27,16 +29,16 @@ class Btujs {
   constructor({
   	serverUrl = defaultServerUrl
   } = {}) {
-      // TODO : Vérifier que l'url est bien formattée
-      let versionUrl = serverUrl + '/' + version
-      
+    // TODO : Vérifier que l'url est bien formattée
+    let versionUrl = serverUrl + '/' + version
+
   	this.resources = new Resources({
-  		versionUrl,
+  		serverUrl: versionUrl,
   		fetch
   	});
 
   	this.agenda = new Agenda({
-  		versionUrl,
+  		serverUrl: versionUrl,
   		fetch
   	});
 

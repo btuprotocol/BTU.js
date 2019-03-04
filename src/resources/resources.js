@@ -1,3 +1,11 @@
+import http from '../utils/http.js'
+
+/**
+ * @file resources.js
+ * @desc This is the User class definition file
+ * @module Resources
+**/
+
 class Resources {
 
     /**
@@ -20,7 +28,7 @@ class Resources {
      * @return The Json containing informations of the hotel
      **/
     async searchResources(resourceType, body, callback) {
-        return await this.postParameters(resourceType + '/search', {}, body, callback)
+        return await http.postParameters(this.serverUrl, resourceType + '/search', {}, body, callback)
     }
 
     /**
@@ -33,7 +41,7 @@ class Resources {
      * @return The Json containing information of the ressource
      **/
     async getResource(resourceType, resourceId, body, callback) {
-        return await this.postParameters(resourceType + '/' + resourceId, {}, body, callback)
+        return await http.postParameters(this.serverUrl, resourceType + '/' + resourceId, {}, body, callback)
     }
 
     /**
@@ -47,7 +55,8 @@ class Resources {
      * @return The Json containing information of the item
      **/
     async getResourceItem(resourceType, resourceId, itemId, body, callback) {
-        return await this.postParameters(
+        return await http.postParameters(
+            this.serverUrl,
             resourceType + '/' + resourceId + '/' + itemId,
             {},
             body,
@@ -64,7 +73,8 @@ class Resources {
      * @return The id of the resource
      **/
     async addResource(resourceType, body, callback) {
-        return await this.postParameters(
+        return await http.postParameters(
+            this.serverUrl,
             resourceType + '/add',
             {},
             body,
@@ -82,7 +92,8 @@ class Resources {
      * @return True if the resource was deleted, false otherwise
      **/
     async deleteResource(resourceType, resourceId, body, callback) {
-        return await this.postParameters(
+        return await http.postParameters(
+            this.serverUrl,
             resourceType + '/remove/' + resourceId,
             {},
             body,
@@ -100,112 +111,14 @@ class Resources {
      * @return True if the resource was edited, false otherwise
      **/
     async editResource(resourceType, resourceId, body, callback) {
-        return await this.postParameters(
+        return await http.postParameters(
+            this.serverUrl,
             resourceType + '/edit/' + resourceId,
             {},
             body,
             callback
         )
     }
-
-    // TODO : Mettre tout ça dans un Utils + mettre en place retry (paramètrable)
-
-    /**
-     * @function http
-     * @desc Call a HTTP request
-     * @param {string} baseUrl The baseUrl of the server
-     * @param {string} url The url to call
-     * @param {Json} body The body of the call
-     * @param {callback} successFn The callback called in case of a success
-     * @param {string} method The http method
-     * @return A Promise with the return of the call
-     **/
-    async http(baseUrl, url, body, successFn, method) {
-        const response = await this.fetch(appendSlash(baseUrl) + url, {
-            method,
-            body: body ? JSON.stringify(body) : undefined,
-            headers: { 'content-type': 'application/json' },
-            credentials: 'omit'
-        })
-        const json = await response.json()
-        if (response.ok) {
-            return successFn ? successFn(json) : json
-        }
-        return Promise.reject(JSON.stringify(json))
-    }
-
-    /**
-     * @function post
-     * @desc Call a HTTP POST request
-     * @param {string} url The url to call
-     * @param {Json} body The body of the call
-     * @param {callback} successFn The callback called in case of a success
-     * @return A Promise with the return of the call
-     **/
-    async post(url, body, successFn) {
-        return await this.postParameters(url, undefined, body, successFn)
-        // return await this.http(this.serverUrl, url, body, successFn, 'POST')
-    }
-
-    /**
-     * @function post
-     * @desc Call a HTTP POST request
-     * @param {string} url The url to call
-     * @param {Object} parameters The dictionary for key/value paramaters of the call
-     * @param {Json} body The body of the call
-     * @param {callback} successFn The callback called in case of a success
-     * @return A Promise with the return of the call
-     **/
-    async postParameters(url, parameters, body, successFn) {
-        let stringParams = this.stringParams(parameters)
-
-        return await this.http(
-            this.serverUrl,
-            url + stringParams,
-            body,
-            successFn,
-            'POST'
-        )
-    }
-
-    /**
-     * @function post
-     * @desc Call a HTTP GET request
-     * @param {string} url The url to call
-     * @param {Object} parameters The dictionary for key/value paramaters of the call
-     * @param {callback} successFn The callback called in case of a success
-     * @return A Promise with the return of the call
-     **/
-    async get(url, parameters, successFn) {
-        let stringParams = this.stringParams(parameters)
-
-        return await this.http(
-            this.serverUrl,
-            url + stringParams,
-            undefined,
-            successFn,
-            'GET'
-        )
-    }
-
-    stringParams(parameters) {
-        const objectKeys = Object.keys(parameters)
-        let stringParams = objectKeys
-            .map(key => key + '=' + parameters[key])
-            .join('&')
-        return (objectKeys.length === 0 ? '' : '?') + stringParams
-    }
 }
-
-/**
- * @file resources.js
- * @desc This is the User class definition file
- * @module Resources
-**/
-
-const appendSlash = url => {
-  return url.substr(-1) === '/' ? url : url + '/'
-}
-
 
 module.exports = Resources;
