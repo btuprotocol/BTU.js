@@ -27,7 +27,7 @@ class Btujs {
   		serverUrl: versionUrl
   	});
 
-    this.avaibilities = new Availabilities({
+    this.availabilities = new Availabilities({
         serverUrl: versionUrl
     })
   }
