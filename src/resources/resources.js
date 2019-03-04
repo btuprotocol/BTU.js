@@ -1,3 +1,11 @@
+import http from '../utils/http.js'
+
+/**
+ * @file resources.js
+ * @desc This is the User class definition file
+ * @module Resources
+**/
+
 class Resources {
 
     /**
@@ -6,9 +14,8 @@ class Resources {
      * @param {string} serverUrl The base url of the server
      * @param {Object} fetch The library used to make http calls
      **/
-    constructor({serverUrl, fetch}) {
+    constructor({serverUrl}) {
         this.serverUrl = serverUrl
-        this.fetch = fetch
     }
 
     /**
@@ -26,51 +33,57 @@ class Resources {
 
     /**
      * @function searchResources
-     * @desc Get informations for a hotel
-     * @param {string} search The hotel name search query
-     * @param {string} type The type of ressource
-     * @param {string} searchType The search query
-     * @param {options} Additionnal informations
+     * @desc Get resources
+     * @param {string} resourceType
+     * @param {object} body
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-     * @return The Json containing informations of the hotel
+     * @return A json containing a list of resources
      **/
-    async searchResources(search, type, searchType, options, callback) {
-        return await this.postParameters(type + '/search', { type, name: search, searchType }, options, callback)
+    async searchResources(resourceType, body, callback) {
+        return await http.postParameters(
+            this.serverUrl,
+            resourceType + '/search',
+            {},
+            body,
+            callback
+        )
     }
 
     /**
-     * @function getResourcesAroundLocation
-     * @desc Get resources around a given location
-     * @param {object} location Location of the research
-     * @param {number} distance Max distance around location
-     * @param {string} type The type of ressource
-     * @param {options} Additionnal informations
+     * @function getResource
+     * @desc Get details of a resource
+     * @param {string} resourceType
+     * @param {string} resourceId
+     * @param {object} body
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-     * @return The Json containing informations of the resource
+     * @return A json containing details of a resource
      **/
-    async getResourcesAroundLocation(type, options, callback) {
-        return await this.postParameters(type + '/aroundLocation', { type }, options, callback)
-    }
+     async getResource(resourceType, resourceId, body, callback) {
+         return await http.postParameters(
+             this.serverUrl,
+             resourceType + '/' + resourceId,
+             {},
+             body,
+             callback
+         )
+     }
 
     /**
-     * @function getRessourceItemInformation
-     * @desc Get information for an item
-     * @param {string} ressourceId The id of the ressources
-     * @param {string} type The type of ressource
-     * @param {string} itemId The id of item
-     * @param {options} Additionnal information
+     * @function getResourceItem
+     * @desc Get details for an item of a resource
+     * @param {string} resourceType
+     * @param {string} resourceId
+     * @param {string} itemId
+     * @param {object} body
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-     * @return The Json containing information of the item
+     * @return A json containing details of the item
      **/
-    async getRessourceItemInformation(ressourceId, type, itemId, options, callback) {
-        return await this.postParameters(
-            type + '/item/info',
-            {
-                ressourceId,
-                type,
-                itemId
-            },
-            options,
+    async getResourceItem(resourceType, resourceId, itemId, body, callback) {
+        return await http.postParameters(
+            this.serverUrl,
+            resourceType + '/' + resourceId + '/' + itemId,
+            {},
+            body,
             callback
         )
     }
@@ -78,181 +91,58 @@ class Resources {
     /**
      * @function addResource
      * @desc Add resource to the offchain
-     * @param {string} type The type of ressource
-     * @param {options} Additionnal information
+     * @param {string} resourceType
+     * @param {object} body
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-     * @return The id of the resource
+     * @return A json of the resource added
      **/
-    async addResource(type, options, callback) {
-        return await this.postParameters(
-            type + '/add',
-            {
-                type
-            },
-            options,
+    async addResource(resourceType, body, callback) {
+        return await http.postParameters(
+            this.serverUrl,
+            resourceType + '/add',
+            {},
+            body,
             callback
         )
     }
 
     /**
      * @function deleteResource
-     * @desc Delete the resource to the offchain
-     * @param {string} ressourceId The id of the ressources
-     * @param {string} type The type of ressource
-     * @param {options} Additionnal information
+     * @desc Delete a resource from the offchain
+     * @param {string} resourceType
+     * @param {string} resourceId
+     * @param {object} body
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-     * @return True if the resource was deleted, false otherwise
+     * @return A json of the resource successfully deleted, an empty json otherwise
      **/
-    async deleteResource(ressourceId, type, options, callback) {
-        return await this.postParameters(
-            type + '/remove',
-            {
-                ressourceId,
-                type
-            },
-            options,
+    async deleteResource(resourceType, resourceId, body, callback) {
+        return await http.postParameters(
+            this.serverUrl,
+            resourceType + '/remove/' + resourceId,
+            {},
+            body,
             callback
         )
     }
 
     /**
      * @function editResource
-     * @desc Edit the resource in the offchain
-     * @param {string} ressourceId The id of the ressources
-     * @param {string} type The type of ressource
-     * @param {options} Additionnal information
+     * @desc Edit a resource from the offchain
+     * @param {string} resourceType
+     * @param {string} resourceId
+     * @param {object} body
      * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-     * @return True if the resource was edited, false otherwise
+     * @return A json of the resource successfully edited, an empty json otherwise
      **/
-    async editResource(ressourceId, type, options, callback) {
-        return await this.postParameters(
-            type + '/edit',
-            {
-                ressourceId,
-                type
-            },
-            options,
-            callback
-        )
-    }
-
-    /**
-     * @function getResource
-     * @desc Get a resource from the offchain
-     * @param {string} ressourceId The id of the ressources
-     * @param {string} type The type of ressource
-     * @param {options} Additionnal information
-     * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-     * @return The Json of the resource, see Resources class for mor information
-     **/
-    async getResource(ressourceId, type, options, callback) {
-        return await this.postParameters(
-            type + '/get',
-            {
-                ressourceId,
-                type
-            },
-            options,
-            callback
-        )
-    }
-
-    /**
-     * @function http
-     * @desc Call a HTTP request
-     * @param {string} baseUrl The baseUrl of the server
-     * @param {string} url The url to call
-     * @param {Json} body The body of the call
-     * @param {callback} successFn The callback called in case of a success
-     * @param {string} method The http method
-     * @return A Promise with the return of the call
-     **/
-    async http(baseUrl, url, body, successFn, method) {
-        const response = await this.fetch(appendSlash(baseUrl) + url, {
-            method,
-            body: body ? JSON.stringify(body) : undefined,
-            headers: { 'content-type': 'application/json' },
-            credentials: 'omit'
-        })
-        const json = await response.json()
-        if (response.ok) {
-            return successFn ? successFn(json) : json
-        }
-        return Promise.reject(JSON.stringify(json))
-    }
-
-    /**
-     * @function post
-     * @desc Call a HTTP POST request
-     * @param {string} url The url to call
-     * @param {Json} body The body of the call
-     * @param {callback} successFn The callback called in case of a success
-     * @return A Promise with the return of the call
-     **/
-    async post(url, body, successFn) {
-        return await this.postParameters(url, undefined, body, successFn)
-        // return await this.http(this.serverUrl, url, body, successFn, 'POST')
-    }
-
-    /**
-     * @function post
-     * @desc Call a HTTP POST request
-     * @param {string} url The url to call
-     * @param {Object} parameters The dictionary for key/value paramaters of the call
-     * @param {Json} body The body of the call
-     * @param {callback} successFn The callback called in case of a success
-     * @return A Promise with the return of the call
-     **/
-    async postParameters(url, parameters, body, successFn) {
-        let stringParams = this.stringParams(parameters)
-
-        return await this.http(
-            this.serverUrl,
-            url + stringParams,
-            body,
-            successFn,
-            'POST'
-        )
-    }
-
-    /**
-     * @function post
-     * @desc Call a HTTP GET request
-     * @param {string} url The url to call
-     * @param {Object} parameters The dictionary for key/value paramaters of the call
-     * @param {callback} successFn The callback called in case of a success
-     * @return A Promise with the return of the call
-     **/
-    async get(url, parameters, successFn) {
-        let stringParams = this.stringParams(parameters)
-
-        return await this.http(
-            this.serverUrl,
-            url + stringParams,
-            undefined,
-            successFn,
-            'GET'
-        )
-    }
-
-    stringParams(parameters) {
-        const objectKeys = Object.keys(parameters)
-        let stringParams = objectKeys
-            .map(key => key + '=' + parameters[key])
-            .join('&')
-        return (objectKeys.length === 0 ? '' : '?') + stringParams
-    }
+     async editResource(resourceType, resourceId, body, callback) {
+         return await http.postParameters(
+             this.serverUrl,
+             resourceType + '/edit/' + resourceId,
+             {},
+             body,
+             callback
+         )
+     }
 }
-
-/**
- * @file resources.js
- * @desc This is the User class definition file
- * @module Resources
-**/
-
-const appendSlash = url => {
-  return url.substr(-1) === '/' ? url : url + '/'
-}
-
 
 module.exports = Resources;
