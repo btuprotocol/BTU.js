@@ -7,11 +7,8 @@
 import Resources from './resources/resources.js'
 import Availabilities from './availabilities/availabilities.js'
 
+const version = require('../../package.json').version
 const defaultServerUrl = 'https://btu-api.btu-direct.com'
-
-// TODO : Récupérer version
-// TODO : Mettre en place retry (paramètrable)
-const version = '1.3.1'
 
 class Btujs {
 
