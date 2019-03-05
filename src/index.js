@@ -7,8 +7,8 @@
 import Resources from './resources/resources.js'
 import Availabilities from './availabilities/availabilities.js'
 
-const version = require('../../package.json').version
 const defaultServerUrl = 'https://btu-api.btu-direct.com'
+const defaultVersion = '1'
 
 class Btujs {
 
@@ -18,10 +18,11 @@ class Btujs {
    * @param {string} serverUrl The base url of the server
   **/
   constructor({
-  	serverUrl = defaultServerUrl
+      serverUrl = defaultServerUrl,
+      version = defaultVersion
   } = {}) {
 
-    let versionUrl = serverUrl + '/' + version
+    let versionUrl = serverUrl + '/v' + version
 
   	this.resources = new Resources({
   		serverUrl: versionUrl

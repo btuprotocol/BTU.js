@@ -2,7 +2,7 @@ import http from '../utils/http.js'
 
 /**
  * @file resources.js
- * @desc This is the User class definition file
+ * @desc This is the Resource class definition file
  * @module Resources
 **/
 
@@ -16,19 +16,6 @@ class Resources {
      **/
     constructor({serverUrl}) {
         this.serverUrl = serverUrl
-    }
-
-    /**
-     * @function getRessourceInformation
-     * @desc Get information for a ressource
-     * @param {string} ressourceId The id of the ressources
-     * @param {string} type The type of ressource
-     * @param {options} Additionnal information
-     * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
-     * @return The Json containing information of the ressource
-     **/
-    async getRessourceInformation(ressourceId, type, options, callback) {
-        return await this.postParameters(type + '/info', { ressourceId, type }, options, callback)
     }
 
     /**
