@@ -54,6 +54,25 @@ class Availabilities {
      )
    }
 
+   /**
+    * @function isResourceAvailable
+    * @desc Check if the resource is available
+    * @param {string} resourceType
+    * @param {string} resourceId
+    * @param {object} body
+    * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+    * @return The Json containing available rooms
+    **/
+    async isResourceAvailable(resourceType, resourceId, body, callback) {
+      return await http.postParameters(
+          this.serverUrl,
+          resourceType + '/' + resourceId + '/isavailable/',
+          {},
+          body,
+          callback
+      )
+    }
+
   /**
    * @function getBookingDetails
    * @desc Get information for a booking
