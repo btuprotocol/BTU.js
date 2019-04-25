@@ -37,7 +37,7 @@ npm install btujs --save
 ```javascript
 const btujs = require('btujs');
 
-const myBtujs = new BTUjs();
+const myBtujs = new btujs();
 ```
 
 ---
@@ -58,7 +58,7 @@ const body = {
 };
 
 // Search for all resources of type `hotel` located 2 kilometers around Paris
-myBtujs.searchResources('hotel', body, (err, res) => {
+myBtujs.resources.searchResources('hotel', body, (err, res) => {
   // Catch errors
   if (error) {
     console.log(err);
@@ -79,7 +79,7 @@ Search for resources regardless of their availabilities.
 
 #### Prototype
 ```javascript
-  myBtujs.searchResources(String resourceType, Object body, Function callback)
+  myBtujs.resources.searchResources(String resourceType, Object body, Function callback)
 ```
 
 #### Parameters
@@ -105,7 +105,7 @@ Query resource by its ID to get its details.
 
 #### Prototype
 ```javascript
-  myBtujs.getResource(String resourceType, String resourceId, Object body, Function callback)
+  myBtujs.resources.getResource(String resourceType, String resourceId, Object body, Function callback)
 ```
 
 #### Parameters
@@ -123,7 +123,7 @@ Query resource by its ID and its sub-item ID to get sub-item details.
 
 #### Prototype
 ```javascript
-  myBtujs.getResourceItem(String resourceType, String resourceId, String itemId, Object body, Function callback)
+  myBtujs.resource.getResourceItem(String resourceType, String resourceId, String itemId, Object body, Function callback)
 ```
 
 #### Parameters
@@ -144,7 +144,7 @@ Search for availables resources only.
 
 #### Prototype
 ```javascript
-  myBtujs.searchAvailableResources(String resourceType, Object body, Function callback)
+  myBtujs.availabilities.searchAvailableResources(String resourceType, Object body, Function callback)
 ```
 
 #### Parameters
@@ -172,7 +172,7 @@ Query a resource by its ID and get its availabilities.
 
 #### Prototype
 ```javascript
-  myBtujs.getResourceAvailabilities(String resourceType, String resourceId, Object body, Function callback)
+  myBtujs.availabilities.getResourceAvailabilities(String resourceType, String resourceId, Object body, Function callback)
 ```
 
 #### Parameters
@@ -196,7 +196,7 @@ Book a resource availability.
 
 #### Prototype
 ```javascript
-  myBtujs.bookResource(String resourceType, String resourceId, Object body, Function callback)
+  myBtujs.availabilities.bookResource(String resourceType, String resourceId, Object body, Function callback)
 ```
 
 #### Parameters
@@ -219,7 +219,7 @@ Get informations about a booking you made.
 
 #### Prototype
 ```javascript
-  myBtujs.getBookingDetails(String resourceType, String bookingId, Object body, Function callback)
+  myBtujs.availabilities.getBookingDetails(String resourceType, String bookingId, Object body, Function callback)
 ```
 
 #### Parameters
@@ -237,7 +237,7 @@ Cancel a booking you.
 
 #### Prototype
 ```javascript
-  myBtujs.cancelBooking(String resourceType, String bookingId, Object body, Function callback)
+  myBtujs.availabilities.cancelBooking(String resourceType, String bookingId, Object body, Function callback)
 ```
 
 #### Parameters
