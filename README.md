@@ -21,6 +21,14 @@ BTU.JS is a javascript library that interacts with BTU Protocol. It allows any d
     - [**cancelBooking**](#cancelbooking)
     - **addAvailability** *Not implemented yet*
     - **removeAvailability** *Not implemented yet*
+  - [Data structures](#data-structures)
+    - [activity](#activity)
+    - [fare](#fare)
+    - [participants](#participants)
+    - [checkout](#checkout)
+    - [bookActivity](#bookActivity)
+    - [personalInformations](#personalInformations)
+    - [pickup](#pickup)
 
 ## Getting started
 
@@ -89,13 +97,22 @@ Search for resources regardless of their availabilities.
 
   | parameter                  | mandatory                      | description                             |
   |----------------------------|--------------------------------|-----------------------------------------|
-  | searchType                 | `true`                         | `String` 'query' or 'location'          |
-  | options.searchQuery        | only for `query` searchType    | `String` search query (ex: hotel name)  |
-  | options.location.latitude  | only for `location` searchType | `Float` latitude coordinate             |
-  | options.location.longitude | only for `location` searchType | `Float` longitude coordinate            |
-  | options.distance           | only for `location` searchType | `Integer` distance around location      |
+  | options.categoryIds        | `true`                         | `Array` ids of wanted activties         |
+  | options.maxCount           | `false` (default = 5)          | `Array` max results count               |
 
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
+
+#### Response
+
+```javascript
+  {
+    activities: [
+      activity_object, // Activity matching the requested categoryIds
+      activity_object,
+      ...
+    ]
+  }
+```
 
 ---
 
@@ -114,6 +131,12 @@ Query resource by its ID to get its details.
 - **resourceId**: resource unique identifier.
 - **body**: none.
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
+
+#### Response
+
+```javascript
+  activity_object //The requested activity
+```
 
 ---
 
@@ -152,17 +175,27 @@ Search for availables resources only.
 - **resourceType**: the type of resource you are looking for.
 - **body**:
 
-  | parameter                  | mandatory                      | description                             |
-  |----------------------------|--------------------------------|-----------------------------------------|
-  | startDate                  | `true`                         | `Date` search after this date           |
-  | endDate                    | `true`                         | `Date` search before this date          |
-  | searchType                 | `true`                         | `String` 'query' or 'location'          |
-  | options.searchQuery        | only for `query` searchType    | `String` search query (ex: hotel name)  |
-  | options.location.latitude  | only for `location` searchType | `Float` latitude coordinate             |
-  | options.location.longitude | only for `location` searchType | `Float` longitude coordinate            |
-  | options.distance           | only for `location` searchType | `Integer` distance around location      |
+  | parameter                  | mandatory                      | description                                |
+  |----------------------------|--------------------------------|--------------------------------------------|
+  | options.query              | `true`                         | `String` search query (ex: activity name)  |
+  | options.categoryId         | `false`                        | `String` filter with a category id         |
+  | options.fromDate           | `false`                        | `String` filter from start date            |
+  | options.partipantsNumber   | `false`                        | `Number` filter with participant a count   |
 
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
+
+#### Response
+
+```javascript
+  {
+    count: 5,          // Results count
+    activities: [
+      activity_object, // Activity matching the request
+      activity_object,
+      ...
+    ]
+  }
+```
 
 ---
 
@@ -183,10 +216,56 @@ Query a resource by its ID and get its availabilities.
 
   | parameter                  | mandatory                      | description                             |
   |----------------------------|--------------------------------|-----------------------------------------|
-  | startDate                  | `true`                         | `Date` search after this date           |
-  | endDate                    | `true`                         | `Date` search before this date          |
+  | fromDate                   | `true`                         | `Date` search after this date           |
+  | partipantsNumber           | `true`                         | `Number` participaant count             |
 
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
+
+#### Response
+
+```javascript
+  {
+    sessionId: "skdfhqwuifq;wuefqweoifqwuiefgqwueif",          // Required later for booking
+    availabilities: [
+      availabilities_object, // Availability matching the request
+      availabilities_object,
+      ...
+    ]
+  }
+```
+
+---
+
+### **isResourceAvailable()**
+
+Check if a resource is available under different conditions.
+
+#### Prototype
+```javascript
+  myBtujs.availabilities.isResourceAvailable(String resourceType, String resourceId, Object body, Function callback)
+```
+
+#### Parameters
+
+- **resourceType**: the type of resource you are looking for.
+- **resourceId**: resource unique identifier.
+- **body**:
+
+  | parameter                  | mandatory                      | description                                                      |
+  |----------------------------|--------------------------------|------------------------------------------------------------------|
+  | sessionId                  | `true`                         | `String` session id from a previous gerResourceAvailability call |
+  | departureDate              | `true`                         | `String` chosen date (format : AAAA-MM-DD)                       |
+  | fares                      | `true`                         | `Object` chosen availabilities                                   |
+
+- **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
+
+#### Response
+
+```javascript
+  {
+    isAvailable: true // or false
+  }
+```
 
 ---
 
@@ -207,7 +286,10 @@ Book a resource availability.
 
   | parameter                  | mandatory                      | description                             |
   |----------------------------|--------------------------------|-----------------------------------------|
-  | bookingData                | `true`                         | `Object` booking specific data          |
+  | checkout                   | `true`                         | `Object` payment informations           |
+  | bookActivity               | `true`                         | `Object` reservation informations       |
+  | personalInformations       | `true`                         | `Object` booker personal informations   |
+  | piuckup                    | `false`                        | `Object` activity pickup informations   |
 
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
 
@@ -246,3 +328,86 @@ Cancel a booking you.
 - **bookingId**: resource unique identifier.
 - **body**: none.
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
+
+## Data structures
+
+### activity
+
+  | parameter                  | mandatory | description                                               |
+  |----------------------------|-----------|-----------------------------------------------------------|
+  | id                         | `true`    | `String` activity id                                      |
+  | fromPrice                  | `true`    | `Number` cheapest price this year                         |
+  | language                   | `true`    | `Array` supported languages for this activity             |
+  | pickupRequired             | `true`    | `Boolean` is pickup information required for booking      |
+  | cheapest                   | `true`    | `Object` currency and cheappest price for the activity    |
+  | paxNamesRequired           | `true`    | `Boolean` are pax informations required for booking       |
+  | pickup                     | `true`    | `Object` information about start and end of the activity  |
+  | cityCode                   | `true`    | `String` activity city code                               |
+  | categoryCode               | `true`    | `String` activity category code                           |
+  | name                       | `true`    | `String` activity name                                    |
+  | descriptions               | `true`    | `Object` multiple activity descriptions                   |
+  | destination                | `true`    | `String` activity location                                |
+  | cityName                   | `true`    | `String` activity city                                    |
+  | highlights                 | `true`    | `Array` activity highlights                               |
+  | keywords                   | `true`    | `Array` activity keywords                                 |
+  | images                     | `true`    | `Object` thumbnail and array of more images               |
+  | shortDescription           | `true`    | `String` activity description                             |
+  | tourId                     | `true`    | `String` another activity id                              |
+  | duration                   | `true`    | `String` activity duration                                |
+  | startPoint                 | `true`    | `Object` activity start point informations                |
+  | endPoint                   | `true`    | `Object` activity end point informations                  |
+
+### fare
+
+  | parameter                  | mandatory | description                                               |
+  |----------------------------|-----------|-----------------------------------------------------------|
+  | idFare                     | `true`    | `Number` id of the selected availability                  |
+  | timeFare                   | `true`    | `String` 'HH:MM' selected time                            |
+  | langFare                   | `true`    | `String` selected language                                |
+  | participants               | `true`    | `Array` array of participants objects                     |
+
+### participants
+
+  | parameter                  | mandatory | description                                               |
+  |----------------------------|-----------|-----------------------------------------------------------|
+  | codePers                   | `true`    | `string` kind of person 'ADT', 'CHD' or 'BAB'             |
+  | firstName                  | `true`    | `String` person's first name                              |
+  | lastName                   | `true`    | `String` person's last name                               |
+  | title                      | `true`    | `String` 'Mr' or 'Mrs'                                    |
+
+### checkout
+
+  | parameter                  | mandatory | description                                               |
+  |----------------------------|-----------|-----------------------------------------------------------|
+  | cardNo                     | `true`    | `String` card number                                      |
+  | amount                     | `true`    | `Number` amount to pay                                    |
+  | expMonth                   | `true`    | `String` expiration month                                 |
+  | expYear                    | `true`    | `String` expiration year                                  |
+  | cvc                        | `true`    | `String` cvc                                              |
+
+### bookActivity
+
+  | parameter                  | mandatory | description                                               |
+  |----------------------------|-----------|-----------------------------------------------------------|
+  | sessionId                  | `true`    | `String` session id                                       |
+  | departureDate              | `true`    | `String` AAAA-MM-DD departure date                        |
+  | cityCode                   | `true`    | `String` city code                                        |
+  | fares                      | `true`    | `Array` array of fares                                    |
+
+### personalInformations
+
+  | parameter                  | mandatory | description                                               |
+  |----------------------------|-----------|-----------------------------------------------------------|
+  | title                      | `true`    | `String` 'Mr' or 'Mrs'                                    |
+  | email                      | `true`    | `String` email                                            |
+  | firstname                  | `true`    | `String` first name                                       |
+  | lastname                   | `true`    | `String` last name                                        |
+  | phoneAreaCode              | `true`    | `String` phone area code e.g. +33                         |
+  | phoneNumber                | `true`    | `String` phone number                                     |
+
+### pickup
+
+  | parameter                  | mandatory | description                                               |
+  |----------------------------|-----------|-----------------------------------------------------------|
+  | address                    | `true`    | `String` hotel address                                    |
+  | name                       | `true`    | `String` hotel name                                       |
