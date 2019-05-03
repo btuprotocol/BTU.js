@@ -10,17 +10,17 @@ BTU.JS is a javascript library that interacts with BTU Protocol. It allows any d
     - [**searchResources**](#searchresources)
     - [**getResource**](#getresource)
     - [**getResourceItem**](#getresourceitem)
-    - **addResource** *Not implemented yet*
-    - **deleteResource** *Not implemented yet*
-    - **editResource** *Not implemented yet*
+    - **addResource** *Private beta - contact us*
+    - **deleteResource** *Private beta - contact us*
+    - **editResource** *Private beta - contact us*
   - [Availabilities methods](#availabilities-methods)
     - [**searchAvailableResources**](#searchavailableresources)
     - [**getResourceAvailabilities**](#getresourceavailabilities)
     - [**bookResource**](#bookresource)
     - [**getBookingDetails**](#getbookingdetails)
     - [**cancelBooking**](#cancelbooking)
-    - **addAvailability** *Not implemented yet*
-    - **removeAvailability** *Not implemented yet*
+    - **addAvailability** *Private beta - contact us*
+    - **removeAvailability** *Private beta - contact us*
   - [Data structures](#data-structures)
     - [activity](#activity)
     - [fare](#fare)
