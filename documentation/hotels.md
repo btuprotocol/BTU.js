@@ -290,7 +290,7 @@ Get informations about a booking you made.
 
 ### **cancelBooking()**
 
-Cancel a booking you.
+Cancel a reservation you booked through the bookResource method.
 
 #### Prototype
 ```javascript
@@ -320,7 +320,7 @@ Cancel a booking you.
   | latitude                   | `String` hotel position latitude                          |
   | longitude                  | `String` hotel position longitude                         |
   | minRate                    | `String` hotel minimum rate                               |
-  | details                    | `String` hotel ameinities                                 |
+  | details                    | `String` hotel amenities                                  |
   | rooms                      | `[room_object]` hotel available rooms                     |
 
 ### places
@@ -351,12 +351,12 @@ Cancel a booking you.
   | chainName                  | `String` name of hotel chain            |
   | defaultImage               | `String` default image url              |
   | images                     | `[String]` other image's urls           |
-  | frDesc                     | `String` French desctiption             |
+  | frDesc                     | `String` French description             |
   | enDesc                     | `String` English description            |
   | location.latitude          | `Float` coordinate of hotel             |
   | location.longitude         | `Float` coordinate of hotel             |
   | services                   | `Object` list of services (see below)   |
-  | services[].en              | `String` name of service in Enfglish    |
+  | services[].en              | `String` name of service in English     |
   | services[].fr              | `String` name of service in French      |
 
 ### room
