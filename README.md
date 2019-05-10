@@ -185,7 +185,7 @@ Get informations about a booking you made.
 
 ### **cancelBooking()**
 
-Cancel a booking you.
+Cancel a reservation you booked through the bookResource method.
 
 #### Prototype
 ```javascript
