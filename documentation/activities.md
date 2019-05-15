@@ -73,6 +73,13 @@ Search for resources regardless of their availabilities.
 
     If not given, the function will create a promise.
 
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.resources.searchResources('activity', body).then(res => {...})
+```
+
 #### Response
 
 ```javascript
@@ -105,6 +112,13 @@ Query resource by its ID to get its details.
 
     If not given, the function will create a promise.
 
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.resources.getResource('activity', body).then(res => {...})
+```
+
 #### Response
 
 ```javascript
@@ -131,6 +145,13 @@ Query resource by its ID and its sub-item ID to get sub-item details.
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
 
     If not given, the function will create a promise.
+
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.resources.getResourceItem('activity', 'ABCDEF', body).then(res => {...})
+```
 
 ---
 
@@ -161,6 +182,12 @@ Search for availables resources only.
 
     If not given, the function will create a promise.
 
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.availabilities.searchAvailableResources('activity', body).then(res => {...})
+```
 
 #### Response
 
@@ -200,6 +227,13 @@ Query a resource by its ID and get its availabilities.
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
 
     If not given, the function will create a promise.
+
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.availabilities.getResourceAvailabilities('activity', 'ABCDEF', body).then(res => {...})
+```
 
 #### Response
 
@@ -241,6 +275,13 @@ Check if a resource is available under different conditions.
 
     If not given, the function will create a promise.
 
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.availabilities.isResourceAvailable('activity', 'ABCDEF', body).then(res => {...})
+```
+
 #### Response
 
 ```javascript
@@ -277,6 +318,14 @@ Book a resource availability.
 
     If not given, the function will create a promise.
 
+
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.availabilities.bookResource('activity', 'ABCDEF', body).then(res => {...})
+```
+
 ---
 
 ### **getBookingDetails()**
@@ -297,6 +346,13 @@ Get informations about a booking you made.
 
     If not given, the function will create a promise.
 
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.availabilities.getBookingDetails('activity', 'ABCDEF', body).then(res => {...})
+```
+
 ---
 
 ### **cancelBooking()**
@@ -316,6 +372,13 @@ Cancel a reservation you booked through the bookResource method.
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
 
     If not given, the function will create a promise.
+
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.availabilities.cancelBooking('activity', 'ABCDEF', body).then(res => {...})
+```
 
 ## Data structures
 

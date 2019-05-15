@@ -47,11 +47,13 @@ const myBtujs = new btujs();
 
 ### **searchResources()**
 
-Search for hotels. There are two possible ways of searching for a hotel depending on the searchType parameter :
+Search for hotels. There are three possible ways of searching for a hotel depending on the searchType parameter :
 
-- One is the 'query' search that returns a list of cities and hotels corresponding to the query given in parameter. (Useful for a search bar)
+- 'query' search that returns a list of cities and hotels corresponding to the query given in parameter. (Useful for a search bar)
 
-- The other is the 'location' search that returns a list of hotel for a certain location (coordinates) and guest related parameters.
+- 'location' search that returns a list of hotel for a certain location (coordinates) and guest related parameters.
+
+- 'cities' search that returns a list of hotel for an array of coordinates (Usefull for city samples).
 
 #### Prototype
 ```javascript
@@ -71,20 +73,44 @@ Search for hotels. There are two possible ways of searching for a hotel dependin
 
   - Location
 
+      | parameter                  | mandatory                      | description                                                 |
+      |----------------------------|--------------------------------|-------------------------------------------------------------|
+      | searchType                 | `true`                         | `String` type of search ('location')                        |
+      | startDate                  | `true`                         | `String` start of trip ('YYYY-MM-DD')                       |
+      | endDate                    | `true`                         | `String` end of trip ('YYYY-MM-DD')                         |
+      | guest                      | `true`                         | `Integer` number of guests                                  |
+      | options.location.longitude | `true`                         | `Float` longitude of center of look-up zone                 |
+      | options.location.latitude  | `true`                         | `Float` latitude of center of look-up zone                  |
+      | options.countryCode        | `false`                        | `String` use this to limit results to a certain country ¹   |
+      | options.byDistance         | `false`                        | `Boolean` sort by distance (closest first)                  |
+      | options.byParking          | `false`                        | `Boolean` filter out results without free or paying parking |
+      | options.byBreakfast        | `false`                        | `Boolean` filter out results without a breakfast option     |
+      | options.byMaxStars         | `false`                        | `Integer` filter out results with a superior star number    |
+      | options.byMaxDistance      | `false`                        | `Integer` filter out results further from distance          |
+      | options.byMaxPrice         | `false`                        | `Float` filter out results more expensive than value        |
+      | pageSize                   | `false`                        | `Integer` number of elements per page (default 100)         |
+    ¹ Case non sensitive two character string (ex. "FR", "UK"...), can be obtained from the query search.
+
+  - Cities
+
       | parameter                  | mandatory                      | description                                         |
       |----------------------------|--------------------------------|-----------------------------------------------------|
       | searchType                 | `true`                         | `String` type of search ('location')                |
-      | startDate                  | `true`                         | `String` start of trip ('YYYY-MM-DD')               |
-      | endDate                    | `true`                         | `String` end of trip ('YYYY-MM-DD')                 |
-      | guest                      | `true`                         | `Integer` number of guests                          |
-      | options.location.longitude | `true`                         | `Float` longitude of center of look-up zone         |
-      | options.location.latitude  | `true`                         | `Float` latitude of center of look-up zone          |
-      | pageSize                   | `false`                        | `Integer` number of elements per page (default 100) |
+      | options.coordArray         | `true`                         | `Array` coordinates for finding near-by hotels
+      | options.coordArray[].lat   | `true`                         | `Float` latitude of point
+      | options.coordArray[].lon   | `true`                         | `Float` longitude of point
 
 
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
 
     If not given, the function will create a promise.
+
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.resources.searchResources('hotel', body).then(res => {...})
+```
 
 #### Response
 
@@ -120,6 +146,28 @@ Search for hotels. There are two possible ways of searching for a hotel dependin
     }
     ```
 
+- Cities
+
+    ```javascript
+    { 
+    // The array's first dimension represents the different points asked (same order)
+    // The second is a list of hotel near this point (max ~10km)
+      [
+        [
+          hotel_object,
+          hotel_object,
+          ...
+        ],
+        [
+          hotel_object,
+          hotel_object,
+          ...
+        ],
+        ...
+      ]
+    }
+    ```
+
 ---
 
 ### **getResource()**
@@ -139,6 +187,13 @@ Query resource by its ID to get its details.
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
 
   If not given, the function will create a promise.
+
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.resources.getResource('hotel', 'XP23AB2', body).then(res => {...})
+```
 
 #### Response
 
@@ -174,6 +229,13 @@ Query a resource by its ID and get its availabilities.
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
 
     If not given, the function will create a promise.
+
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.availabilities.getResourceAvailabilities('hotel', '45327394', body).then(res => {...})
+```
 
 #### Response
 
@@ -215,6 +277,13 @@ Check if a resource is available under different conditions.
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
 
     If not given, the function will create a promise.
+
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.availabilities.isResourceAvailabilities('hotel', '45327394', body).then(res => {...})
+```
 
 #### Response
 
@@ -266,6 +335,13 @@ Book a resource availability.
 
     If not given, the function will create a promise.
 
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.availabilities.bookResource('hotel', '45327394', body).then(res => {...})
+```
+
 ---
 
 ### **getBookingDetails()**
@@ -286,6 +362,13 @@ Get informations about a booking you made.
 
     If not given, the function will create a promise.
 
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.availabilities.getBookingDetails('hotel', '45327394', body).then(res => {...})
+```
+
 ---
 
 ### **cancelBooking()**
@@ -305,6 +388,13 @@ Cancel a reservation you booked through the bookResource method.
 - **callback**: standard callback function, e.g. `callback(err, res) { ... }`.
 
     If not given, the function will create a promise.
+
+#### Call exemple
+
+```javascript
+    let body = { ... }
+    BtuJs.availabilities.cancelBooking('hotel', '45327394', body).then(res => {...})
+```
 
 ## Data structures
 
