@@ -1,8 +1,8 @@
 {
-  "name": "btujs",
+  "name": "btudapp",
   "version": "1.3.2",
-  "description": "",
-  "main": "dist/src/index.js",
+  "description": "mainDapp.js",
+  "main": "",
   "directories": {
     "doc": "doc"
   },
@@ -34,8 +34,21 @@
     "jsdoc": "^3.5.5"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-stage-2": "^7.0.0",
     "@pixi/jsdoc-template": "^2.4.2",
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "@material-ui/core": "^4.1.0",
+    "@material-ui/icons": "^4.1.0",
+    "classnames": "^2.2.6",
+    "ethers": "^4.0.30",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-multi-lang": "^1.0.3",
+    "react-scripts": "3.0.1",
+    "web3-react": "^5.0.4"
   }
 }

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useWeb3Context } from 'web3-react'
 
 // import connectors from './connectors'
-import store from '../../js/magicStore'
+import store from './js/magicStore'
 import DappBar from './dappBar'
 
 function ModeDapp({ detectWallet, dappIsOpen }) {

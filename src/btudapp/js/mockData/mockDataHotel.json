@@ -1,0 +1,100 @@
+{
+  "hotel": {
+    "title": "Alexandro Downtown Hostel & Bar",
+    "address": "1 Avenue de République, 93177 Bagnolet",
+    "latitude": 45,
+    "longitude": 0,
+    "images": [
+      "https://media-cdn.tripadvisor.com/media/photo-o/05/42/0d/51/common-area-with-wifi.jpg",
+      "https://a0.muscache.com/im/pictures/16177952/d3a8ebb5_original.jpg",
+      "https://media-cdn.tripadvisor.com/media/oyster/1070/0e/fa/a9/7e/lobby--v16301380.jpg",
+      "https://media-cdn.tripadvisor.com/media/photo-w/15/ef/a9/a9/bar-area-in-the-hostel.jpg",
+      "https://media-cdn.tripadvisor.com/media/photo-w/0c/f4/6e/74/alessandro-downtown-reception.jpg",
+      "https://media-cdn.tripadvisor.com/media/photo-o/05/10/bc/b6/alessandro-downtown-hostel.jpg",
+      "https://media-cdn.tripadvisor.com/media/oyster/980/0e/fa/a9/2e/double-standard-room--v16301376.jpg",
+      "https://media-cdn.tripadvisor.com/media/photo-o/05/42/0d/51/common-area-with-wifi.jpg",
+      "https://media-cdn.tripadvisor.com/media/oyster/1070/0e/fa/a9/7e/lobby--v16301380.jpg",
+      "https://media-cdn.tripadvisor.com/media/photo-w/15/ef/a9/a9/bar-area-in-the-hostel.jpg"
+    ],
+    "options": [
+      "Wifi",
+      "Parking",
+      "Restauration",
+      "Piscine",
+      "Gardiennage",
+      "Réception 24/24h",
+      "Petit déjeuner",
+      "Accès handicapé",
+      "Abri vélo",
+      "Ascenseur",
+      "Buffet petit déjeuner",
+      "Chambres insonorisées"
+    ],
+    "description": [
+      "Vous vivrez un moment unique en haut de la Tour Eiffel en profitant d’une superbe vue de Paris du deuxième étage ainsi qu’un agréable déjeuner au 1er étage.",
+      "Vous vous présenterez à notre agence PARISCityVISION Bourdonnais située à deux pas de la Tour Eiffel pour retirer votre billet d'accès au premier et deuxième étage du monument le plus emblématique de Paris."
+    ],
+    "rooms": [
+      {
+        "title": "Chambre simple",
+        "persons": 1,
+        "price": 58,
+        "btu": 5.8,
+        "features": [
+          "Petit déjeuner inclus",
+          "Annulation gratuite"
+        ],
+        "conditions": "À 18h00 le jour de l'arrivée - Très flexible – Aucun prépaiement requis. Vous pourrez annuler gratuitement votre réservation jusqu'à 18h00 le jour de votre départ.",
+        "furtherInfos": "À 18h00 le jour de l'arrivée - Très flexible – Aucun prépaiement requis. Vous pourrez annuler gratuitement votre réservation jusqu'à 18h00 le jour de votre départ. Conditions générales : à 18h00 le jour de l'arrivée - Très flexible – Aucun prépaiement requis. Vous pourrez annuler gratuitement votre réservation jusqu'à 18h00 le jour de votre départ",
+        "additionalServices": [
+          "Téléphone",
+          "Sèche-cheveux",
+          "Climatisation",
+          "Serviettes",
+          "Bouilloire électrique",
+          "Douche à l’italienne"
+        ]
+      },
+      {
+        "title": "Chambre double",
+        "persons": 2,
+        "price": 58,
+        "btu": 5.8,
+        "features": [
+          "Petit déjeuner inclus",
+          "Annulation gratuite"
+        ],
+        "conditions": "À 18h00 le jour de l'arrivée - Très flexible – Aucun prépaiement requis. Vous pourrez annuler gratuitement votre réservation jusqu'à 18h00 le jour de votre départ.",
+        "furtherInfos": "À 18h00 le jour de l'arrivée - Très flexible – Aucun prépaiement requis. Vous pourrez annuler gratuitement votre réservation jusqu'à 18h00 le jour de votre départ. Conditions générales : à 18h00 le jour de l'arrivée - Très flexible – Aucun prépaiement requis. Vous pourrez annuler gratuitement votre réservation jusqu'à 18h00 le jour de votre départ",
+        "additionalServices": [
+          "Téléphone",
+          "Sèche-cheveux",
+          "Climatisation",
+          "Serviettes",
+          "Bouilloire électrique",
+          "Douche à l’italienne"
+        ]
+      },
+      {
+        "title": "Chambre double",
+        "persons": 2,
+        "price": 58,
+        "btu": 5.8,
+        "features": [
+          "Petit déjeuner inclus",
+          "Annulation gratuite"
+        ],
+        "conditions": "À 18h00 le jour de l'arrivée - Très flexible – Aucun prépaiement requis. Vous pourrez annuler gratuitement votre réservation jusqu'à 18h00 le jour de votre départ.",
+        "furtherInfos": "À 18h00 le jour de l'arrivée - Très flexible – Aucun prépaiement requis. Vous pourrez annuler gratuitement votre réservation jusqu'à 18h00 le jour de votre départ. Conditions générales : à 18h00 le jour de l'arrivée - Très flexible – Aucun prépaiement requis. Vous pourrez annuler gratuitement votre réservation jusqu'à 18h00 le jour de votre départ",
+        "additionalServices": [
+          "Téléphone",
+          "Sèche-cheveux",
+          "Climatisation",
+          "Serviettes",
+          "Bouilloire électrique",
+          "Douche à l’italienne"
+        ]
+      }
+    ]
+  }
+}

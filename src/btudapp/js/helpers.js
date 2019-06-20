@@ -1,0 +1,26 @@
+const helpers = {}
+
+helpers.arrayIsNotNull = require('./helpers/arrayIsNotNull')
+helpers.constructMapUrl = require('./helpers/constructMapUrl')
+helpers.datePlusSeconds = require('./helpers/addSecondsToDate')
+helpers.dictionaryIsNotNull = require('./helpers/dictionaryIsNotNull')
+helpers.formatDate = require('./helpers/formatDate')
+helpers.formatDateYYYYMMDD = require('./helpers/formatDateYYYYMMDD')
+helpers.formatDateToString = require('./helpers/formatDateToString')
+helpers.formatPrice = require('./helpers/formatPrice')
+helpers.getCurrencies = require('./helpers/getCurrencies')
+helpers.getDefaultCities = require('./helpers/getDefaultCities')
+helpers.getMainServices = require('./helpers/getMainServices')
+helpers.getLanguage = require('./helpers/getLanguage')
+helpers.getLocale = require('./helpers/getLocale')
+helpers.getSupportedLanguages = require('./helpers/getSupportedLanguages')
+helpers.parseImage = require('./helpers/parseImage')
+helpers.setDefaultTranslation = require('./helpers/setDefaultTranslation')
+helpers.stringIsNotNull = require('./helpers/stringIsNotNull')
+helpers.urlParametersToString = require('./helpers/urlParametersToString')
+helpers.validateEmail = require('./helpers/validateEmail')
+helpers.validatePhone = require('./helpers/validatePhone')
+helpers.getCountry = require('./helpers/getCountry')
+helpers.sortServices = require('./helpers/sortServices')
+
+module.exports = helpers

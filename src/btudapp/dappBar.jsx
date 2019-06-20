@@ -6,10 +6,9 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import MetaMaskStatus from '@material-ui/icons/Brightness1'
-import WalletDialog from '../dialog/walletDialog'
-
-import store from  '../../js/magicStore'
-import defaultColors from '../../js/defaultColors'
+import WalletDialog from './dialog/walletDialog'
+import store from  './js/magicStore'
+import defaultColors from './js/defaultColors'
 
 const styles = {
   connectionText: {
@@ -59,7 +58,7 @@ const styles = {
 
 
 class DappBar extends React.Component {
-  state = {
+  state={
     addressChanged: false,
   }
 
@@ -97,20 +96,20 @@ class DappBar extends React.Component {
               {/* <img src={MetaLogo} alt="" className={classes.metaLogo} /> */}
               <Typography variant="caption" color="inherit" className={classes.connectionText}>
                 {isConnected
-                  ? t('dappBar.connected').toLowerCase()
-                  : t('dappBar.connectionRequired').toLowerCase()
+                  ? "t('dappBar.connected').toLowerCase()"
+                  : "t('dappBar.connectionRequired').toLowerCase()"
                 }
               </Typography>
             </div>
             <div className={classes.rightPanel}>
               <Typography variant="caption" className={classes.statusText}>
-                {isConnected ? transformWallet : t('dappBar.notConnected')}
+                {isConnected ? transformWallet : "t('dappBar.notConnected')"}
               </Typography>
               <MetaMaskStatus className={isConnected ? classes.connected : classes.notConnected} />
               <WalletDialog
                 onInputWallet={this.onInputWallet}
                 isOpen={dappIsOpen}
-              />
+             />
             </div>
           </Toolbar>
         </AppBar>

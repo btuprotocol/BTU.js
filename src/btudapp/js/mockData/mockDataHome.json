@@ -1,0 +1,900 @@
+{
+  "cities": [
+    {
+      "city": {
+        "en": "Bangkok",
+        "fr": "Bangkok"
+      },
+      "hotels": [
+        {
+          "id": "1",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "2",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "3",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "4",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "5",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "6",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "7",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "8",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "9",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "10",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        }
+      ]
+    },
+    {
+      "city": {
+        "en": "Paris",
+        "fr": "Paris"
+      },
+      "hotels": [
+        {
+          "id": "11",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "12",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "13",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "14",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "15",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "16",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "17",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "18",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "19",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "20",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        }
+      ]
+    },
+    {
+      "city": {
+        "en": "London",
+        "fr": "Londres"
+      },
+      "hotels": [
+        {
+          "id": "21",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "22",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "23",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "24",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "25",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "26",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "27",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "28",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "29",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "30",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        }
+      ]
+    },
+    {
+      "city": {
+        "en": "Singapore",
+        "fr": "Singapour"
+      },
+      "hotels": [
+        {
+          "id": "31",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "32",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "33",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "34",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "35",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "36",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "37",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "38",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "39",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "40",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        }
+      ]
+    },
+    {
+      "city": {
+        "en": "Tokyo",
+        "fr": "Tokyo"
+      },
+      "hotels": [
+        {
+          "id": "41",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "42",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "43",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "44",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "45",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "46",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "47",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "48",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "49",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "50",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        }
+      ]
+    },
+    {
+      "city": {
+        "en": "Tel Aviv",
+        "fr": "Tel Aviv"
+      },
+      "hotels": [
+        {
+          "id": "51",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "52",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "53",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "54",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "55",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "56",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "57",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "58",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "59",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "60",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        }
+      ]
+    },
+    {
+      "city": {
+        "en": "New York",
+        "fr": "New York"
+      },
+      "hotels": [
+        {
+          "id": "61",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "62",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "63",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "64",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "65",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "66",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "67",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "68",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "69",
+          "name": "Hôtel Élément",
+          "stars": 2,
+          "image": "https://s-ec.bstatic.com/images/hotel/max1280x900/610/61082226.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        },
+        {
+          "id": "70",
+          "name": "Alexandro Downtown Hostel & Bar",
+          "stars": 3,
+          "image": "https://t-ec.bstatic.com/images/hotel/max1280x900/151/151396525.jpg",
+          "options": ["Wifi", "Accès handicapé", "Restauration", "Animaux acceptés"],
+          "nights": 1,
+          "price": 58,
+          "btu": 5.8,
+          "latitude": 45,
+          "longitude": 0
+        }
+      ]
+    }
+  ]
+}
