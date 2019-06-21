@@ -6,6 +6,7 @@
 
 import Resources from './resources/resources.js'
 import Availabilities from './availabilities/availabilities.js'
+import DappBar from './dappBar/src/dappBar'
 
 const defaultServerUrl = 'https://btu-api.btu-direct.com'
 const defaultVersion = '1'
@@ -31,7 +32,14 @@ class Btujs {
     this.availabilities = new Availabilities({
         serverUrl: versionUrl
     })
+
+    this.loadDappBar = () => {
+      return (<DappBar/>)
+    }
   }
 }
 
-module.exports = Btujs;
+module.exports = {
+  Btujs,
+  DappBar
+}
