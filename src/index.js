@@ -6,7 +6,7 @@
 
 import Resources from './resources/resources.js'
 import Availabilities from './availabilities/availabilities.js'
-import DappBar from './dappBar/src/dappBar'
+import DappBar from './dappBar/src/DappBar'
 
 const defaultServerUrl = 'https://btu-api.btu-direct.com'
 const defaultVersion = '1'

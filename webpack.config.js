@@ -18,6 +18,17 @@ module.exports = {
             presets: ['env']
           }
         }
+      },
+      {
+        test: /\.(png|jp(e*)g|svg)$/,
+        loader: 'url-loader',
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8000,
+            name: 'images/[hash]-[name].[ext]'
+          }
+        }]
       }
     ]
   },
@@ -25,3 +36,13 @@ module.exports = {
     'react': 'commonjs react' // this line is just to use the React dependency of our parent-testing-project instead of using our own React.
   }
 };
+
+/**
+ * use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 8000,
+            name: 'images/[hash]-[name].[ext]'
+          }
+        }]
+ */
