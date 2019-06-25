@@ -18,17 +18,6 @@ module.exports = {
             presets: ['env']
           }
         }
-      },
-      {
-        test: /\.(png|jp(e*)g|svg)$/,
-        loader: 'url-loader',
-        use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 8000,
-            name: 'images/[hash]-[name].[ext]'
-          }
-        }]
       }
     ]
   },

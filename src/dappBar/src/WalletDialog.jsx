@@ -15,22 +15,14 @@ import ArrowIcon from '@material-ui/icons/Details'
 import BtuButton from './Button'
 import BtuTextField from './TextField'
 
-// Invalid images check out this link
-// https://medium.com/a-beginners-guide-for-webpack-2/handling-images-e1a2a2c28f8d
-// Try to override src by getting elem by id
-
-//import ElecWallet from '../assets/electronic_wallet.png'
-//import WalletWithout from '../assets/wallet_without.png'
-
-const ElecWallet = '../assets/electronic_wallet.png'
-const WalletWithout = '../assets/wallet_without.png'
+import { electronicWallet, withoutWallet } from '../assets/images'
 
 class WalletDialog extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      open: false,
+      open: this.props.isOpen ? true : false,
       status: 'notConNoWal',
       checkValitidy: false,
       ethAddressInput: {
@@ -42,13 +34,13 @@ class WalletDialog extends React.Component {
   }
 
   componentDidMount() {
-    if (localStorage.getItem('walletAddr')) {
+    if (sessionStorage.getItem('walletAddr')) {
       this.setState({ status: 'isCon' })
     }
   }
 
   handleClickOpen () {
-    const tmpStatus = localStorage.getItem('walletAddr') ? 'isCon' : 'notConNoWal'
+    const tmpStatus = sessionStorage.getItem('walletAddr') ? 'isCon' : 'notConNoWal'
 
     this.setState({
       open: true,
@@ -57,7 +49,7 @@ class WalletDialog extends React.Component {
   }
 
   handleClose () {
-    const tmpStatus = localStorage.getItem('walletAddr') ? 'isCon' : 'notConNoWal'
+    const tmpStatus = sessionStorage.getItem('walletAddr') ? 'isCon' : 'notConNoWal'
 
     this.setState({
       open: false,
@@ -144,7 +136,7 @@ class WalletDialog extends React.Component {
                 key={item}
                 className={classNames({
                   [classes.dialogText]: true,
-                  [classes.addressText]: item === localStorage.getItem('walletAddr'),
+                  [classes.addressText]: item === sessionStorage.getItem('walletAddr'),
                 })}
               >
                 {item}
@@ -206,52 +198,52 @@ class WalletDialog extends React.Component {
     } = this.state
 
     const notConNoWal = this.popUp({
-      img: ElecWallet,
+      img: electronicWallet,
       text: [
-        'To use this service, please provide us with your Ethereum address',
-        'Login or create one in a few clicks',
+        t('dappBar.usingBTU.using'),
+        t('dappBar.usingBTU.choiceConnected'),
       ],
-      leftButtonText: 'Create a wallet',
+      leftButtonText: t('dappBar.usingBTU.createWallet'),
       leftButtonClick: this.onClickCreateWal.bind(this),
-      rightButtonText: 'I already have a wallet',
+      rightButtonText: t('dappBar.usingBTU.hasWallet'),
       rightButtonClick: this.onClickHasWal.bind(this),
       fullWidthButtons: true,
      })
 
     const notConHasWal = this.popUp({
-      img: ElecWallet,
+      img: electronicWallet,
       text: [
-        'In order to use BTU-Hotel, please connect to your wallet, MetaMask or TrustWallet for example',
+        t('dappBar.usingBTU.usingConnected'),
       ],
-      leftButtonText: 'Change wallet',
+      leftButtonText: t('dappBar.usingBTU.changeWallet'),
       leftButtonClick: this.onClickHasWal.bind(this),
-      rightButtonText: 'Connection',
+      rightButtonText: t('dappBar.usingBTU.connection'),
       rightButtonClick: this.onClickConnect.bind(this),
      })
 
     const inputWal = (
       <div className={classes.root}>
         <DialogContent className={classes.contentRoot}>
-          <img src={WalletWithout} alt="" />
+          <img src={withoutWallet} alt="" />
           <DialogContentText id="alert-dialog-description">
             Please enter your ETH address
           </DialogContentText>
         </DialogContent>
         <BtuTextField
-          title={'ETH address'}
+          title={t('dappBar.inputWallet.addrBTU')}
           inputId="addrWallet"
           value={ethAddressInput.value}
-          placeholder={'0x...'}
+          placeholder={t('dappBar.inputWallet.placeholder')}
           validate={this.validateEthAddress}
           onChange={this.onEthAddressInputChange.bind(this)}
           required
           checkValidity={checkValidity}
-          requiredMessage={'required'}
-          invalidMessage={'Invalid ETH address'}
+          requiredMessage={t('dappBar.inputWallet.requiredETH')}
+          invalidMessage={t('dappBar.inputWallet.invalidETH')}
         />
         <DialogActions className={classes.actions}>
           <BtuButton
-            title={'Connection'}
+            title={t('dappBar.inputWallet.inputCo')}
             action={this.onClickConnectInput.bind(this)}
           />
         </DialogActions>
@@ -259,11 +251,11 @@ class WalletDialog extends React.Component {
     )
 
     const walCreated = this.popUp({
-      img: WalletWithout,
-      text: ['After creating your wallet, you will have access to all our services.'],
-      leftButtonText: 'I have created my wallet',
+      img: withoutWallet,
+      text: [t('dappBar.isCreated.afterCreate')],
+      leftButtonText: t('dappBar.isCreated.hasCreated'),
       leftButtonClick: this.onClickConnect.bind(this),
-      rightButtonText: 'I already have a wallet',
+      rightButtonText: t('dappBar.isCreated.hasWallet'),
       rightButtonClick: this.onClickHasWal.bind(this),
       fullWidthButtons: true,
      })
@@ -273,9 +265,9 @@ class WalletDialog extends React.Component {
     // : ''
 
     const isCon = this.popUp({
-      img: WalletWithout,
-      text: ['You are connected with following ETH address : ', localStorage.getItem('walletAddr')],
-      leftButtonText: 'Change wallet',
+      img: withoutWallet,//Change space to , v
+      text: [t('dappBar.isConnected.nowCo') + ": " + sessionStorage.getItem('walletAddr')],
+      leftButtonText: t('dappBar.usingBTU.changeWallet'),
       leftButtonClick: this.onClickHasWal.bind(this),
       fullWidthButtons: true,
     })
@@ -362,4 +354,4 @@ const styles = {
 	},
 }
 
-export default withStyles(styles)(WalletDialog)
+export default withStyles(styles)(translate(WalletDialog))

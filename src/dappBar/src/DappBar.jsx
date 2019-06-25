@@ -1,4 +1,5 @@
 import React from 'react'
+import { setTranslations, setDefaultLanguage, translate } from 'react-multi-lang'
 
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -7,8 +8,30 @@ import Typography from '@material-ui/core/Typography'
 import MetaMaskStatus from '@material-ui/icons/Brightness1'
 
 import defaultColors from '../js/defaultColors'
-
+import en from '../translation/en.js'
+import fr from '../translation/fr.js'
 import WalletDialog from './WalletDialog'
+
+setTranslations({en, fr})
+setDefaultLanguage('en')
+
+const supportedLanguages = ['en', 'fr']
+const defaultLanguage = supportedLanguages[0]
+
+let language = navigator !== undefined ? navigator.language || navigator.userLanguage : 'en'
+language = language.substr(0, 2)
+
+const getLanguage = () => {
+  if (language !== undefined && language.length) {
+    const lowerCaseLanguage = language.toLowerCase()
+      if (supportedLanguages.includes(lowerCaseLanguage)) {
+        return lowerCaseLanguage
+      }
+  }
+  return defaultLanguage
+}
+
+setDefaultLanguage(getLanguage())
 
 class DappBar extends React.Component {
   constructor(props) {
@@ -30,11 +53,9 @@ class DappBar extends React.Component {
     document.body.appendChild(web3js)
 
     const onAccountGet = (err, res) => {
-      console.log("Account get", err, res)
       if (err) {
         this.setState({accountError: err})
       } else {
-        console.log("HERE", res[0])
         this.onInputWallet(res[0])
       }
     }
@@ -44,9 +65,7 @@ class DappBar extends React.Component {
       if (window.ethereum) {
         window.web3 = new Web3(ethereum);
         try {
-            console.log("Asking for permission")
             await ethereum.enable()
-            console.log("getting account")
             window.web3.eth.getAccounts(onAccountGet)
         } catch (error) {
           this.setState({accountError: error})
@@ -55,24 +74,31 @@ class DappBar extends React.Component {
           window.web3 = new Web3(web3.currentProvider);
           window.web3.eth.getAccounts(onAccountGet)
       } else {
-          console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+          console.log(this.props.t('dappBar.nonEtherumBrowser'));
       }
     })
+  }
 
+  componentWillUnmount() {
+    let persist = this.props.persist !== false
+      && this.props.persist !== null 
+      && this.props.persist !== undefined ? true : false
+    if (!persist) {
+      sessionStorage.removeItem('walletAddr')
+    }
   }
 
   onInputWallet(addresse) {
     if (addresse) {
-      localStorage.setItem('walletAddr', addresse)
-      localStorage.setItem('addressChanged', true)
+      sessionStorage.setItem('walletAddr', addresse)
       this.setState({ addressChanged: true })
     }
   }
 
   render() {
-    const { classes } = this.props
+    const { classes, t } = this.props
     const { addressChanged } = this.state
-    const addresseBTU = localStorage.getItem('walletAddr');
+    const addresseBTU = sessionStorage.getItem('walletAddr');
     const isConnected = (Boolean(addresseBTU) || addressChanged)
     const transformWallet = addresseBTU
       ? addresseBTU.substring(0, 5) + '...' + addresseBTU.substring(38, 42) : ''
@@ -84,17 +110,16 @@ class DappBar extends React.Component {
           <div className={classes.leftPanel}>
               <Typography variant="caption" color="inherit" className={classes.connectionText}>
                 {isConnected
-                  ? 'connected'
-                  : 'connexion required'
+                  ? t('dappBar.connected')
+                  : t('dappBar.connectionRequired')
                 }
               </Typography>
             </div>
             <div className={classes.rightPanel}>
               {<Typography variant="caption" className={classes.statusText}>
-                {isConnected ? transformWallet : 'not connected'}
+                {isConnected ? transformWallet : t('dappBar.notConnected')}
               </Typography>}
               <MetaMaskStatus className={isConnected ? classes.connected : classes.notConnected} />
-              A
               {<WalletDialog
                 onInputWallet={this.onInputWallet.bind(this)}
                 isOpen={true}
@@ -153,4 +178,4 @@ const styles = {
   },
 }
 
-export default withStyles(styles)(DappBar)
+export default withStyles(styles)(translate(DappBar))

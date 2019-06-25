@@ -76,10 +76,7 @@ class BtuButton extends Component {
         [classes.disabledDark]: !light && disabled,
         [classes.buttonError]: error,
         })}
-        style={{
-          style,
-          
-        }}
+        style={Object.assign(style !== undefined ? style : {}, {width, height, maxWidth})}
       >
         { title || children }
       </Button>
