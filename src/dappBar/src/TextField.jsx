@@ -10,7 +10,6 @@ import defaultColors from '../js/defaultColors'
 
 const navigateur = 'User-agent header sent: ' + navigator.userAgent
 const flag = (navigateur.indexOf('Firefox') > -1 ? 1 : 0)
-const flag = 0
 
 const styles = {
   formControl: {

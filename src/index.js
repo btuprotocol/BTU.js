@@ -39,7 +39,7 @@ class Btujs {
   }
 }
 
-module.exports = {
-  Btujs,
+export {
+  Btujs as default,
   DappBar
-}
+};

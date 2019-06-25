@@ -102,7 +102,6 @@ class DappBar extends React.Component {
     const isConnected = (Boolean(addresseBTU) || addressChanged)
     const transformWallet = addresseBTU
       ? addresseBTU.substring(0, 5) + '...' + addresseBTU.substring(38, 42) : ''
-
     return (
       <div>
         <AppBar position="static" className={classes.barStyle}>
@@ -122,7 +121,7 @@ class DappBar extends React.Component {
               <MetaMaskStatus className={isConnected ? classes.connected : classes.notConnected} />
               {<WalletDialog
                 onInputWallet={this.onInputWallet.bind(this)}
-                isOpen={true}
+                isOpen={!isConnected}
               />}
               </div>
             </Toolbar>
