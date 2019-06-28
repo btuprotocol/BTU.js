@@ -1,8 +1,8 @@
 export default {
 	"dappBar": {
-		"connected": "Connecté",
-		"notConnected": "Non connecté",
-		"connectionRequired": "Connexion requise",
+		"connected": "connecté",
+		"notConnected": "non connecté",
+		"connectionRequired": "connexion requise",
 		"usingBTU": {
 			"using": "Pour utiliser ce service, vous devez nous fournir une adresse Ethereum",
 			"choiceConnected": "Connectez-vous ou crééez un wallet en quelques clics.",

@@ -6,6 +6,8 @@ BTU.JS is a javascript library that interacts with BTU Protocol. It allows any d
     - [Install BTU.JS](#install-btujs)
     - [Instantiate BTU.JS](#instantiate-btujs)
     - [Usage exemple](#usage-exemple)
+  - [Components](#components)
+    - [DappBar](#dappbar)
   - [Resources methods](#resources-methods)
     - [**searchResources**](#searchresources)
     - [**getResource**](#getresource)
@@ -42,6 +44,45 @@ const myBtujs = new btujs();
 ```
 
 ---
+
+## Components
+
+### **DappBar**
+
+The BTU.js DappBar is a component that can easily integrated on any React or React-compatible (Angular for example) webpage, used for detecting web3 enabled browser embeded crypto wallets (works with plugins like metamask and mobile dapp browsers) and making the users wallet address accessible to the webpage.
+You can configure a whitelist of domains where the app bar will be displayed, outside of this list the component will handle the wallet address by reading it from a GET parameter called 'w'. (test.com/?w=0xAB...22)
+
+After having installed the BTU library (npm install btujs -S), start by importing the component:
+
+```javascript
+import { DappBar } from 'btujs'
+```
+
+Then, write one of those implementation on top of your page:
+
+```javascript
+// App is always displayed if no whitelist specified
+<DappBar />
+// or
+<DappBar restricDomain={"test.com"} />
+// or
+<DappBar restricDomain={["test1.com", "test2.com"]} />
+
+```
+
+From then, a status bar will appear showing the user's connection status, the module trigger plugin connection request and recuperate the wallet address. A dismissable popup will appear prompting the user to connect himself. An other popup is triggered when the user clicks on the navigation bar in case he wants to change his wallet.
+
+Once connected, the wallet address is accesible from the sessionStorage this way:
+
+```javascript
+const wallet = sessionStorage.getItem('BTU-walletAddr');
+```
+
+You can verify if the user has connected his wallet by fetching the following boolean in the sessionStorage:
+
+```javascript
+const wallet = sessionStorage.getItem('BTU-walletConnected');
+```
 
 ## Resources methods
 

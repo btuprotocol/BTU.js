@@ -34,13 +34,13 @@ class WalletDialog extends React.Component {
   }
 
   componentDidMount() {
-    if (sessionStorage.getItem('walletAddr')) {
+    if (sessionStorage.getItem('BTU-walletAddr')) {
       this.setState({ status: 'isCon' })
     }
   }
 
   handleClickOpen () {
-    const tmpStatus = sessionStorage.getItem('walletAddr') ? 'isCon' : 'notConNoWal'
+    const tmpStatus = sessionStorage.getItem('BTU-walletAddr') ? 'isCon' : 'notConNoWal'
 
     this.setState({
       open: true,
@@ -49,7 +49,7 @@ class WalletDialog extends React.Component {
   }
 
   handleClose () {
-    const tmpStatus = sessionStorage.getItem('walletAddr') ? 'isCon' : 'notConNoWal'
+    const tmpStatus = sessionStorage.getItem('BTU-walletAddr') ? 'isCon' : 'notConNoWal'
 
     this.setState({
       open: false,
@@ -77,7 +77,6 @@ class WalletDialog extends React.Component {
   }
 
   onClickConnect () {
-    // console.log('connect metamask...')
     const { onInputWallet } = this.props
     const addrInput = document.querySelector('#addrWallet')
 
@@ -136,7 +135,7 @@ class WalletDialog extends React.Component {
                 key={item}
                 className={classNames({
                   [classes.dialogText]: true,
-                  [classes.addressText]: item === sessionStorage.getItem('walletAddr'),
+                  [classes.addressText]: item === sessionStorage.getItem('BTU-walletAddr'),
                 })}
               >
                 {item}
@@ -266,7 +265,7 @@ class WalletDialog extends React.Component {
 
     const isCon = this.popUp({
       img: withoutWallet,//Change space to , v
-      text: [t('dappBar.isConnected.nowCo') + ": " + sessionStorage.getItem('walletAddr')],
+      text: [t('dappBar.isConnected.nowCo') + ": " + sessionStorage.getItem('BTU-walletAddr')],
       leftButtonText: t('dappBar.usingBTU.changeWallet'),
       leftButtonClick: this.onClickHasWal.bind(this),
       fullWidthButtons: true,

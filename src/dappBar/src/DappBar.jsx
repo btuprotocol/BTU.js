@@ -17,6 +17,7 @@ setDefaultLanguage('en')
 
 const supportedLanguages = ['en', 'fr']
 const defaultLanguage = supportedLanguages[0]
+const defaultAddr = "0xd00551b9d6CB3C4dDfc36df874c642b19D2b9e22"
 
 let language = navigator !== undefined ? navigator.language || navigator.userLanguage : 'en'
 language = language.substr(0, 2)
@@ -31,17 +32,29 @@ const getLanguage = () => {
   return defaultLanguage
 }
 
+const findGetParameter = (parameterName) => {
+  var result = null, tmp = []
+  var items = location.search.substr(1).split("&");
+  for (var index = 0; index < items.length; index++) {
+      tmp = items[index].split("=");
+      if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+  }
+  return result;
+}
+
 setDefaultLanguage(getLanguage())
 
 class DappBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = { addressChanged: false, accountError: undefined }
+    sessionStorage.setItem("BTU-walletConnected", false)
   }
 
   componentDidMount() {
     const jquery = document.createElement("script")
     const web3js = document.createElement("script")
+    const { restrictDomain } = this.props
 
     jquery.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
     jquery.async = true
@@ -60,48 +73,61 @@ class DappBar extends React.Component {
       }
     }
 
-    window.addEventListener('load', async () => {
-
-      if (window.ethereum) {
-        window.web3 = new Web3(ethereum);
-        try {
-            await ethereum.enable()
-            window.web3.eth.getAccounts(onAccountGet)
-        } catch (error) {
-          this.setState({accountError: error})
-        }
-      } else if (window.web3) {
-          window.web3 = new Web3(web3.currentProvider);
-          window.web3.eth.getAccounts(onAccountGet)
-      } else {
-          console.log(this.props.t('dappBar.nonEtherumBrowser'));
+    if (restrictDomain === undefined
+      || (typeof restrictDomain == "string" && restrictDomain === window.location.hostname)
+      || (Array.isArray(restrictDomain) && restrictDomain.includes(window.location.hostname))) {
+        window.addEventListener('load', async () => {
+          if (window.ethereum) {
+            window.web3 = new Web3(ethereum);
+            try {
+                await ethereum.enable()
+                window.web3.eth.getAccounts(onAccountGet)
+            } catch (error) {
+              this.setState({accountError: error})
+            }
+          } else if (window.web3) {
+              window.web3 = new Web3(web3.currentProvider);
+              window.web3.eth.getAccounts(onAccountGet)
+          } else {
+              console.log(this.props.t('dappBar.nonEtherumBrowser'));
+          }
+        })
       }
-    })
-  }
-
-  componentWillUnmount() {
-    let persist = this.props.persist !== false
-      && this.props.persist !== null 
-      && this.props.persist !== undefined ? true : false
-    if (!persist) {
-      sessionStorage.removeItem('walletAddr')
-    }
   }
 
   onInputWallet(addresse) {
     if (addresse) {
-      sessionStorage.setItem('walletAddr', addresse)
+      sessionStorage.setItem('BTU-walletAddr', addresse)
+      sessionStorage.setItem("BTU-walletConnected", true)
       this.setState({ addressChanged: true })
     }
   }
 
   render() {
-    const { classes, t } = this.props
+    const { classes, t, restrictDomain } = this.props
     const { addressChanged } = this.state
-    const addresseBTU = sessionStorage.getItem('walletAddr');
-    const isConnected = (Boolean(addresseBTU) || addressChanged)
+    const addresseBTU = sessionStorage.getItem('BTU-walletAddr');
+    const isConnected = ((Boolean(addresseBTU) && addressChanged !== defaultAddr) || addressChanged)
+    const languageParam = findGetParameter("hl")
     const transformWallet = addresseBTU
       ? addresseBTU.substring(0, 5) + '...' + addresseBTU.substring(38, 42) : ''
+
+    if (languageParam !== null && supportedLanguages.includes(languageParam.toLowerCase())) {
+      setDefaultLanguage(languageParam.toLowerCase())
+    }
+
+    if (restrictDomain !== undefined
+      && (typeof restrictDomain == "string" && restrictDomain !== window.location.hostname
+      || (Array.isArray(restrictDomain) && !restrictDomain.includes(window.location.hostname)))) {
+        const walletAddr = findGetParameter("w")
+        const pattern = new RegExp('^0[xX][0-9A-Fa-f]{40}$')
+        if (walletAddr !== null && pattern.test(walletAddr) && addresseBTU !== walletAddr)
+          this.onInputWallet(walletAddr)
+        else if (walletAddr === null || !pattern.test(walletAddr))
+          sessionStorage.setItem('BTU-walletAddr', defaultAddr)
+        return null
+    }
+
     return (
       <div>
         <AppBar position="static" className={classes.barStyle}>
