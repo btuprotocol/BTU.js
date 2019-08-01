@@ -299,7 +299,7 @@ const meta = {
       #btu-modal-text, #btu-modal-text > p {width: 100%; text-align: center; margin-top: 10px; margin-bottom: 10px; color: rgba(0, 0, 0, 0.54); font-family: Poppins;}
       #btu-modal-action {width: 100%; text-align: center; margin-bottom: 10px; color: rgba(0, 0, 0, 0.54); font-family: Poppins;}
       #btu-input-title {text-align: left; font-weight: bold; margin-bottom: 10px;}
-      #btu-wallet-input {margin-bottom: 5px; width: 100%; border: 0.5px solid #797979; height: 45px; margin-top: 5px !important; padding-left: 20px; border-radius: 25px; padding-right: 20px; color: rgba(0, 0, 0, 0.87); cursor: text; display: inline-flex; font-size: 1rem; font-family: 'Lato', sans-serif; line-height: 1.1875em; align-items: center;}
+      #btu-wallet-input {margin-bottom: 5px; width: 100%; border: 0.5px solid #797979; height: 45px; margin-top: 3px !important; padding-left: 20px; border-radius: 25px; padding-right: 20px; color: rgba(0, 0, 0, 0.87); cursor: text; display: inline-flex; font-size: 1rem; font-family: 'Lato', sans-serif; line-height: 1.1875em; align-items: center;}
       #btu-error {color: #e34652; font-size: 0.9em; margin-top: 6px; font-weight: bold; font-family: "Poppins";}
       #btu-powered {display: block; width: 100%; color: #797979; font-size: 10px; font-family: Poppins; text-align: right;}
       #btu-openModal {cursor: pointer;}
