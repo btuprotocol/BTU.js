@@ -100,6 +100,7 @@ const meta = {
 	  coinbase: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4wcJCTUVUxFNxAAAAPNJREFUKM9jFAv6wEAKYGIgEZCsgQVT6O8/hu8////7z8DGwsjBRoQNfZmcbzfwf98ucHwKj4Um8///uDX8+ctwdgZvnBvb//8Mt5781ZJnrovj+PUHt5Oy/dlkRJk2HP0d0/qVkYlBT4n5xqN/7Kw4NPz6zeBqwsrAwJA76Rs3JyMDA8Odp/9YmKkYrGysDLvP/GZgYJicx/X1+/9vP/+rSDP9+YuugRE5pv/8Zbg4m1dGlOn7z/+PX/9Tk2E+e+uPc8lXZG+gOImFmcE44/OiXb8YGRnUZJivPfzbuOgHGwtuG4iJOCwxzczEwMPJOHCJDwCmyVi8+Q+LkAAAAABJRU5ErkJggg==',
 	  go: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4wcJCTkmQHRj3gAAApFJREFUOMtFk0lsTVEYx3/fHd5tX3mkJKSmGooQkejGGCs0Nlja2RhWEiERiSkSBMGCEiwMG4mFjWAjpGqImEU0QoPW9JQ2aW/bd+9753wW9/DO5ozf8D/f7xN7YXI3fs0EjXu2tXX0tS6dwbSglk1iaNEBpgOKxweEm2nI+fZOvq5opQIIgOjVxUpYB6JWu+6cEI8dhGSjBJoAnnseApaDAzHHR+2jDxCxrfUHxDd7NE1ek5bmSw7wAQUqoBbEd2cWtATAtf4SW0bvpc9f2zx8f3xNUhBTWUsZREArmTGVbE9QdYABfOZGEemyJtolOcjcMOCteKApSM5F8oAUxLrUc06GdfdAUqYRc9Q/ba+vU+3vVh0sqg73qHZcVntqpOq3B6rWqJpEtVJSfXpY9WyDavGV2hvr1Rz1DwQSRKuleSvERXhxCsTAUBcydiY0LIG2nfDjASw7BPM2w/srkB+D5OrA6moPq42EtVB8Br9eQjQCCrPRaBKUB9HPbfDxEfS+A2syLdaALYOnMzzUaROFQGHyclh5DilMAWsQsZn+fw/jAfj9Dvq/IJESgHRhSlNoWAg9z8EkGQOSQlSA+ethYhM0LALPA4Yg/g45DwLp9NQkt3l+EsI8NG+H+jnw5Qb8eQIdF6FxDSzYD5KHx7shtFBXD9SiqXdb0kPMCyPeZFEdgb6jr+zqjiMyzMqsMUgEiTLNa/9FhypnsA4e4+SWnaOoOksAOpz9o4YcfviTbgGIdzIuX8clhBbCLFuNq9lI6Gi0/3vjelxhY2EXvR4gI45QHCqzgRytEjqjfBVdTd1aQOFYbNhU2EUvjvR/yvXuZoKlTcwKatki0KKDTKWC4tGpcMvUcPbeKz6tulRt578VryYpd+FKrQAAAABJRU5ErkJggg==',
 	  opera: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAbwAAAG8B8aLcQwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHeSURBVDiNhZM/aFNRFMZ/575QWzrYQVzEwSWCij4IeSmIKE1BUBDt0KHg4OzgPxQHRQRRB8GhWBBBcBBRBFFcRLo4aYjte5jFgoNKHSwUaX0kxPfucUjyclNS8k333Hu+73znco6oKi7WJ0t5EWZEKQAFwIAsqPI5Z5JHw++rP9x8yQREJJ4onUP0NjACYFW/xI109W9TtyWpjg3l5Fdq9eka3lyhWv0HkMvIk8FbVI91lFNldnml8VKNaViRk6heSZq6AyhuITkMTGUO4vL4eUTvZ75UL4/OV+65Vmu+PwU87xQVkbN7FxfnZK0c5A2EHdtAOHqoUuCGWjag5vuPgTPtsGFVfSPCjENGRW71IwOkcNcJh40xJ0z7tzN4xlb6kQEOhOES8NtptWSgR+DPyLvKz80E2lhyzuNmQPJAGGDBicfqR4OdAzh55/zRKOIKkFoTbMaMfD8PbM8uRD6ZVJMnQD27U73GTenbmgdXnbBhrX1jts5Xv4Fedx78+EPx4kZye5BOd4vLpf1R9LW1C9PTXrz6/TVwPGtFmV1eqfeMcssEAK/2hWF3lDuScTm4ANwBhqD/Mlm1z5q7kgd7XtSavQJtrE8UdxtPTqFyROCgQowQoUSJpg9bLXfxHzln1t9Wx+3hAAAAAElFTkSuQmCC',
+	  enjin: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABv0lEQVQ4jZWTz0tUURTHP+fN1ZR6Azriop07ocKSwF3NayOCQns3JcREq1m2i/6DcdcQ1PwJQUK0mfcWhihlaoHLWUxEWb6kl+N7/ninxXtvcGxC/W7uvYfz/Z7vuYcjnMDcdH1MoSQiDuhIEpWGqroC1RcLd9aP50t2uVd0+8SmIsgDUOukcJoeK/pcA8o1zwnbAin5jUCxO7ETCp4GTNU8J7QAkspnI6dVi2JTAZC56foYYq1mti/ahmvjgxSG+8jlpIO4H8WsLG7h/4gAidF43CiUJCUPFHp5Mn+T/n5Ds/GHKDpKLCvt82tzNxVQS6Fkkt9OcH1iCDvfS+XpBp8++Ke3IuKYZFSJVTvfA8DtyctM3BruSnpX/87m+q/0pSOmW9KOH9HaPewqsNfqjBuQBjAKEPw+AODzR5+15e1TWwBpGFV1RWQUYG1lm7uzBzx6fJVvX1qEe4ftD8zw9lWT1aWfSQOq7j9jvJTv4cqNAQYLF8gZC7EABVUlDGPeL26x4++TjVEA7s+4zwRKZ/DchkL15WvnoQWgAWUF7xxkTwPKABZAzXNCDZhSqILE/6dKrFDN9gCObWOG867zX3+ivrZ/cA+XAAAAAElFTkSuQmCC',
 	  parity: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAFL+AABS/gGUsKC+AAAAB3RJTUUH4wcJCTMb4vPHRQAAAhlJREFUOMulk81KI0EUhb/bnR86kkhE4koijMZpcEBcCBE3voeP4dvMMj6H4saVLuIMJJHGPwKCi6hNQ9tV3X1nMemhx9HVXCiKqrrncopzDsxLVYt9U1W/q2qgqul8BfO7zXIvH4AH+kFdXFyUj4MypqKqiAiq+gPYKg8ejUaEYUie58RxjOd5AIequi0i31QVZw4elMFxHHNycoIxhjRNqdfrTCYToigqWrZUdSAiyPxf4+Ll/Pwcz/OIoojFxUVeXl5otVoYY2g2m/i+Xyb51QGOAB4fHzk7O6PZbDIcDqnVatzc3PD09IQxhqurK6IowlpbHnBUAQ5GoxHWWkSENE0Jw5DLy0tUFVVlOp0CICIEQcDGxgaVSgXgwAHWer0exhgA8jyn1+vheR77+/u4rsvu7i4rKyvUajVmsxkPDw8FgzUHwHVdlpaWcF2XarWKMYa9vT2m0yn9fh9rLe12mzzPybKM2WxGlmW/ZQTugC/dbpckSXh7eyMIAm5vb1FV7u/v/zQvLy8DUK1Wub6+xvf9Owc4LVisr6+TJAmNRoNOp0O328Vai+/7ZFlGvV5HVel0OoUap//IOB6PeX19pdFo8Pz8TLvdJgxDFhYWiOOYfr//l4wVEZmo6jFwCLC6ukqSJFhrcRyHPM9JkoSdnZ3CiUUdi8hEPrJyHMcMh0NEhFar9d48AD8LK38apncB+jRM/G+cfwFpdphMcZnr1QAAAABJRU5ErkJggg==',
 	  status: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAALRQTFRFAAAAQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQ2DfQl/fQF7fQV7fT2rhiZvrqLbwhJfqSWXgvMf0/f3/////+fr+hpnqjZ/s/v7/kaLsi53rucPzv8n0w8z1m6ruUGvhRGHffZHpvMb0wsv1u8XznKzuRmPgWHHj4+j6pLLwQmDfTmnh+/z+9/j+vcj0VG/iUm3id4zocIbnS2fgdjJD1AAAABF0Uk5TAAATVpe5Aki/9r5k7Enr9bhTm+fYAAAAAWJLR0QcnARBBwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAKpJREFUGNNlT8cWwjAMy2pp0+mkzIZN2XuP//8v4sAJdLL0ZFsihFDKuPA8wRmlxIL6tSAEi1DWfIo8iuGLOLIKTVKclS40QJpQwqTj9Uaz1QaQjPDM8U5puj0NGScCDUW/NGYwtEuC5E4YjSfVdKYAcifMF8vVerO13Ap2Re32xpjDEb0Cj6pTdb5cb2iwR/Gtuj+eL+T41gVTWjuOwf6iYzn5KRe4cr/132PyEEADk4sWAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE5LTAzLTEzVDA5OjQzOjUzKzAwOjAwfFkyhwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxOS0wMy0xM1QwOTo0Mzo1MyswMDowMA0EijsAAABGdEVYdHNvZnR3YXJlAEltYWdlTWFnaWNrIDYuNy44LTkgMjAxNC0wNS0xMiBRMTYgaHR0cDovL3d3dy5pbWFnZW1hZ2ljay5vcmfchu0AAAAAGHRFWHRUaHVtYjo6RG9jdW1lbnQ6OlBhZ2VzADGn/7svAAAAGHRFWHRUaHVtYjo6SW1hZ2U6OmhlaWdodAAxOTIPAHKFAAAAF3RFWHRUaHVtYjo6SW1hZ2U6OldpZHRoADE5MtOsIQgAAAAZdEVYdFRodW1iOjpNaW1ldHlwZQBpbWFnZS9wbmc/slZOAAAAF3RFWHRUaHVtYjo6TVRpbWUAMTU1MjQ3MDIzM3zsFPoAAAAPdEVYdFRodW1iOjpTaXplADBCQpSiPuwAAABWdEVYdFRodW1iOjpVUkkAZmlsZTovLy9tbnRsb2cvZmF2aWNvbnMvMjAxOS0wMy0xMy80NWE1M2VmYjIxYTM3YmEyYzE4NGUxOWQxOGEwZTJmZi5pY28ucG5nbX/VOgAAAABJRU5ErkJggg==',
 		trust: ' data:image/png;base64,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',
@@ -148,7 +149,7 @@ const meta = {
 	  $("#btu-modalOut").hide()
 	}
       }
-      
+		
       const t = (path) => {
 	const l = getLanguage()
 	const pathArr = path.split(".")
@@ -160,44 +161,71 @@ const meta = {
 	if (typeof tmp !== "string")
 	  return ""
 	return tmp
-      }
-      
-      const getWalletProvider = () => {
-	if (!window.web3) return '';
-	const providers = [
-	  {tag: "isMetaMask", compare: true, name: "Metamask", icon: 'metamask'},
-	  {tag: "isTrust", compare: true, name: "Trust", icon: 'trust'},
-	  {tag: "isOpera", compare: true, name: "Opera", icon: 'opera'},
-	  {tag: "isGoWallet", compare: true, name: "GoWallet", icon: 'go'},
-	  {tag: "isAlphaWallet", compare: true, name: "BTU Direct", icon: 'btu'},
-	  {tag: "isStatus", compare: true, name: "Status", icon: 'status'},
-	  {tag: "isToshi", compare: true, name: "Coinbase", icon: 'coinbase'},
-	  {tag: "constructor.name", compare: "EthereumProvider", name: "Mist", icon: null},
-	  {tag: "constructor.name", compare: "Web3FrameProvider", name: "Parity", icon: 'parity'}
-	]
-	let final = ""
-	providers.forEach(elem => {
-	  let tmp
-	  if (elem.tag.indexOf(".") !== -1)
-	    tmp = window.web3.currentProvider[elem.tag.split(".")[0]][elem.tag.split(".")[1]]
-	  else
-	    tmp = window.web3.currentProvider[elem.tag]
-	  if (tmp === elem.compare) {
-	    final = elem.name
-	    if (elem.icon)
-	      final = `<img id='btu-provider-img' alt="" src=${icons.walletProviders[elem.icon]}></img>` + final
 	  }
-	})
-	if (final.length)
-	  return final
-	if (typeof window.__CIPHER__ !== 'undefined')
-	    return 'Cipher';
-	if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('infura') !== -1)
-	    return 'Infura';
-	if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
-	    return 'Localhost';
-	return '';
-      }
+	
+	var parser = new UAParser();
+	var uastring = window.navigator.userAgent;
+	parser.setUA(uastring);
+	var result = parser.getResult();
+
+      const getWalletProvider = () => {
+	if (window.web3) {
+		if (result.browser.name === "Opera") {
+			const provider_opera = [{name: "Opera", icon: 'opera'}]
+			let final = ""
+			provider_opera.forEach(elem => {
+				final = elem.name
+				if (elem.icon)
+				  final = `<img id='btu-provider-img' alt="" src=${icons.walletProviders[elem.icon]}></img>` + final
+				  }
+				)
+			if (final.length)
+			  return final
+			if (typeof window.__CIPHER__ !== 'undefined')
+				return 'Cipher';
+			if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('infura') !== -1)
+				return 'Infura';
+			if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
+				return 'Localhost';
+			return '';
+			}
+		const providers = [
+		  {tag: "isMetaMask", compare: true, name: "Metamask", icon: 'metamask'},
+		  {tag: "isTrust", compare: true, name: "Trust", icon: 'trust'},
+		  {tag: "isGoWallet", compare: true, name: "GoWallet", icon: 'go'},
+		  {tag: "isAlphaWallet", compare: true, name: "BTU Direct", icon: 'btu'},
+		  {tag: "isStatus", compare: true, name: "Status", icon: 'status'},
+		  {tag: "isEnjin", compare: true, name: "Enjin", icon: 'enjin'},
+		  {tag: "isToshi", compare: true, name: "Coinbase", icon: 'coinbase'},
+		  {tag: "constructor.name", compare: "EthereumProvider", name: "Mist", icon: null},
+		  {tag: "constructor.name", compare: "Web3FrameProvider", name: "Parity", icon: 'parity'}
+		]
+		let final = ""
+		providers.forEach(elem => {
+		  let tmp
+		  if (elem.tag.indexOf(".") !== -1)
+			tmp = window.web3.currentProvider[elem.tag.split(".")[0]][elem.tag.split(".")[1]]
+		  else
+			tmp = window.web3.currentProvider[elem.tag]
+		  if (tmp === elem.compare) {
+			final = elem.name
+			if (elem.icon)
+			  final = `<img id='btu-provider-img' alt="" src=${icons.walletProviders[elem.icon]}></img>` + final
+		  }
+		})
+		if (final.length)
+		  return final
+		if (typeof window.__CIPHER__ !== 'undefined')
+			return 'Cipher';
+		if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('infura') !== -1)
+			return 'Infura';
+		if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
+			return 'Localhost';
+		return '';
+	} else {
+		return '';
+	}
+}
       
       /*
        *	Dom elements
@@ -301,7 +329,7 @@ const meta = {
       #btu-modal-text, #btu-modal-text > p {width: 100%; text-align: center; margin-top: 10px; margin-bottom: 10px; color: rgba(0, 0, 0, 0.54); font-family: Poppins;}
       #btu-modal-action {width: 100%; text-align: center; margin-bottom: 10px; color: rgba(0, 0, 0, 0.54); font-family: Poppins;}
       #btu-input-title {text-align: left; font-weight: bold; margin-bottom: 10px;}
-      #btu-wallet-input {margin-bottom: 5px; width: 100%; border: 0.5px solid #797979; height: 45px; margin-top: 3px !important; padding-left: 20px; border-radius: 25px; padding-right: 20px; color: rgba(0, 0, 0, 0.87); cursor: text; display: inline-flex; font-size: 1rem; font-family: 'Lato', sans-serif; line-height: 1.1875em; align-items: center;}
+      #btu-wallet-input {margin-bottom: 5px; width: 100%; border: 0.5px solid #797979; height: 45px; margin-top: 5px !important; padding-left: 20px; border-radius: 25px; padding-right: 20px; color: rgba(0, 0, 0, 0.87); cursor: text; display: inline-flex; font-size: 1rem; font-family: 'Lato', sans-serif; line-height: 1.1875em; align-items: center;}
       #btu-error {color: #e34652; font-size: 0.9em; margin-top: 6px; font-weight: bold; font-family: "Poppins";}
       #btu-powered {display: block; width: 100%; color: #797979; font-size: 10px; font-family: Poppins; text-align: right;}
       #btu-openModal {cursor: pointer;}
@@ -355,7 +383,7 @@ const meta = {
 	sessionStorage.setItem("BTU-walletConnected", false)
       
 	let restrictDomain = $(`#${placeholderTag}`).data("restrict-domain")
-      
+
 	if (restrictDomain) {
 	  restrictDomain = restrictDomain.split(",")
 	  if (restrictDomain.length === 1)
@@ -390,11 +418,12 @@ const meta = {
 		await ethereum.enable()
 		if (debug)
 		  alert("Connected")
+		console.log(givenProvider.web3)
 		window.web3.eth.getAccounts(onAccountGet)
 	      } catch (error) {
 		console.log("BTU Dappbar Error enabling ETH account:\n", error)
-	      }
-	    } else if (window.web3) {
+		  }
+		} else if (window.web3) {
 	      if (debug)
 		alert("Simple web3")
 	      window.web3 = new Web3(web3.currentProvider)
