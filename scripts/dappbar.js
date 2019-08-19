@@ -403,18 +403,18 @@ const meta = {
 	  || (Array.isArray(restrictDomain) && restrictDomain.includes(window.location.hostname))) {
 	  $(document).ready(async () => {
 	    if (debug) {
-				alert("document ready/")
-				alert(window.location.hostname)
-	      alert((window.ethereum ? "true" : "false"))
-	      alert(window.ethereum)
+				alert("document ready/" + window.location.hostname)
+				//alert()
+	      alert((window.ethereum ? " detected wallet true" : "detected wallet false"))
+	      //alert(window.ethereum)
 	    }
 	    if (window.ethereum) {
 	      if (debug)
-		alert("detected etherum")
+		alert("detected etherum wallet at " + result.browser.name + " browser")
 	      window.web3 = new Web3(ethereum)
 	      try {
 		if (debug)
-		  alert("Classic web3")
+		  alert("Classic web3 wallet")
 		await ethereum.enable()
 		if (debug)
 		  alert("Connected")
