@@ -162,14 +162,14 @@ const meta = {
 	  return ""
 	return tmp
 	  }
-	
-	//var pars = require('platform');
-	//var uastring = window.navigator.userAgent;
-	//var result = pars.parse(uastring);
+
+
+	  var sUsrAg = navigator.userAgent;
+	  console.log(sUsrAg.indexOf("Opera"));
 
       const getWalletProvider = () => {
 	if (window.web3) {
-		/*if (result.name === "Opera") {
+		if (sUsrAg.indexOf("Opera") > -1 || sUsrAg.indexOf("OPR") > -1) {
 			const provider_opera = [{name: "Opera", icon: 'opera'}]
 			let final = ""
 			provider_opera.forEach(elem => {
@@ -187,7 +187,7 @@ const meta = {
 			if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
 				return 'Localhost';
 			return '';
-			}*/
+			}
 		/*if (window.navigator.userAgent === "Mozilla/5.0 (Linux; Android 9; HRY-LX1 Build/HONORHRY-L21; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/75.0.3770.101 Mobile Safari/537.36") {
 			const provider_enjin = [{name: "Enjin", icon: 'enjin'},]
 			let final = ""
@@ -350,7 +350,7 @@ const meta = {
       #btu-error {color: #e34652; font-size: 0.9em; margin-top: 6px; font-weight: bold; font-family: "Poppins";}
       #btu-powered {display: block; width: 100%; color: #797979; font-size: 10px; font-family: Poppins; text-align: right;}
       #btu-openModal {cursor: pointer;}
-      #btu-provider-img {margin-bottom: 3.5px; margin-right: 5px; height: 16px;}
+      #btu-provider-img {margin-bottom: 2.5px; margin-right: 5px; height: 16px;}
       .btu-btn {cursor: pointer; line-height: 60px; height: 60px; text-align: center; margin-bottom: 10px; font-size: 16px; vertical-align: middle; box-sizing: border-box; font-family: 'Poppins', sans-serif; font-weight: bold; padding-left: 20px; border-radius: 30px; padding-right: 20px;}
       .btu-btn-blue {background: #5bace2 !important; color: white !important;}
       .btu-btn-white {background: white !important; color: #5bace2; !important; border: 1px solid #5bace2;} .btu-btn-white:hover {text-decoration: none; background-color: rgba(0, 0, 0, 0.08);}
