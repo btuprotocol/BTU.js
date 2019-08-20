@@ -170,7 +170,7 @@ const meta = {
 
       const getWalletProvider = () => {
 	if (window.web3) {
-		/*if (result.browser.name === "Opera") {
+		if (window.navigator.userAgent === "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36 OPR/62.0.3331.66") {
 			const provider_opera = [{name: "Opera", icon: 'opera'}]
 			let final = ""
 			provider_opera.forEach(elem => {
@@ -188,7 +188,7 @@ const meta = {
 			if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
 				return 'Localhost';
 			return '';
-			}*/
+			}
 		const providers = [
 		  {tag: "isMetaMask", compare: true, name: "Metamask", icon: 'metamask'},
 		  {tag: "isTrust", compare: true, name: "Trust", icon: 'trust'},
@@ -404,7 +404,7 @@ const meta = {
 	  || (Array.isArray(restrictDomain) && restrictDomain.includes(window.location.hostname))) {
 	  $(document).ready(async () => {
 	    if (debug) {
-				alert("document ready/" + window.location.hostname)
+			alert("document ready/" + window.location.hostname)
 				//alert()
 	      alert((window.ethereum ? " detected wallet true" : "detected wallet false"))
 	      //alert(window.ethereum)
