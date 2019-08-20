@@ -189,13 +189,31 @@ const meta = {
 				return 'Localhost';
 			return '';
 			}
+		if (window.navigator.userAgent === "Mozilla/5.0 (Linux; Android 9; HRY-LX1 Build/HONORHRY-L21; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/75.0.3770.101 Mobile Safari/537.36") {
+			const provider_enjin = [{name: "Enjin", icon: 'enjin'},]
+			let final = ""
+			provider_enjin.forEach(elem => {
+					final = elem.name
+				if (elem.icon)
+				  final = `<img id='btu-provider-img' alt="" src=${icons.walletProviders[elem.icon]}></img>` + final
+				  }
+				)
+			if (final.length)
+			  return final
+			if (typeof window.__CIPHER__ !== 'undefined')
+				return 'Cipher';
+			if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('infura') !== -1)
+				return 'Infura';
+			if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
+				return 'Localhost';
+			return '';
+			}
 		const providers = [
 		  {tag: "isMetaMask", compare: true, name: "Metamask", icon: 'metamask'},
 		  {tag: "isTrust", compare: true, name: "Trust", icon: 'trust'},
 		  {tag: "isGoWallet", compare: true, name: "GoWallet", icon: 'go'},
 		  {tag: "isAlphaWallet", compare: true, name: "BTU Direct", icon: 'btu'},
 		  {tag: "isStatus", compare: true, name: "Status", icon: 'status'},
-		  {tag: "isEnjinx", compare: true, name: "Enjin", icon: 'enjin'},
 		  {tag: "isToshi", compare: true, name: "Coinbase", icon: 'coinbase'},
 		  {tag: "constructor.name", compare: "EthereumProvider", name: "Mist", icon: null},
 		  {tag: "constructor.name", compare: "Web3FrameProvider", name: "Parity", icon: 'parity'}
