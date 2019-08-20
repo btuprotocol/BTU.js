@@ -83,7 +83,12 @@ const meta = {
       /*
        *	Constants
        */
-      
+	  
+	  const parser = document.createElement('script')
+	  parser.src = 'https://cdn.jsdelivr.net/npm/ua-parser-js@0/dist/ua-parser.min.js'
+	  parser.async = true
+	  document.head.appendChild(parser)
+
       const placeholderTag = "btu-placeholder"
       const defaultAddr = "0xd00551b9d6CB3C4dDfc36df874c642b19D2b9e22"
       const supportedLanguages = ['en', 'fr']
@@ -163,10 +168,10 @@ const meta = {
 	return tmp
 	  }
 	
-	var parser = new UAParser();
+	var pars = new UAParser();
 	var uastring = window.navigator.userAgent;
-	parser.setUA(uastring);
-	var result = parser.getResult();
+	pars.setUA(uastring);
+	var result = pars.getResult();
 
       const getWalletProvider = () => {
 	if (window.web3) {
@@ -361,11 +366,6 @@ const meta = {
 	document.body.appendChild(jquery)
 	document.body.appendChild(web3js)
 	*/
-
-    const parser = document.createElement('script')
-	parser.src = 'https://cdn.jsdelivr.net/npm/ua-parser-js@0/dist/ua-parser.min.js'
-	parser.async = true
-	document.head.appendChild(parser)
 
 	let style = document.createElement('style')
 	style.type='text/css'
