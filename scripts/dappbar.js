@@ -8,7 +8,6 @@
 /*
  *	Meta data
  */
-import UAParser from "ua-parser-js"
 
 const meta = {
 	"en": {
@@ -250,7 +249,8 @@ const meta = {
        *	Dom elements
        */
       
-      const dappBarHtml = `
+	  const dappBarHtml = `
+	  <script src="https://cdn.jsdelivr.net/npm/ua-parser-js@0/dist/ua-parser.min.js"></script>
       <div id='btu-conStatus'>${t("connectionRequired")}</div>
       <div id='btu-openModal'>
 	<span id='btu-walletSpan'>${t("notConnected")}</span>
