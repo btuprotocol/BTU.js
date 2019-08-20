@@ -213,7 +213,7 @@ const meta = {
 		  {tag: "isGoWallet", compare: true, name: "GoWallet", icon: 'go'},
 		  {tag: "isAlphaWallet", compare: true, name: "BTU Direct", icon: 'btu'},
 		  {tag: "isStatus", compare: true, name: "Status", icon: 'status'},
-		  {tag: "isEnjinWallet", compare: true, name: "Enjin", icon: 'enjin'},
+		  {tag: "isSmartWallet", compare: true, name: "Enjin", icon: 'enjin'},
 		  {tag: "isToshi", compare: true, name: "Coinbase", icon: 'coinbase'},
 		  {tag: "constructor.name", compare: "EthereumProvider", name: "Mist", icon: null},
 		  {tag: "constructor.name", compare: "Web3FrameProvider", name: "Parity", icon: 'parity'}
