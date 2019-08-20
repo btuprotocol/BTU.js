@@ -8,6 +8,7 @@
 /*
  *	Meta data
  */
+import {UAParser} from "ua-parser-js"
 
 const meta = {
 	"en": {
@@ -150,7 +151,7 @@ const meta = {
 	}
       }
 		
-      const t = (path) => {
+    const t = (path) => {
 	const l = getLanguage()
 	const pathArr = path.split(".")
 	let tmp = meta[l]
@@ -163,14 +164,14 @@ const meta = {
 	return tmp
 	  }
 	
-	//var pars = new UAParser();
-	//var uastring = window.navigator.userAgent;
-	//pars.setUA(uastring);
-	//var result = pars.getResult();
+	var pars = new UAParser();
+	var uastring = window.navigator.userAgent;
+	pars.setUA(uastring);
+	var result = pars.getResult();
 
       const getWalletProvider = () => {
 	if (window.web3) {
-		if (window.navigator.userAgent === "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36 OPR/62.0.3331.66") {
+		if (result.browser.name === "Opera") {
 			const provider_opera = [{name: "Opera", icon: 'opera'}]
 			let final = ""
 			provider_opera.forEach(elem => {
@@ -189,7 +190,7 @@ const meta = {
 				return 'Localhost';
 			return '';
 			}
-		if (window.navigator.userAgent === "Mozilla/5.0 (Linux; Android 9; HRY-LX1 Build/HONORHRY-L21; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/75.0.3770.101 Mobile Safari/537.36") {
+		/*if (window.navigator.userAgent === "Mozilla/5.0 (Linux; Android 9; HRY-LX1 Build/HONORHRY-L21; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/75.0.3770.101 Mobile Safari/537.36") {
 			const provider_enjin = [{name: "Enjin", icon: 'enjin'},]
 			let final = ""
 			provider_enjin.forEach(elem => {
@@ -207,7 +208,7 @@ const meta = {
 			if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
 				return 'Localhost';
 			return '';
-			}
+			}*/
 		const providers = [
 		  {tag: "isMetaMask", compare: true, name: "Metamask", icon: 'metamask'},
 		  {tag: "isTrust", compare: true, name: "Trust", icon: 'trust'},
