@@ -163,14 +163,13 @@ const meta = {
 	return tmp
 	  }
 	
-	var pars = new UAParser();
-	var uastring = window.navigator.userAgent;
-	pars.setUA(uastring);
-	var result = pars.getResult();
+	//var pars = require('platform');
+	//var uastring = window.navigator.userAgent;
+	//var result = pars.parse(uastring);
 
       const getWalletProvider = () => {
 	if (window.web3) {
-		if (result.browser.name === "Opera") {
+		/*if (result.name === "Opera") {
 			const provider_opera = [{name: "Opera", icon: 'opera'}]
 			let final = ""
 			provider_opera.forEach(elem => {
@@ -188,7 +187,7 @@ const meta = {
 			if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
 				return 'Localhost';
 			return '';
-			}
+			}*/
 		/*if (window.navigator.userAgent === "Mozilla/5.0 (Linux; Android 9; HRY-LX1 Build/HONORHRY-L21; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/75.0.3770.101 Mobile Safari/537.36") {
 			const provider_enjin = [{name: "Enjin", icon: 'enjin'},]
 			let final = ""
@@ -250,7 +249,6 @@ const meta = {
        */
       
 	  const dappBarHtml = `
-	  <script src="https://cdn.jsdelivr.net/npm/ua-parser-js@0/dist/ua-parser.min.js"></script>
       <div id='btu-conStatus'>${t("connectionRequired")}</div>
       <div id='btu-openModal'>
 	<span id='btu-walletSpan'>${t("notConnected")}</span>
