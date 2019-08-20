@@ -349,6 +349,7 @@ const meta = {
 	  return
 	}
 	const debug = findGetParameter("debug") ? true : false
+
 	/* Already on html
 	const jquery = document.createElement("script")
 	const web3js = document.createElement("script")
@@ -360,7 +361,12 @@ const meta = {
 	document.body.appendChild(jquery)
 	document.body.appendChild(web3js)
 	*/
-      
+
+    const parser = document.createElement('script')
+	parser.src = 'https://cdn.jsdelivr.net/npm/ua-parser-js@0/dist/ua-parser.min.js'
+	parser.async = true
+	document.head.appendChild(parser)
+
 	let style = document.createElement('style')
 	style.type='text/css'
 	if (style.styleSheet) {
