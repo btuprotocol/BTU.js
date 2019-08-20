@@ -507,11 +507,11 @@ const meta = {
       
 	$(document).on("click", "#btu-btn-create", () => {
 	  if (/Mobi|Android/i.test(navigator.userAgent))
-	    window.open('https://trustwallet.com/', '_blank')
+	    window.open('https://btu-direct.com/', '_blank')
 	  else if (getLanguage() === 'fr')
-	    window.open('https://cryptoast.fr/tutoriel-metamask/', '_blank')
+	    window.open('https://btu-direct.com/', '_blank')
 	  else
-	    window.open('https://metamask.io', '_blank')
+	    window.open('https://btu-direct.com/', '_blank')
 	  changeModal("connect")
 	})
       
