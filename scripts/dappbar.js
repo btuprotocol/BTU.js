@@ -324,7 +324,7 @@ const meta = {
   #btu-error {color: #e34652; font-size: 0.9em; margin-top: 6px; font-weight: bold; font-family: "Poppins";}
   #btu-powered {display: block; width: 100%; color: #797979; font-size: 10px; font-family: Poppins; text-align: right;}
   #btu-openModal {cursor: pointer;}
-  #btu-provider-img {margin-bottom: 1.5px; margin-right: 5px; height: 16px;}
+  #btu-provider-img {margin-bottom: 2.5px; margin-right: 5px; height: 16px;}
   .btu-btn {cursor: pointer; line-height: 60px; height: 60px; text-align: center; margin-bottom: 10px; font-size: 16px; vertical-align: middle; box-sizing: border-box; font-family: 'Poppins', sans-serif; font-weight: bold; padding-left: 20px; border-radius: 30px; padding-right: 20px;}
   .btu-btn-blue {background: #5bace2 !important; color: white !important;}
   .btu-btn-white {background: white !important; color: #5bace2; !important; border: 1px solid #5bace2;} .btu-btn-white:hover {text-decoration: none; background-color: rgba(0, 0, 0, 0.08);}
