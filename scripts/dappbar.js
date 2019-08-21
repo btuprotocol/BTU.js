@@ -184,7 +184,7 @@ const meta = {
 				return 'Localhost';
 			return '';
       }
-    if (!window.web3 && sUsrAg.indexOf("Android") > -1) {
+    if (!window.web3 && sUsrAg.indexOf("Chrome WebView") > -1) {
         const provider_enjin = [{name: "Enjin", icon: 'enjin'}]
         let final = ""
         provider_enjin.forEach(elem => {
