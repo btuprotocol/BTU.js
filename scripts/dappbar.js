@@ -184,7 +184,8 @@ const meta = {
 				return 'Localhost';
 			return '';
       }
-    if (!window.web3 && sUsrAg.indexOf("Chrome WebView") > -1) {
+    //Test d'enjin
+    /*if ((!window.web3) && sUsrAg.indexOf("Chrome WebView") > -1) {
         const provider_enjin = [{name: "Enjin", icon: 'enjin'}]
         let final = ""
         provider_enjin.forEach(elem => {
@@ -202,7 +203,7 @@ const meta = {
         if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
           return 'Localhost';
         return '';
-        }
+        }*/
 	if (!window.web3) return '';
 	const providers = [
 	  {tag: "isMetaMask", compare: true, name: "Metamask", icon: 'metamask'},
