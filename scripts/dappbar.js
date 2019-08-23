@@ -50,7 +50,7 @@ const meta = {
 		  "connectionRequired": "Connexion requise",
 		  "usingBTU": {
 			  "using": "Pour utiliser ce service, vous devez nous fournir une adresse Ethereum",
-			  "choiceConnected": "Connectez-vous ou crééez un wallet en quelques clics.",
+			  "choiceConnected": "Connectez-vous ou créez un wallet en quelques clics.",
 			  "usingConnected": "Pour utiliser ce service, veuillez vous connecter à un portefeuille, MetaMask ou TrustWallet par exemple",
 			  "createWallet": "Je crée un portefeuille",
 			  "hasWallet": "J'ai un portefeuille",
@@ -513,7 +513,7 @@ const meta = {
   
 	$(document).on("click", "#btu-btn-create", () => {
 	  if (/Mobi|Android/i.test(navigator.userAgent))
-		window.open('https://btu-direct.com/', '_blank')
+		window.open('https://play.google.com/store/apps/details?id=com.btu_direct.wallet', '_blank')
 	  else if (getLanguage() === 'fr')
 		window.open('https://btu-direct.com/', '_blank')
 	  else
