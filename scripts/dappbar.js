@@ -514,7 +514,7 @@ const meta = {
 	$(document).on("click", "#btu-btn-create", () => {
 	  if (/Mobi|Android/i.test(navigator.userAgent))
 		window.open('https://play.google.com/store/apps/details?id=com.btu_direct.wallet', '_blank')
-	  if (/Mobi|iOS/i.test(navigator.userAgent))
+	  if (sUsrAg.indexOf("Mobile Safari") > -1)
 		window.open('https://apps.apple.com/fr/app/btu-protocol/id1473117679', '_blank')
 	  else if (getLanguage() === 'fr')
 		window.open('https://btu-direct.com/', '_blank')
