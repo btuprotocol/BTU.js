@@ -333,10 +333,10 @@ const meta = {
   
   const BTUstyles = `
   #btu-placeholder {max-width: calc(100%); width: 100%; display: flex; background-color: #303030; justify-content: space-between; color: white; padding-left: 15px; padding-right: 15px}
-  #btu-conStatus {display: block; font-family: Lato; font-size: 13px; font-weight: 500; line-height: 20px; margin-top: 1px}
-  #btu-walletSpan {display: inline-block; font-family: Lato; font-size: 13px; font-weight: 400; line-height: 20px; margin-top: -20px}
-  #btu-statusLed {color: rgb(227, 70, 82); font-size: 24px; height: 12px; margin-bottom: -1px;} #btu-statusLedIn {fill: rgb(227, 70, 82); color: rgb(227, 70, 82); font-size: 24px;}
-  #btu-modalBtn {color: white; cursor: pointer; font-size: 25px; height: 16px; width: 18px; box-sizing: border-box; text-align: center; fill: white; margin-bottom: -3px}
+  #btu-conStatus {display: block; font-family: Lato; font-size: 13px; font-weight: 500; line-height: 20px; display: flex; align-items: center;}
+  #btu-walletSpan {display: inline-block; font-family: Lato; font-size: 13px; font-weight: 400; padding-right: 5px;}
+  #btu-statusLed {color: rgb(227, 70, 82); font-size: 24px; height: 12px; } #btu-statusLedIn {fill: rgb(227, 70, 82); color: rgb(227, 70, 82); font-size: 24px;}
+  #btu-modalBtn {color: white; cursor: pointer; font-size: 25px; height: 16px; width: 18px; box-sizing: border-box; text-align: center; fill: white;}
   #btu-modalOut {max-width: 100%; cursor: default; display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 1300; background-color: rgba(0, 0, 0, 0.5); opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}
   #btu-modalIn {padding: 25px; position: fixed; top: 50%; left: 50%; height: auto; width: 70%; background-color: white; max-width: 500px; max-height: calc(100% - 96px); flex: 0 1 auto; box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12); border-radius: 4px; display: flex; position: relative; overflow-y: auto; flex-direction: column; flex: 0 1 auto; transform: translate(-50%, -50%)}
   #btu-modal-text, #btu-modal-text > p {width: 100%; text-align: center; margin-top: 10px; margin-bottom: 10px; color: rgba(0, 0, 0, 0.54); font-family: Poppins;}
@@ -345,8 +345,8 @@ const meta = {
   #btu-wallet-input {margin-bottom: 5px; width: 100%; border: 0.5px solid #797979; height: 45px; margin-top: 5px !important; padding-left: 20px; border-radius: 25px; padding-right: 20px; color: rgba(0, 0, 0, 0.87); cursor: text; display: inline-flex; font-size: 1rem; font-family: 'Lato', sans-serif; line-height: 1.1875em; align-items: center;}
   #btu-error {color: #e34652; font-size: 0.9em; margin-top: 6px; font-weight: bold; font-family: "Poppins";}
   #btu-powered {display: block; width: 100%; color: #797979; font-size: 10px; font-family: Poppins; text-align: right;}
-  #btu-openModal {cursor: pointer;}
-  #btu-provider-img {margin-bottom: 2.5px; margin-right: 5px; height: 16px;}
+  #btu-openModal {cursor: pointer; display: flex; align-items: center;}
+  #btu-provider-img {padding-right: 5px; height: 16px;}
   .btu-btn {cursor: pointer; line-height: 60px; height: 60px; text-align: center; margin-bottom: 10px; font-size: 16px; vertical-align: middle; box-sizing: border-box; font-family: 'Poppins', sans-serif; font-weight: bold; padding-left: 20px; border-radius: 30px; padding-right: 20px;}
   .btu-btn-blue {background: #5bace2 !important; color: white !important;}
   .btu-btn-white {background: white !important; color: #5bace2; !important; border: 1px solid #5bace2;} .btu-btn-white:hover {text-decoration: none; background-color: rgba(0, 0, 0, 0.08);}
