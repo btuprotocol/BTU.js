@@ -465,6 +465,7 @@ const meta = {
 	  // Insert in dom
 	  $(`#${placeholderTag}`).html(dappBarHtml + modalHtml)
 	  changeModal("create")
+	  $("#btu-modalOut").show()
 	}
   });
   
@@ -502,7 +503,17 @@ const meta = {
 	  //change content of div to create or logged depending on connected or not
 	  $("#btu-modalOut").show()
 	})
-  
+	
+	$(document).on("click", "#btu-conStatus", () => {
+		const connected = sessionStorage.getItem("BTU-walletConnected")
+		if (connected === "true")
+		  changeModal("done")
+		else
+		  changeModal("create")
+
+		$("#btu-modalOut").show()
+	  })
+
 	$(document).on("click", "#btu-modalIn", (e) => {
 	  e.stopPropagation()
 	})
