@@ -210,7 +210,7 @@ const meta = {
 	  {tag: "isMetaMask", compare: true, name: "Metamask", icon: 'metamask'},
 	  {tag: "isTrust", compare: true, name: "Trust", icon: 'trust'},
 	  {tag: "isGoWallet", compare: true, name: "GoWallet", icon: 'go'},
-	  {tag: "isAlphaWallet", compare: true, name: "BTU", icon: 'btu'},
+	  {tag: "isAlphaWallet", compare: true, name: "BTU Direct", icon: 'btu'},
 	  {tag: "isStatus", compare: true, name: "Status", icon: 'status'},
 	  {tag: "isToshi", compare: true, name: "Coinbase", icon: 'coinbase'},
 	  {tag: "constructor.name", compare: "EthereumProvider", name: "Mist", icon: null},
