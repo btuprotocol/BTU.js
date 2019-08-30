@@ -467,6 +467,7 @@ const meta = {
 	  changeModal("create")
 	  $("#btu-modalOut").show()
 	  console.log(navigator.language);
+	  console.log(navigator.browserLanguage);
 	}
   });
   
