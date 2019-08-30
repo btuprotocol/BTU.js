@@ -126,9 +126,9 @@ const meta = {
 		return lowerCaseLanguage
 	  }
 	}
-	if (lang === 'fr')
+	if (lang === "fr")
 		return lang
-	if (lang === 'en')
+	if (lang === "en")
 		return lang
 	return defaultLanguage
   }
