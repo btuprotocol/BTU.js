@@ -350,7 +350,7 @@ const meta = {
   #btu-error {color: #e34652; font-size: 0.9em; margin-top: 6px; font-weight: bold; font-family: "Poppins";}
   #btu-powered {display: block; width: 100%; color: #797979; font-size: 10px; font-family: Poppins; text-align: right;}
   #btu-openModal {cursor: pointer; display: flex; align-items: center;}
-  #btu-provider-img {padding-right: 5px; height: 16px; max-width: 22px !important;}
+  #btu-provider-img {padding-right: 5px; max-width: 22px !important; height: 16px;}
   .btu-btn {cursor: pointer; line-height: 60px; height: 60px; text-align: center; margin-bottom: 10px; font-size: 14px; vertical-align: middle; box-sizing: border-box; font-family: 'Poppins', sans-serif; font-weight: bold; border-radius: 30px;}
   .btu-btn-blue {background: #5bace2 !important; color: white !important;}
   .btu-btn-white {background: white !important; color: #5bace2; !important; border: 1px solid #5bace2;} .btu-btn-white:hover {text-decoration: none; background-color: rgba(0, 0, 0, 0.08);}
