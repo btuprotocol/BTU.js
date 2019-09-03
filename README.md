@@ -74,19 +74,16 @@ operation of the dappbar:
 If you have an html file, you can directly place the following HTML tags in
 the <head></head> part of your file.
 
+
 <script type="text/javacript"
 src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript"
-src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.
-js"></script>
-<script type="text/javascript"
-src="https://btu-cdn.s3.eu-west-3.amazonaws.com/public/dappbar.min.js"></sc
-ript>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"> </script>
+<script type="text/javascript"src="https://btu-cdn.s3.eu-west-3.amazonaws.com/public/dappbar.min.js"></script>
+
 
 Otherwise you can insert the scripts by calling a JS functions.
 const script = document.createElement('script')
-script.src =
-'https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js'
+script.src = 'https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js'
 script.async = true
 document.head.appendChild(script)
 
@@ -94,12 +91,10 @@ Code to reproduce for each script previously mentioned.
 
 2. Place the dappbar
 First of all, for the Dappbar.js script to be able to generate the dappbar, it
-is necessary to decide on a place where it will be placed thanks to a
-<div> </ div> tag with the specific "btu-placeholder" id. It is
-recommended to place it as early as possible in the code so that it takes
-up all the top space of the page.
-<div id="btu-placeholder"></div>
+is necessary to decide on a place where it will be placed thanks to a <div> </ div> tag with the specific "btu-placeholder" id.
+It is recommended to place it as early as possible in the code so that it takes up all the top space of the page.
 
+<div id="btu-placeholder"></div>
 
 2. Use
 Once the dappbar has been installed, the user who visits the page will
@@ -112,21 +107,15 @@ sessionStorage.getItem("BTU-walletConnected") // Renvoie "false" ou "true"
 
 ● You also can have acces to his wallet address by this call :
 sessionStorage.getItem("BTU-walletAddr") // Renvoie la clef BTU (0xABF2...)
-Finally, if your website is available in different domain names and you
-
-want to make the connexion possible to the wallet only in one of them (
-e.g. in the case you want the users who share the link of your website
-earns the cashback instead of the buyer, it is possible to specify the
-domain name(s) where you want the bar to appear. To add this content,
-please add a "data-restrict-domain =" attribute with the value(s) of the
-domain name(s).
+Finally, if your website is available in different domain names and you want to make the connexion possible to the wallet only in one of them
+(e.g. in the case you want the users who share the link of your website earns the cashback instead of the buyer, it is possible to specify the domain name(s) where you want the bar to appear.
+To add this content, please add a "data-restrict-domain =" attribute with the value(s) of the domain name(s).
 
 <div id="btu-placeholder" data-restrict-domain=”test.com,test.fr”></div>
 
 in the case this attribute is not specified, the dappbar is displayed by
 default without restrictions.
-The refund wallet address is to specify in the page URL, thanks to a
-parameter “w”, exemple : test.com?w=0xAB21...
+The refund wallet address is to specify in the page URL, thanks to a parameter “w”, exemple : test.com?w=0xAB21...
 
 ## Resources methods
 
