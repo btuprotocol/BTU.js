@@ -82,7 +82,7 @@ src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 ```
 
 Otherwise you can insert the scripts by calling a JS functions.
-```
+```javascript
 const script = document.createElement('script')
 script.src = 'https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js'
 script.async = true
@@ -94,7 +94,7 @@ Code to reproduce for each script previously mentioned.
 First of all, for the Dappbar.js script to be able to generate the dappbar, it
 is necessary to decide on a place where it will be placed thanks to a <div> </ div> tag with the specific "btu-placeholder" id.
 It is recommended to place it as early as possible in the code so that it takes up all the top space of the page.
-```
+```javascript
 <div id="btu-placeholder"></div>
 ```
 2. Use
@@ -104,11 +104,13 @@ according to the system) to the dappbar. His information will be saved in
 the sessionStorage
 
 ● You can verify if the user is connected with the following call :
-```
+```javascript
 sessionStorage.getItem("BTU-walletConnected") // Return "false" or "true"
 ```
 ● You also can have acces to his wallet address by this call :
-sessionStorage.getItem("BTU-walletAddr") // Renvoie la clef BTU (0xABF2...)
+```javascript
+sessionStorage.getItem("BTU-walletAddr") // Return the BTU key (0xABF2...)
+```
 Finally, if your website is available in different domain names and you want to make the connexion possible to the wallet only in one of them
 (e.g. in the case you want the users who share the link of your website earns the cashback instead of the buyer, it is possible to specify the domain name(s) where you want the bar to appear.
 To add this content, please add a
@@ -116,7 +118,7 @@ To add this content, please add a
 "data-restrict-domain ="
 ```
 attribute with the value(s) of the domain name(s).
-```
+```javasript
 <div id="btu-placeholder" data-restrict-domain=”test.com,test.fr”></div>
 ```
 in the case this attribute is not specified, the dappbar is displayed by
