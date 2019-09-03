@@ -118,7 +118,7 @@ To add this content, please add a
 "data-restrict-domain ="
 ```
 attribute with the value(s) of the domain name(s).
-```javasript
+```javascript
 <div id="btu-placeholder" data-restrict-domain=”test.com,test.fr”></div>
 ```
 in the case this attribute is not specified, the dappbar is displayed by
