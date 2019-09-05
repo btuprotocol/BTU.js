@@ -56,7 +56,7 @@ const meta = {
 		  "connectionRequired": "Connexion requise",
 		  "usingBTU": {
 			  "using": "Pour utiliser ce service, vous devez nous fournir une adresse BTU",
-			  "choiceConnected": "Utiliser votre adresse BTU ou créez-en une en quelques clics si vous n’en avez pas.",
+			  "choiceConnected": "Utilisez votre adresse BTU ou créez-en une en quelques clics si vous n’en avez pas.",
 			  "usingConnected": "Pour utiliser ce service, veuillez vous connecter à un portefeuille, BTU Direct par exemple",
 			  "createWallet": "Je crée une adresse BTU",
 			  "hasWallet": "J’ai une adresse BTU",
