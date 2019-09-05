@@ -21,25 +21,25 @@ const meta = {
 		  "notConnected": "Not connected",
 		  "connectionRequired": "Connection required",
 		  "usingBTU": {
-			  "using": "To use this service, please provide us with your Ethereum address",
+			  "using": "To use this service, please provide us with your BTU address",
 			  "choiceConnected": "Login or create one in a few clicks.",
-			  "usingConnected": "In order to use this service, please connect to your wallet, MetaMask or TrustWallet for example",
-			  "createWallet": "Create a wallet",
-			  "hasWallet": "I already have a wallet",
+			  "usingConnected": "In order to use this service, please connect to your wallet, BTU Direct for example",
+			  "createWallet": "Create a BTU wallet",
+			  "hasWallet": "I already have a  BTUwallet",
 			  "changeWallet": "Change wallet",
 			  "connection": "Connection"
 		  },
 		  "isConnected": {
-			  "nowCo": "You are connected with the following ETH address",
+			  "nowCo": "You are connected with the following BTU address",
 			  "switchWallet": "Change wallet"
 		  },
 		  "inputWallet": {
-			  "howTo": "Please enter your ETH address below",
+			  "howTo": "Please enter your BTU address below",
 			  "inputCo": "Connection",
-			  "addrBTU": "ETH address",
+			  "addrBTU": "BTU address",
 			  "placeholder": "0x...",
 			  "requiredETH": "Required",
-			  "invalidETH": "Invalid ETH address"
+			  "invalidETH": "Invalid BTU address"
 		  },
 		  "isCreated": {
 			  "afterCreate": "After creating your wallet, you will have access to all our services.",
@@ -47,7 +47,7 @@ const meta = {
 			  "hasWallet": "I already have a wallet"
 		  },
 		  "invalidAddress": "Invalid address",
-	  "nonEtherumBrowser": "Non-Ethereum browser detected. You should consider trying MetaMask!",
+	  "nonEtherumBrowser": "Non-Ethereum browser detected. You should consider trying BTU Direct!",
 	  "placeholderMissing": "Please integrate a <div id='btu-placeholder'> tag in order to use the BTU Dappbar"
 	},
 	"fr": {
@@ -55,11 +55,11 @@ const meta = {
 		  "notConnected": "Non connecté",
 		  "connectionRequired": "Connexion requise",
 		  "usingBTU": {
-			  "using": "Pour utiliser ce service, vous devez nous fournir une adresse Ethereum",
-			  "choiceConnected": "Connectez-vous ou créez un wallet en quelques clics.",
-			  "usingConnected": "Pour utiliser ce service, veuillez vous connecter à un portefeuille, MetaMask ou TrustWallet par exemple",
-			  "createWallet": "Je crée un portefeuille",
-			  "hasWallet": "J'ai un portefeuille",
+			  "using": "Pour utiliser ce service, vous devez nous fournir une adresse BTU",
+			  "choiceConnected": "Utiliser votre adresse BTU ou créez-en une en quelques clics si vous n’en avez pas.",
+			  "usingConnected": "Pour utiliser ce service, veuillez vous connecter à un portefeuille, BTU Direct par exemple",
+			  "createWallet": "Je crée une adresse BTU",
+			  "hasWallet": "J’ai une adresse BTU",
 			  "changeWallet": "Changer de portefeuille",
 			  "connection": "Connexion"
 		  },
@@ -68,12 +68,12 @@ const meta = {
 			  "switchWallet": "Changer de portefeuille"
 		  },
 		  "inputWallet": {
-			  "howTo": "Veuillez renseigner votre adresse ETH dans le champ ci-dessous",
+			  "howTo": "Veuillez renseigner votre adresse BTU dans le champ ci-dessous",
 			  "inputCo": "Connexion",
-			  "addrBTU": "Adresse ETH",
+			  "addrBTU": "Adresse BTU",
 			  "placeholder": "0x...",
-			  "requiredETH": "Adresse ETH requise",
-			  "invalidETH": "Adresse ETH invalide"
+			  "requiredETH": "Adresse BTU requise",
+			  "invalidETH": "Adresse BTU invalide"
 		  },
 		  "isCreated": {
 			  "afterCreate": "Après création de votre portefeuille, vous aurez accès à l'intégralité de nos services et vous pourrez gagner des BTU à chaque réservation.",
@@ -81,7 +81,7 @@ const meta = {
 			  "hasWallet": "J'ai déjà un portefeuille"
 		  },
 		  "invalidAddress": "Adresse invalide",
-	  "nonEtherumBrowser": "Votre navigateur n'utilise pas Etherum. Vous devriez essayer MetaMask!",
+	  "nonEtherumBrowser": "Votre navigateur n'utilise pas Etherum. Vous devriez essayer BTU Direct!",
 	  "placeholderMissing": "Veuillez intégrer une balise <div id='btu-placeholder'> pour utiliser la Dappbar BTU"
 	  }
   }
