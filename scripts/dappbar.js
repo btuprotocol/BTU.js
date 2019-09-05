@@ -2,9 +2,15 @@
 /*                                                                            */
 /*                            BTU DAPPBAR JS 2019                             */
 /*                        Antoine Casse - BTU protocol                        */
+/*						  Rena Colas - BTU protocol							  */
 /*                                                                            */
 /******************************************************************************/
 
+
+$(window).on('popstate', function() {
+	location.reload(true);
+ });
+ 
 /*
  *	Meta data
  */
