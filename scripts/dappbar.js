@@ -283,8 +283,9 @@ const meta = {
   `
   
   const modalCreateContent = {
-	top: `
-	  <img id='btu-modal-img' alt="" src=${icons.withoutWallet}></img>
+  top: `
+    <div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
+    <img id='btu-modal-img' alt="" src=${icons.withoutWallet}></img>
 	  <p>${t("usingBTU.using")}</p>
 	  <p>${t("usingBTU.choiceConnected")}</p>
 	`,
@@ -299,8 +300,9 @@ const meta = {
   }
   
   const modalConnectContent = {
-	top: `
-	  <img id='btu-modal-img' alt="" src=${icons.electronicWallet}></img>
+  top: `
+    <div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
+    <img id='btu-modal-img' alt="" src=${icons.electronicWallet}></img>
 	  <p>${t("isCreated.afterCreate")}</p>
 	`,
 	bottom: `
@@ -315,7 +317,8 @@ const meta = {
   
   const modalTypeContent = {
 	top: `
-	  <img id='btu-modal-img' alt="" src=${icons.electronicWallet}></img>
+    <div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
+    <img id='btu-modal-img' alt="" src=${icons.electronicWallet}></img>
 	  <p>${t("inputWallet.howTo")}</p>
 	`,
 	bottom: `
@@ -329,8 +332,9 @@ const meta = {
   }
   
   const modalDoneContent = () => {return {
-	top: `
-	  <img id='btu-modal-img' alt="" src=${icons.electronicWallet}></img>
+  top: `
+    <div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
+    <img id='btu-modal-img' alt="" src=${icons.electronicWallet}></img>
 	  <p><b>${t("isConnected.nowCo")}</b></p>
 	  <p>${sessionStorage.getItem("BTU-walletAddr")}</p>
 	`,
@@ -342,6 +346,7 @@ const meta = {
   }}
   
   const BTUstyles = `
+  #btu-close {position: absolute; margin: 0; width: 40px; color: white; font-size: 25px; line-height: 40px;}
   #btu-placeholder {max-width: calc(100%); width: 100%; display: flex; background-color: #303030; justify-content: space-between; color: white; padding-left: 15px; padding-right: 15px}
   #btu-conStatus {display: block; font-family: Lato; font-size: 13px; font-weight: 500; line-height: 20px; display: flex; align-items: center;}
   #btu-walletSpan {display: inline-block; font-family: Lato; font-size: 13px; font-weight: 400; padding-right: 5px;}
@@ -361,6 +366,7 @@ const meta = {
   .btu-btn {cursor: pointer; line-height: 60px; height: 60px; text-align: center; margin-bottom: 10px; font-size: 14px; vertical-align: middle; box-sizing: border-box; font-family: 'Poppins', sans-serif; font-weight: bold; border-radius: 30px;}
   .btu-btn-blue {background: #5bace2 !important; color: white !important;}
   .btu-btn-white {background: white !important; color: #5bace2; !important; border: 1px solid #5bace2;} .btu-btn-white:hover {text-decoration: none; background-color: rgba(0, 0, 0, 0.08);}
+  .btu-btn-close {background: #5bace2; border: 1px solid #5bace2; width: 40px; height: 40px; right: 15px; top: 15px; position: absolute;}
   `
   
   /*
@@ -572,5 +578,8 @@ const meta = {
   
 	$(document).on("click", "#btu-change-wallet", () => {
 	  changeModal("type")
+	})
+	$(document).on("click", "#btu-close", () => {
+    $("#btu-modalOut").hide()
 	})
   })
