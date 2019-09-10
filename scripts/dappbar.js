@@ -119,11 +119,11 @@ const meta = {
   
   const getLanguage = () => {
 	const languageParam = findGetParameter("hl")
-	/*if (document.documentElement.lang === "fr")
+	if (document.documentElement.lang === "fr")
 		return document.documentElement.lang
 	if (document.documentElement.lang === "en")
-		return document.documentElement.lang*/
-	if (languageParam && BTUlanguage.length) {
+		return document.documentElement.lang
+	if ((languageParam && BTUlanguage.length)) {
 	  const lowerCaseLanguage = languageParam.toLowerCase()
 	  if (supportedLanguages.includes(lowerCaseLanguage)) {
 		return lowerCaseLanguage
@@ -477,7 +477,7 @@ const meta = {
 	  $(`#${placeholderTag}`).html(dappBarHtml + modalHtml)
 	  changeModal("create")
 	  $("#btu-modalOut").show()
-	  console.log(navigator.language + "lol");
+	  console.log(window.navigator.language + "lol");
 	  console.log(document.documentElement.lang + "LOL");
 	}
   });
