@@ -119,10 +119,10 @@ const meta = {
   
   const getLanguage = () => {
 	const languageParam = findGetParameter("hl")
-	if (document.documentElement.lang === "fr")
+	/*if (document.documentElement.lang === "fr")
 		return document.documentElement.lang
 	if (document.documentElement.lang === "en")
-		return document.documentElement.lang
+		return document.documentElement.lang*/
 	if (languageParam && BTUlanguage.length) {
 	  const lowerCaseLanguage = languageParam.toLowerCase()
 	  if (supportedLanguages.includes(lowerCaseLanguage)) {
