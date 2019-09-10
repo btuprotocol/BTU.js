@@ -119,22 +119,9 @@ const meta = {
   
   const getLanguage = () => {
 	const languageParam = findGetParameter("hl")
-	if (document.documentElement.lang === "fr")
-		return document.documentElement.lang
-	if (document.documentElement.lang === "en")
-		return document.documentElement.lang
-	if ((languageParam && BTUlanguage.length)) {
-	  const lowerCaseLanguage = languageParam.toLowerCase()
-	  if (supportedLanguages.includes(lowerCaseLanguage)) {
-		return lowerCaseLanguage
-	  }
-	}
-	if (BTUlanguage !== undefined && BTUlanguage.length) {
-	  const lowerCaseLanguage = BTUlanguage.toLowerCase()
-	  if (supportedLanguages.includes(lowerCaseLanguage)) {
-		return lowerCaseLanguage
-	  }
-	}
+
+	if (languageParam === "fr" || document.documentElement.lang === "fr")
+		return "fr"
 	return defaultLanguage
   }
   
@@ -195,26 +182,6 @@ const meta = {
 				return 'Localhost';
 			return '';
       }
-    //Test d'enjin
-    /*if ((!window.web3) && sUsrAg.indexOf("Chrome WebView") > -1) {
-        const provider_enjin = [{name: "Enjin", icon: 'enjin'}]
-        let final = ""
-        provider_enjin.forEach(elem => {
-            final = elem.name
-          if (elem.icon)
-            final = `<img id='btu-provider-img' alt="" src=${icons.walletProviders[elem.icon]}></img>` + final
-            }
-          )
-        if (final.length)
-          return final
-        if (typeof window.__CIPHER__ !== 'undefined')
-          return 'Cipher';
-        if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('infura') !== -1)
-          return 'Infura';
-        if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
-          return 'Localhost';
-        return '';
-        }*/
 	if (!window.web3) return '';
 	const providers = [
 	  {tag: "isMetaMask", compare: true, name: "Metamask", icon: 'metamask'},
@@ -477,8 +444,8 @@ const meta = {
 	  $(`#${placeholderTag}`).html(dappBarHtml + modalHtml)
 	  changeModal("create")
 	  $("#btu-modalOut").show()
-	  console.log(window.navigator.language + "lol");
-	  console.log(document.documentElement.lang + "LOL");
+	  console.log(window.navigator.language);
+	  console.log(document.documentElement.lang);
 	}
   });
   
