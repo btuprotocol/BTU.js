@@ -477,8 +477,8 @@ const meta = {
 	  $(`#${placeholderTag}`).html(dappBarHtml + modalHtml)
 	  changeModal("create")
 	  $("#btu-modalOut").show()
-	  console.log(navigator.language);
-	  console.log(document.documentElement.lang);
+	  console.log(navigator.language + "lol");
+	  console.log(document.documentElement.lang + "LOL");
 	}
   });
   
