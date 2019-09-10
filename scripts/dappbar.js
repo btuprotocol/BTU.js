@@ -446,7 +446,6 @@ const meta = {
 		  sessionStorage.setItem('BTU-walletAddr', defaultAddr)
 		return null
 	} else {
-	  // Insert in dom
 	  $(`#${placeholderTag}`).html(dappBarHtml + modalHtml)
 	  changeModal("create")
 	  $("#btu-modalOut").show()
