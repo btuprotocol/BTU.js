@@ -339,7 +339,9 @@ const meta = {
   /*
    *	Initilization
    */
-  
+
+var popup = true
+
   $(() => {
 	if ($(`#${placeholderTag}`).length === 0) {
 	  console.log(t("placeholderMissing"))
@@ -394,7 +396,7 @@ const meta = {
 		inputWallet(res[0])
 	  }
 	}
-  
+	console.log(popup + "lol")
 	if (restrictDomain === undefined
 		|| (typeof restrictDomain == "string" && restrictDomain === window.location.hostname)
 		|| (Array.isArray(restrictDomain) && restrictDomain.includes(window.location.hostname))) {
@@ -413,6 +415,7 @@ const meta = {
 		  await ethereum.enable()
 		  if (debug)
 			alert("Connected")
+		  popup = false
 		  window.web3.eth.getAccounts(onAccountGet)
 			} catch (error) {
 		  console.log("BTU Dappbar Error enabling ETH account:\n", error)
@@ -433,7 +436,7 @@ const meta = {
 		  alert("Not connecting")
 		}
 	  }
-  
+
 	if (restrictDomain !== undefined
 	  && (typeof restrictDomain == "string" && restrictDomain !== window.location.hostname
 	  || (Array.isArray(restrictDomain) && !restrictDomain.includes(window.location.hostname)))) {
@@ -448,7 +451,6 @@ const meta = {
 	} else {
 	  $(`#${placeholderTag}`).html(dappBarHtml + modalHtml)
 	  changeModal("create")
-	  $("#btu-modalOut").show()
 	  console.log(window.navigator.language);
 	  console.log(document.documentElement.lang);
 	}
@@ -458,6 +460,17 @@ const meta = {
    *	Dom functions
    */
   
+  console.log(popup)
+setTimeout(() =>{
+$(() => {
+  if (popup === true) {
+	$(`#${placeholderTag}`).html(dappBarHtml + modalHtml)
+	changeModal("create")
+	$("#btu-modalOut").show()
+  }
+})
+}, 1000)
+
   const changeModal = (type) => {
 	let next
 	if (type === "create") {
