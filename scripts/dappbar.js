@@ -469,7 +469,7 @@ $(() => {
 	$("#btu-modalOut").show()
   }
 })
-}, 1500)
+}, 2000)
 
   const changeModal = (type) => {
 	let next
