@@ -440,6 +440,7 @@ var popup = true
 	if (restrictDomain !== undefined
 	  && (typeof restrictDomain == "string" && restrictDomain !== window.location.hostname
 	  || (Array.isArray(restrictDomain) && !restrictDomain.includes(window.location.hostname)))) {
+		popup = false
 		const walletAddr = findGetParameter("w")
 		const addresseBTU = sessionStorage.getItem("BTU-walletAddr")
 		const pattern = new RegExp('^0[xX][0-9A-Fa-f]{40}$')
@@ -469,7 +470,7 @@ $(() => {
 	$("#btu-modalOut").show()
   }
 })
-}, 1000)
+}, 1500)
 
   const changeModal = (type) => {
 	let next
