@@ -465,7 +465,6 @@ var popup = true
 setTimeout(() =>{
 $(() => {
   if (popup === true) {
-	$(`#${placeholderTag}`).html(dappBarHtml + modalHtml)
 	changeModal("create")
 	$("#btu-modalOut").show()
   }
