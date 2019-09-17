@@ -338,7 +338,7 @@ const modalTypeContent = {
 const modalDoneContent = () => {return {
 top: `
 	<div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
-	  <p><b>${t("isConnected.nowCo")}</b></p>
+	  <p style="font-size: 16px"><b>${t("isConnected.nowCo")}</b></p>
 	`,
 	bottom: `
 	<div class='wallet-txt'>${sessionStorage.getItem("BTU-walletAddr")}</div>
