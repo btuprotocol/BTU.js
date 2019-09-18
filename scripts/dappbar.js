@@ -266,22 +266,6 @@ const meta = {
 	`
   }
   
-  const modalConnectContent = {
-  top: `
-    <div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
-    <img id='btu-modal-img' alt="" src=${icons.electronicWallet}></img>
-	  <p>${t("isCreated.afterCreate")}</p>
-	`,
-	bottom: `
-	  <div id='btu-btn-hasCreated' class='btu-btn btu-btn-blue'>
-		${t("isCreated.hasCreated").toUpperCase()}
-	  </div>
-	  <div id='btu-btn-has' class='btu-btn btu-btn-white'>
-		${t("isCreated.hasWallet").toUpperCase()}
-	  </div>
-	`
-  }
-  
   const modalTypeContent = {
 	top: `
     <div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
@@ -475,8 +459,6 @@ $(() => {
 	let next
 	if (type === "create") {
 	  next = modalCreateContent
-	} else if (type == "connect") {
-	  next = modalConnectContent
 	} else if (type == "type") {
 	  next = modalTypeContent
 	} else if (type == "done") {
@@ -530,11 +512,6 @@ $(() => {
 		window.open('https://btu-direct.com/', '_blank')
 	  else
 		window.open('https://btu-direct.com/', '_blank')
-	  changeModal("connect")
-	})
-  
-	$(document).on("click", "#btu-btn-hasCreated", () => {
-	  window.reload()
 	})
   
 	$(document).on("click", "#btu-btn-has", () => {
