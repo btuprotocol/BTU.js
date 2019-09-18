@@ -89,7 +89,7 @@ const meta = {
   /*
    *	Constants
    */
-  
+  var walletinput = sessionStorage.getItem("BTU-inputwallet");
   const placeholderTag = "btu-placeholder"
   const defaultAddr = "0xd00551b9d6CB3C4dDfc36df874c642b19D2b9e22"
   const supportedLanguages = ['en', 'fr']
@@ -380,7 +380,6 @@ var popup = true
 		inputWallet(res[0])
 	  }
 	}
-	console.log(popup + "lol")
 	if (restrictDomain === undefined
 		|| (typeof restrictDomain == "string" && restrictDomain === window.location.hostname)
 		|| (Array.isArray(restrictDomain) && restrictDomain.includes(window.location.hostname))) {
@@ -388,6 +387,10 @@ var popup = true
 		  if (debug) {
 			alert("document ready/" + window.location.hostname)
 			alert((window.ethereum ? " detected wallet true" : "detected wallet false"))
+		  }
+		  if (walletinput) {
+			popup = false
+			inputWallet(walletinput)
 		  }
 		  if (window.ethereum) {
 			if (debug)
@@ -520,8 +523,10 @@ $(() => {
   
 	$(document).on("click", "#btu-wallet-type", () => {
 	  const enteredWallet = $("input[data-btu-type='btu-input']").val() //Could not get input value
-	  if (enteredWallet && /^0[xX][0-9A-Fa-f]{40}$/.test(enteredWallet))
+	  if (enteredWallet && /^0[xX][0-9A-Fa-f]{40}$/.test(enteredWallet)) {
+		sessionStorage.setItem("BTU-inputwallet", enteredWallet)
 		inputWallet(enteredWallet)
+	  }
 	  else {
 		$("#btu-wallet-input").css("border", "1.5px solid #e34652")
 		if (enteredWallet && enteredWallet.length) {
@@ -531,7 +536,7 @@ $(() => {
 		}
 	  }
 	})
-  
+	console.log(sessionStorage.getItem("BTU-inputwallet"))
 	$(document).on("click", "#btu-change-wallet", () => {
 	  changeModal("type")
 	})
