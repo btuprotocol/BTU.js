@@ -6,13 +6,14 @@
 /*                                                                            */
 /******************************************************************************/
 
+//Refresh de la page si button back
 
 $(window).on('popstate', function() {
 	location.reload(true);
 });
 
 /*
-* Meta data
+* Traduction français | anglais
 */
 
 const meta = {
@@ -107,6 +108,9 @@ const supportedLanguages = ['en', 'fr']
 const defaultLanguage = supportedLanguages[0]
 let BTUlanguage = navigator !== undefined ? navigator.language || navigator.userLanguage : 'en'
 BTUlanguage = BTUlanguage.substr(0, 2)
+
+
+
 // Images
 const icons = {
 	qrcode: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK0AAACtCAYAAADCr/9DAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAACn1SURBVHgB7Z0HtB5FFccHxN6wi1IULKCggoGIRFAxAgYBCycqSNGIkaIJFkCCiKgcEFEjCCGUqIGYgKhBSkCiiEgRASEaFY0iGgv2XoBxfnNyvzM733y7s/tm970N8z9nT9572b53Zm7533vX0QYqI6NHWFdlZPQMWWgzeocstBm9QxbajN4hC21G75CFNqN3yEKb0Ttkoc3oHbLQZvQOWWgzeocstBm9QxbajN4hC21G75CFNqN3yEKb0Ttkoc3oHbLQZvQO66kWcM8996g77rhD3X333eq+++5TbWCdddZRj3/849WznvUs9cAHPjD6OBI1brnlFvXXv/7V/v7Qhz5UbbPNNkPn+OUvf6l+8pOfDK61xRZbqCc+8YmFff75z3/ac/3vf/9TqbH55purJz/5yYW//fe//1Xf+c53Rl5v3XXXVc94xjPUU57ylFGnVf/5z3/Uj370I/WnP/1JtZW0wn1ssMEGatNNN1UPeMADVHLohDACqi+88EK95ZZb8jY62czL0V/4whe0+aBR97hs2TL9qEc9qnCOhQsXFvZZvXq1fslLXlLYZ9dddx061wknnKCNQLfyXLvttpv+85//XLjeKaecUnnclClT9B//+Mehe/33v/+tzz77bG0GeiffhW3SpEn6kksu0amRVD0wwqMOPPBAtWLFCtUVfv3rX6u3ve1t6otf/GLUrM7s6O/HiuCC2ehvf/tb4W9///vfh85lhKq12Yrr/+tf/yr8zQhj5XHc57333lv4G8/7qU99Sh122GHq97//veoKN910k9p3333VpZdeqlIimdCakaw++MEPDn3sLsA1ubYs5xlFfO9731Of/exn7YDtGqghxx577NBAGguSCe3tt9+ufvzjH6vxws9+9jOrX1aBweXPtOiKLvh/9HIXD37wg4fO9bCHPUxNNHCf6JQumPF++MMfqvEC11+1apVKhWSGGMv0KKy//vrqVa96lXruc5/b+EOzVH7/+99XRicNLnEI3m9/+9uhYxYvXqxuu+22wTJ+6623qlmzZqknPOEJ9ndUgYsvvlj9/Oc/Hwjm7373O7Xddtupt771rfZ3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',
@@ -128,11 +132,13 @@ const icons = {
 	  trust: ' data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH4wcLDh8KHjRSFwAACC9JREFUaN7tmntslXcZxz/P+55LT1sKjMoQxxRou+EYG8jiLlnUrYW5Bee4qHGiMd4SFSeldZl/bNEME9cCWTFbjCTzj+kIoS4by0x7ivMyRJTLugHLegoKEwnQjZae03N53/N7/OOcll7OOT2n57AZsydp0tOcvu/v83t+z/e5vC98YP9bJsVeoLY5SKilIfXh1hbq7lxWLaJVKNMcYz7ksawKFJJqoh7LOo9wSZXBf/ZF+pxn7leAuua99LTc/f6A1DYGCW1NASxsDs71IN9HuAfVOcA0oDLLv4aBQUTOqdKh2L8ItXzm3wA1TUF6WxveG5Dlj/2Fgz+5kwWbujwe4ROIbhYoajsV+RPwiBo9GNrS4Nz06D66f3rHlQOpbeoi1FrPdT/quh3VHcCiEp/0twx8N9RS/4fapiChArxj5fOlmqbO1G3EVNQ1d21GdV/pIQD0OgvdW9ccfELEqgSo3RgsjUcWbOzk5LYV1DR3XW2jr1wZgIz2ljFyV2hL/X9qN3US2rJi6iALNnZwcttKajZ1fty2rEOgZe+lpCooqjf3tK54vWZTJ705YLIerYWNIxDX25bsf68h0rssIrKvrqlzSe+WFdSmj3jBHqlpDFbbtpwCLX8/k50iScV8JNSy4lxBILVNXSCUW/A30BuLWUTMMQAEvBZaHM+bCreoEsmkZhOO1vJHXyHUWo/AD4uBSBqlqtzLE19ezLb1S6gq95E0RaEsAh4OtTbwycdfzdMjzXuXWpjDU/WAbQsP3VPD+tuuYWaFF4D+IYfnDpxh28u9JFyD32tNqawwyK2hlvoDOUEWNHYQT3qsSp/5B7AsZwKyBEsEry34PBYVZR5mV/lZtWwOD956Tc7F7DxwhhcOn+X8QJxIzCXuGpykYlQxk3vtqJNkqWDcE1tXZvdIbVNwsSW8BtjZrhR3DJu/dAO3LZyJLeD32lT6PVT47YJ2N5JIEo65xB1DUpUjJy/Q9Jvj+PzenLGvyi09rQ2HMsbIwsaO1B9EHs4FkVIRpbrCx/zqcq6dVc7VVf6CIQAqfDZXV/m5dlaA+dXlzK3yUx7tw1KTW5WFR9KbPhHkxNaVVK3f6UH4yuT6Lgw4yZLLbDzhIBjKY+8iOWAEWTO/saNitHqNUa05c6q/jeahLAJOovQgkXgSEUFUqYhdzAGjeG37e1nlV4R1+RZo0SsAMhBzR4JW1BCI9SNZso/A5zOC1GwKVqJ6bV4gAkNxt+Qg0biDiIxarFIW78/iGZ1b0xScPgHEsmQ6MCM/jwiDQ07JQRLRxAQdFVXKEoOZYKZbIhNBRCgHAnk1MQLnwqUHOXcpiiUT06SooSwRHg8TEJHAxBhRAvmCiCW8OxArOciF/qHLIJIJJoJcFiM/ajKAoHknAgvoi5Y+Rt69FEckd4HiH+sZq6BWN0PDg+sYoo4pXXy4hmjCnbRpFQw+Z2i0Z8aDiAPkvbJowiVaQuUaijvEE+6EDcsMo3idIWzjmkweiQJ5H/zBWJLBWOlAIlGHcDRRQPeoMU8yHpkAohBJD8/yBHE4c7F0AX9uYIhLBYAAQ2oYmgDiJk0/IgP5XsUW4cXDZ0sG0nno1Bjp1azdxsjvF42a/gkgJ7euiKH05A1iCc8dOFMykJ1/7MG2rIklRPYO6l/Htq+OZFQtVZ4p5OZeS/jx7jeLhvj5roOIMaNmJ+SsXRUwqs9mLRp7WuvbC5mieizhpcNnOXJqYMoQx06/w579vXg81rhjJTm8IxxtW/3rjCAL0o2Vws8K6iEcw1d/eZjg8QsFQ/z1+Fm+s62L2Ej+kMskIwvPtLH6JMDiDe2ZW9265r2AfkzQ4/mWK8MXSSSV5vtqePD2eUwr8+T8fjjm8LtXQ2zbfRivR1DGLtoAKlYaRoZHdSlPiRVX1RvwBU50t96be4pyXXPXi6CrCt1hJ6nMmxVg42druH/pnMzqdOQ0258/wtvnL+H12OPmiqnYMGMg0lkj7SEVa2/3k6vrF3/zVxzd8a3cIAuaO2d6kXeY4oOgcDzJp66v5vF1i5hfnRpSvn1hkMef+zt/7n6byoB33O3lchCnd38MiFgjcZNA5x5vW3t20rnW8KO0uqaudSK6a6pBbFQp93t4YPlcAm6Yl/b3Eok6WGMk9nKla5T0rsu4+BjlDVjf3bb22Rt/0M4bbWsmH9AtfKiDS3aZdZWdeBlYWYy0ukbxOlEq3cGMAazDUivpWBkHkfqOALwSd50GGzt59KkvFDbEnr/h9x5fwHsA1WXFZQrBk4wTiA+MubPJCDDuyIlgkGMGa+kbbQ84uVqLrFY5oyzpuno3ECoORHFtHzH/tFEJTVCxsnphVNycMq5+OuCzncl6pKx2/kxET2xt6DdYyxU5VGwGd+wyhspmYMRKHZcxQT32R0VQsbpdV5e/8dTavosDg5OmgEmtrrlLkljiwewBvbdYIE8ygc8JZy0I0zHRGXHMfbMqfW7fxTi9O75YPMiwTftGl3z4Kj4naPtkY9VJi07j4E+ExwW+pEs+WRd1Ys/3PP1g3o1eQa3u7BmqPS31L8RdzzSFXcDgVEGSlpeEt2KkjlKRMCLtSVend7etaS+zfaYwOSnQhp+1p4/cPGCdoJuBKT1jtIyb8DlDjwn629fa1p4GuGnDbrq3r+WKgoyvzYbfIalt6rrLEl0PcgvodFKvcPhGed0AiVQXKgOgh4zKs6HW+iDAkg3tvL59TRECX6TNe6iDHV+/g5U3p149qfjaHrlmdmCmQqWI+CQNomBUNSEQficc7e97etXI0floYwentq7kA/t/sv8CUQBTMv87rScAAAAASUVORK5CYII='
 	}
 }
+
+
 /*
-*    Utilities functions
+*  Les Fonction utile
 */
 
-
+// Recuperer la langue
 const getLanguage = () => {
 	const languageParam = findGetParameter("hl")
 
@@ -141,6 +147,7 @@ const getLanguage = () => {
 	return defaultLanguage
 }
 
+//Trouve un paramettre dans l'url
 const findGetParameter = (parameterName) => {
 	var result = null, tmp = []
 	var items = location.search.substr(1).split("&");
@@ -151,6 +158,7 @@ const findGetParameter = (parameterName) => {
 	return result;
 }
 
+//mettre la wallet dans le front et dans le session storage
 const inputWallet = (addr) => {
 	if (addr && /^0[xX][0-9A-Fa-f]{40}$/.test(addr)) {
 	  sessionStorage.setItem('BTU-walletAddr', addr)
@@ -163,6 +171,7 @@ const inputWallet = (addr) => {
 	}
 }
 
+//Traduction
 const t = (path) => {
 	const l = getLanguage()
 	const pathArr = path.split(".")
@@ -176,9 +185,12 @@ const t = (path) => {
 	return tmp
 }
 
+//recupéré le navigateur
 var sUsrAg = navigator.userAgent;
 
+//Pour mettre le nom et le logo du provider du wallet par example BTU direct
 const getWalletProvider = () => {
+	//cherche si le user agent est opera
 	if (sUsrAg.indexOf("Opera") > -1 || sUsrAg.indexOf("OPR") > -1) {
 			const provider_opera = [{name: "Opera", icon: 'opera'}]
 			let final = ""
@@ -198,7 +210,9 @@ const getWalletProvider = () => {
 				return 'Localhost';
 		return '';
   }
+  //cherche si c'est un provider web3
 	if (!window.web3) return '';
+  //cherche quel est le provider 
 	const providers = [
 	  {tag: "isMetaMask", compare: true, name: "Metamask", icon: 'metamask'},
 	  {tag: "isTrust", compare: true, name: "Trust", icon: 'trust'},
@@ -233,10 +247,12 @@ const getWalletProvider = () => {
 	return '';
 }
 
+
 /*
-*    Dom elements
+*   HTML
 */
 
+//dappbar
 const dappBarHtml = `
 <div id='btu-conStatus'>${t("connectionRequired")}</div>
 <div id='btu-openModal'>
@@ -251,59 +267,69 @@ const dappBarHtml = `
 	</svg>
 <div>`
 
+//Base des popup
 const modalHtml = `
 <div id='btu-modalOut'>
 	<div id='btu-modalIn'>
-	 <div class='btu-color-blue'>
+	<div id="btu-modal-close">
+        <button id='btu-close'>×</button>
+      </div>
 	  <div id='btu-modal-text'>
 	  </div>
-	  </div>
-	  <div class='btu-color-white'>
 	  <div id='btu-modal-action'>
 	  </div>
-	  <div id='btu-powered'>
+	  <div id='btu-modal-footer'>
 			Powered by BTU Protocol
-	  </div>
 	  </div>
 	  </div>
 </div>
 `
-
+//Popup (si on est pas connecter a une addresse wallet)
 const modalCreateContent = {
 	top: `
-	  <div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
-	  <p style="font-size: 15px">${t("usingBTU.using")}</p>
-	  <p style="font-size: 15px">${t("usingBTU.choiceConnected")}</p>
+	<h1>${t("usingBTU.using")}
+	</h1>
 	`,
 	bottom: `
-	  <div id='btu-btn-create' class='btu-btn btu-btn-blue'>
-			${t("usingBTU.createWallet").toUpperCase()}
+	<div id="btu-modal-content-inner">
+	  <div id='btu-btn-create' class='btu-btn-blue'>
+			<button id='btu-btn-create'> ${t("usingBTU.createWallet").toUpperCase()} </button>
 	  </div>
-	  <div id='btu-btn-has' class='btu-btn btu-btn-white'>
+	  <div id='btu-btn-have'>
+	  <button id='btu-btn-has'>
 			${t("usingBTU.hasWallet").toUpperCase()}
+		</button>
 	  </div>
+	</div>
 	`
 }
 
+//Popup (si on a appuyer sur crée un wallet en étant sur dekstop)
 const modalDownloadContent = {
 	top:`
-	  <img id='btu-prev' class='btu-btn btu-btn-arrow' src=${icons.arrow}><img>
-	  <div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
-	  <p style="font-size: 25px">${t("isDownload.download")}</p>
-	  <p style="font-size: 16px">${t("isDownload.download_bis")}</p>
+	  <a id="btu-arrow">
+	  	<img id='btu-prev' src=${icons.arrow}><img>
+	  </a>
+	  <h1>${t("isDownload.download")}</h1>
+	  <p>${t("isDownload.download_bis")}</p>
 	`,
 	bottom: `
-		<img class='btu-qrcode' src=${icons.qrcode}></img>
-		<img id='btu-google' class='btu-store' src=${icons.google_play} style="transform: translateX(-5%)"></img>
-		<img id='btu-apple' class='btu-store' src=${icons.appstore} style="margin-top: 8%; margin-bottom: 2%; transform: translateX(-6%)"></img>
-		<div id='btu-bar'></div>
-		<div id='btu-elipse'>
-		<p style="color: #4b82ef; margin-top: 18%" >${t("isDownload.other")}</p>
+	 <div id="btu-modal-content-inner">
+       <div id="btu-modal-content-download">
+		<img src=${icons.qrcode}></img>
+		<div id="btu-separator">
+              <span>${t("isDownload.other")}</span>
 		</div>
-		<div id='btu-bar' style="margin-top: -12%;"></div>
+		<div id="btu-store">
+		<a><img id='btu-google' class='btu-store-google' src=${icons.google_play}></img></a>
+		<a><img id='btu-apple' class='btu-store-apple' src=${icons.appstore}></img>
+		</div>
+	  </div>
+	 </div>
 	`,
 }
 
+//Oublier c'est plus uttiliser
 const modalConnectContent = {
 top: `
 	<div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
@@ -319,70 +345,109 @@ top: `
 	`
 }
 
+//Popup (si on a appuyer sur j'ai un wallet ou changer de wallet)
 const modalTypeContent = {
 	top: `
-	<img id='btu-prev' class='btu-btn btu-btn-arrow' src=${icons.arrow}><img>
-	<div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
-	  <p style="font-size: 18px">${t("inputWallet.howTo")}</p>
+	<a id="btu-arrow">
+	  	<img id='btu-prev' src=${icons.arrow}><img>
+	  </a>
+	  ${t("inputWallet.howTo")}
 	`,
 	bottom: `
-	  <div id='btu-input-title'>${t("inputWallet.addrBTU")}</div>
-	  <input id='btu-wallet-input' data-btu-type='btu-input' placeholder="${t("inputWallet.placeholder")}"></input>
+	  <div id="btu-modal-content-inner">
+	  <label id="btu-input-title" for="btu-wallet-input">${t("inputWallet.addrBTU")}</label>
+	  <input id="btu-wallet-input" data-btu-type='btu-input' placeholder="0x..." />
 	  <p id='btu-error'></p>
-	  <div id='btu-wallet-type' class='btu-btn btu-btn-confirm'>
+	  
+	  <div id='btu-wallet-type' class='btu-btn-blue'>
+	  	<button>
 			${t("inputWallet.inputCo").toUpperCase()}
+		</button>
 	  </div>
+	</div>
 	`
 }
 
+//Popup (qui montre ton addresse wallet quand tu est connecter)
 const modalDoneContent = () => {return {
 top: `
-	<div class='btu-btn btu-btn-close'><p id='btu-close'>X</p></div>
-	  <p style="font-size: 16px"><b>${t("isConnected.nowCo")}</b></p>
+	  <h1>${t("isConnected.nowCo")}</h1>
 	`,
 	bottom: `
-	<div class='wallet-txt'>${sessionStorage.getItem("BTU-walletAddr")}</div>
-	<div id='btu-change-wallet' class='btu-btn btu-btn-blue'>
-	  ${t("isConnected.switchWallet").toUpperCase()}
+	<div id="btu-modal-content-inner">
+	<div id='btu-adress-txt'>${sessionStorage.getItem("BTU-walletAddr")}</div>
+	<div id='btu-change-wallet' class='btu-btn-blue'>
+		<button>
+			  ${t("isConnected.switchWallet").toUpperCase()}
+		</button>
+	</div>
 	</div>
 	`
 }}
 
+// CSS Je ne peut pas expliquer plus que ça
+
 const BTUstyles = `
-#btu-close {position: absolute; margin: 0; width: 30px; color: white; font-size: 15px; line-height: 40px;}
+#btu-close {position: absolute;top: 5px; right: 15px; z-index: 1;}
+#btu-modal-close > button { background: none; border: none; color: white; font-size: 26px; font-style: normal; font-weight: normal; cursor: pointer; padding: 0;}
+#btu-modalOut {max-width: 100%; cursor: default; display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 1300; background-color: rgba(0, 0, 0, 0.5); opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; box-sizing: border-box; font-family: "Poppins", sans-serif; padding: 20px;}
+#btu-modalOut > button { cursor: pointer;}
+#btu-modalOut > button:focus,
+#btu-modalOut > input[type="text"]:focus { outline: 0; }
+#btu-modal-text { color: white; background-color: #4B82ED;  display: flex;  flex-direction: column; align-items: center;  justify-content: center;  padding: 0 30px;  height: 120px;  border-top-left-radius: 10px;  border-top-right-radius: 10px;  position: relative;  overflow: hidden;}
+#btu-modal-text::before { content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 29px; background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAAdCAIAAADTiAkjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAU+SURBVHhe7Z3NbttGGEX5I8kwYHchdFN43/ff9R0CZBV002iRjR0vai3qoIZNUez95g5HNKkqlExKpHQPBGFmSMl0kJzvzvAn8R+fXz79lS2+58sf60gIIfbkehZfX8W+MbPG/CZxW6L5rXUBduAma89sz7K9GQ/YoPvCvVg+1w1WddrLW/HyVjZeC2u8+hHu5nawTXi30ZHz+295/PUhY+f+KV885l++rRbfVxwRQlwgdCu1S03T0fNb175xbTd+mIWHDxVP6S9/lNJ/xYhrY9PzeuA14J3cA/gdFo8rWP5+uYbx/agQYuTQxfCyF/dtkLjJmoNnKeuegOJRAFwZKJb/oO1LQnMOcXy2y70KjhJxfvGAOK91GyEGDdUMTTtT20oIsnYQN3O3OA6IxRA98jGy8v2T1YAjh/2fy70KDu5+aes2SvRCnISavue/OGvflGFcoXvYmOiXOfyJmE+L9qf7/eRehUeJOI9Xr4coxKVBTd/NUxe3ffpmV/o+M4LuFw+2NNJhaD5c7jVwTFaI/nZHqfOxQrTAWZsStwzOAG4ZXAa/VKquh1Q/shLemdxrwO84Pk495Hpx4bgAnlDid7+6d8Vw0QKuhEP0i0dzvR9tR19yr8ESZLWo52UmIU4LJW4Z3CVxSVx0BUI9L2JseW3LkeRe45hnFYTog61hHCN+sxB9Amf+9J6k08i9SU33cP2+cxAheiKsjPPc5t3cXaAij4sBwEvV3SMG6pYfity3wsUcu0T02e4LUMAXvVIN41pUEeMClv/0NYPlw4rNoOXeBAEfh+5edj+YMr44ABicF6XoKkNxflDxCPIjk/v/wVUdiD7cBGwFYPAPfxA9QVPXDG6XGGo5RVwGkPuf3/49B7nvgIs5pnu4vnzuD9Xv9xAjxPna35YZHpCiGzWFCCTF25nLfQdc5IHraX/rusV9bLLxc3ny5+hguGbudl0ft+VuIdpz0XJvA9d2ypfrumdAVwbP5wHQ/UE7m5dd3HYjJuhgbW6SuIXoCsm9M6h4vtDFVMAGnfqt++ztz5kBCHsOvzZQwYRqpoj9iNM0F0as4f4fhrBD9bNCiKMhuQ+LmuhDAajBynEYlK/vlAQXByRlIUaN5D4sJi2MmiRRUpfzfqxaXDuK+cVap5yFGC2S+y6CaoNP47ioinWS+gaYppsNcVTgIwF8pNoFNvIxQZ+KVcP4zVKRrze/GypEXmzmGWHndREVxWa3MN78fiHEAZyz3M3IoRFvvEwjp3FM4QYRB1O3ic+ib2B/vKyx9g3AshEKBt5yVwxCOWGR0LRDiDHJnbKmqdPE/m1Tx4zMdDRHxpuLRbdwHhCmBawBWW5/eTjoqwUKCUqISoIYOXDgLI1mk+J6FsVFdnq5MynDy0HZjNXwNdq0uWQtjgZKQpguwP6cKHCWgMGiiFkMtIIkTovF2QTptriaxJDnbPpu1SHLepa7qfm9uBm00TVxy9pi5OyoBJoWiK6gx6HNaYrGFpU36UDuVX2ndgQWuuVuIZqY6IvyxMA6KqIt0wJs4g6aGVwakDXlCW0yB8eRSfwwke4hd8v/k25+qhCiJawHlv3d5KBaEtD1daKsCtzTxlUYhgQTMGAI9g23+MwcbCM7Y/gBbJE7q8c0tR8JiaOBbuc/WAjRNywM1nhfG9hgeQC1E84kDGpBqUrQtDXcnxZlnSYRAm+4Bi8Y3N5PJE+T+8PT29XEjulqasFcSVwIsZVQLaxdFoxAtTYAXpVUI9SMJvi26q0PH6F2P0oVWrgKzwIG6GVgMiy9PEYxZln2HzGICcwK2od+AAAAAElFTkSuQmCC); background-position: bottom left;}
+#btu-modal-text h1 {font-family: "Roboto", sans-serif; font-style: normal; font-weight: normal; font-size: 18px; line-height: 21px; margin: 0; text-align: center;}
+#btu-modal-text > p { margin: 0; font-style: normal; font-weight: normal; font-size: 14px; line-height: 16px; text-align: center;}
+#btu-modal-action { background-color: #fafafa; display: flex; align-items: center; padding: 0 20px; height: calc(100% - 150px); overflow: auto;}
+#btu-modal-content-inner {margin: auto; text-align: center; padding: 10px 0; width: 100%;}
+#btu-modal-content-download { display: flex}
+#btu-modal-content-download > div { flex: 1;}
+#btu-modal-footer { width: 100%; height: 30px; display: flex; justify-content: flex-end; align-items: center; font-size: 10px; background-color: #fafafa; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;}
+#btu-modal-footer > a { padding-right: 15px; color: #797979; text-decoration: none;}
+#btu-modalBtn {color: white; cursor: pointer; font-size: 25px; height: 16px; width: 18px; box-sizing: border-box; text-align: center; fill: white;}
+#btu-btn-have > button {border: none; background: none; color: #4B82ED; font-style: normal; font-weight: normal; font-size: 12px; text-decoration-line: underline;}
 #btu-placeholder {max-width: calc(100%); width: 100%; display: flex; background-color: #303030; justify-content: space-between; color: white; padding-left: 15px; padding-right: 15px}
 #btu-conStatus {display: block; font-family: Lato; font-size: 13px; font-weight: 500; line-height: 20px; display: flex; align-items: center;}
 #btu-walletSpan {display: inline-block; font-family: Lato; font-size: 13px; font-weight: 400; padding-right: 5px;}
 #btu-statusLed {color: rgb(227, 70, 82); font-size: 24px; height: 12px; } #btu-statusLedIn {fill: rgb(227, 70, 82); color: rgb(227, 70, 82); font-size: 24px;}
-#btu-modalBtn {color: white; cursor: pointer; font-size: 25px; height: 16px; width: 18px; box-sizing: border-box; text-align: center; fill: white;}
-#btu-modalOut {max-width: 100%; cursor: default; display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 1300; background-color: rgba(0, 0, 0, 0.5); opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;}
-#btu-modalIn{ position: fixed; top: 50%; left: 50%; height: auto; width: 70%; max-width: 500px; max-height: calc(100% - 96px); background-color: #FFFFFF; flex: 0 1 auto; box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12); border-radius: 9px; display: flex; position: relative; overflow-y: auto; flex-direction: column; flex: 0 1 auto; transform: translate(-50%, -50%)}
-#btu-modal-text, #btu-modal-text > p {width: 100%; text-align: center; margin-top: 10px; margin-bottom: 10px; color: white; font-family: Poppins; font-size: 14px}
-#btu-modal-action {width: 70%; text-align: center; margin-bottom: 10px; color: rgba(0, 0, 0, 0.54); font-family: Poppins;  margin-top: 2%; margin-left: 15%}
-#btu-input-title {text-align: center; font-weight: bold; margin-bottom: 10px;}
-#btu-wallet-input {margin-bottom: 5px; width: 85%; border: 0.5px solid #4b82ed; height: 45px; margin-top: 5px !important; padding-left: 20px; border-radius: 25px; padding-right: 20px; color: rgba(0, 0, 0, 0.87); cursor: text; display: inline-flex; font-size: 1rem; font-family: 'Lato', sans-serif; line-height: 1.1875em; align-items: center;}
-#btu-error {color: #e34652; font-size: 0.9em; margin-top: 6px; font-weight: bold; font-family: "Poppins";}
-#btu-powered {display: block; width: 99%; color: #797979; font-size: 10px; font-family: Poppins; text-align: right;}
-#btu-openModal {cursor: pointer; display: flex; align-items: center;}
+#btu-modalIn{position: fixed; top: 50%; left: 50%; height: 360px; width: 100%; max-width: 400px; max-height: 100%; background: none; box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12); border-radius: 10px; position: relative; transform: translate(-50%, -50%); border: none; padding: 0; margin: 0;}
+#btu-input-title { display: block; color: #504F60; font-size: 16px; line-height: 24px; text-transform: uppercase; margin-bottom: 10px;}
+#btu-wallet-input { width: calc(100% - 20px); height: 45px; border: 1px solid #4B82ED; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); border-radius: 35px; margin-bottom: 20px; padding: 0 20px; background-color: transparent;}
+#btu-wallet-input:focus { outline:0; }
+#btu-adress-txt {margin: 0; color: #4B82ED; font-size: 15px; text-align: center;}
+#btu-error { color: #e34652; margin: 0 auto;}
 #btu-provider-img {padding-right: 5px; width: 22px; height: 16px;}
-#btu-bar {position: absolute; width: 0px; height: 22%; border: 0.5px solid #4B82ED; margin-left: 33%; margin-top: -37%}
-#btu-elipse {position: absolute; width: 40px; height: 40px; border: 1px solid #4B82ED; box-sizing: border-box; border-radius: 20px; margin-left: 29%; margin-top: -20%;}
-.btu-btn {cursor: pointer; line-height: 46px; height: 46px; text-align: center; margin-bottom: 10px; font-size: 11px; vertical-align: middle; box-sizing: border-box; font-family: 'Poppins', sans-serif; font-weight: bold; border-radius: 30px;}
-.btu-btn-blue {background: #4b82ed !important; color: white !important;}
-.btu-btn-confirm {background: #4b82ed !important; color: white !important; width:50%; margin-left: 25%; align-item: center; font-size: 10px}
+#btu-arrow {cursor: pointer; z-index: 1; left: 15px; top: 12px; position: absolute;}
+.btu-btn-confirm button{text-transform: uppercase;}
+#btu-store, #btu-separator { display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;}
+#btu-separator > span { color: #4B82ED; text-transform: uppercase; border: 1px solid #4B82ED; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 50%; background-color: white; z-index: 1;}
+#btu-separator:after { content: ""; position: absolute; top: 0; left: 50%; width: 1px; height: 100%; background: #4B82ED; transform: translate(-50%, 0);}
+.btu-store-apple {cursor: pointer;}
+.btu-store-google {cursor: pointer;}
+.btu-btn-blue {margin-bottom: 20px;}
+.btu-btn-blue button {background-color: #4B82ED; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); border-radius: 35px; padding: 15px 40px; border: none; color: white; font-size: 15px; font-style: normal; font-weight: normal; text-decoration-line: none;}
 .btu-btn-white {background: white !important; color: #4b82ed; !important; text-decoration: underline; width: 113%; margin-left: -4%;} .btu-btn-white:hover {text-decoration: none; background-color: rgba(0, 0, 0, 0.08);}
 .btu-btn-close {width: 30px; height: 30px; right: 0px; top: -7px; position: absolute;}
-.btu-color-blue {background: #4b82ed; padding: 10px}
-.btu-color-whale {background: #b2c7f5;}
-.btu-store {cursor: pointer; margin-top: 6%; margin-left: 70%; max-width: 130%}
-.wallet-txt {margin-bottom: 10px; font-size: 14px}
-.btu-qrcode {margin-bottom: -51%; margin-left:-65%; margin-right: 2px; transform: translateX(-12%)}
-.btu-color-white {background: #FFFFFF; padding: 15px}
-.btu-btn-arrow {display: flex; margin-top: -9px; position: absolute; width: 16px; height: 16px;}
+.btu-btn-error { border: 1px solid #e34652 !important; margin-bottom: 5px !important;}
+@media screen and (min-width: 600px) {
+	#btu-modal-action::-webkit-scrollbar { width: 5px; }
+	#btu-modal-action::-webkit-scrollbar-track {background: white;}
+	#btu-modal-action::-webkit-scrollbar-thumb {background: #e0e0e0; border-radius: 2px;}
+	#btu-modal-action::-webkit-scrollbar-thumb:hover {background: #a0a0a0;}
+}
+@media screen and (max-width: 450px) {
+	#btu-modal-content-download {  flex-direction: column; }
+	#btu-separator { margin-bottom: 20px; }
+	#btu-separator:after {  content: ""; position: absolute; top: 50%; left: 0; width: 100%; height: 1px; background: #4B82ED; transform: translate(0, -50%);}
+}
+@media screen and (max-width: 340px) { .btu-btn-blue button { padding: 10px 40px;} }
+@media screen and (max-width: 1024px) { #btu-adress-txt {overflow: scroll;} }
+
 `
 
+
 /*
-*    Initilization
+*    Fonction principale
 */
 
 var popup = true
@@ -434,6 +499,7 @@ $(() => {
 			restrictDomain = restrictDomain[0]
 	}
 
+//Va dans cette fonction si il trouve un navigateur qui possede un wallet
 	const onAccountGet = (err, res) => {
 	  if (err) {
 			console.log("BTU Dappbar Error getting ETH account:\n", err)
@@ -441,6 +507,8 @@ $(() => {
 			inputWallet(res[0])
 	  }
 	}
+
+//Cherche le wallet d'un provider si il n'y a pas de restict domain (mode dapp)
 	if (restrictDomain === undefined
 			|| (typeof restrictDomain == "string" && restrictDomain === window.location.hostname)
 			|| (Array.isArray(restrictDomain) && restrictDomain.includes(window.location.hostname))) {
@@ -481,6 +549,8 @@ $(() => {
 			}
 	  }
 
+//Cherche le wallet dans l'url si il y a un restrict domain (mode non dapp)
+
 	if (restrictDomain !== undefined
 	  && (typeof restrictDomain == "string" && restrictDomain !== window.location.hostname
 	  || (Array.isArray(restrictDomain) && !restrictDomain.includes(window.location.hostname)))) {
@@ -501,10 +571,12 @@ $(() => {
 	}
 });
 
+
 /*
-*    Dom functions
+*    Fonction qui appelle les modal HTML
 */
 
+// appel de la modal de creation si l'uttilisateur n'est pas connecter au bout de 2sec
 setTimeout(() =>{
 $(() => {
 if (popup === true) {
@@ -532,9 +604,7 @@ const changeModal = (type) => {
 	$(`#btu-modal-action`).html(next.bottom)
 }
 
-/*
-*    Click functions
-*/
+//Fonction de clic
 
 $(() => {
 	$(document).on("click", "#btu-openModal", () => {
@@ -599,9 +669,10 @@ $(() => {
 
 	$(document).on("click", "#btu-wallet-type", () => {
 	  const enteredWallet = $("input[data-btu-type='btu-input']").val() //Could not get input value
-	  if (enteredWallet && /^0[xX][0-9A-Fa-f]{40}$/.test(enteredWallet))
+	  if (enteredWallet && /^0[xX][0-9A-Fa-f]{40}$/.test(enteredWallet)) {
 			inputWallet(enteredWallet)
-	  else {
+			changeModal("done")
+	  }else {
 			$("#btu-wallet-input").css("border", "1.5px solid #e34652")
 			if (enteredWallet && enteredWallet.length) {
 			  $("#btu-error").text(t("inputWallet.invalidETH"))
