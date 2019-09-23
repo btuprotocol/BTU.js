@@ -32,6 +32,7 @@ const meta = {
 			  },
 			  "isConnected": {
 					  "nowCo": "You are connected with the following BTU address",
+					  "BTU-addr-txt": "Your BTU address :",
 					  "switchWallet": "Change wallet"
 			  },
 			  "isDownload": {
@@ -54,7 +55,7 @@ const meta = {
 			  },
 			  "invalidAddress": "Invalid address",
 	  "nonEtherumBrowser": "Non-Ethereum browser detected. You should consider trying BTU Direct!",
-	  "placeholderMissing": "Please integrate a <div id='btu-placeholder'> tag in order to use the BTU Dappbar"
+	  "placeholderMissing": "Please integrate a <div id='btu-placeholder'> tag in order to use the BTU Dappbar",
 	},
 	"fr": {
 			  "connected": "Connecté",
@@ -71,6 +72,7 @@ const meta = {
 			  },
 			  "isConnected": {
 					  "nowCo": "Vous êtes connecté à votre portefeuille",
+					  "BTU-addr-txt": "Votre adresse BTU :",
 					  "switchWallet": "Changer de portefeuille"
 			  },
 			  "isDownload": {
@@ -93,7 +95,7 @@ const meta = {
 			  },
 			  "invalidAddress": "Adresse invalide",
 	  "nonEtherumBrowser": "Votre navigateur n'utilise pas Etherum. Vous devriez essayer BTU Direct!",
-	  "placeholderMissing": "Veuillez intégrer une balise <div id='btu-placeholder'> pour utiliser la Dappbar BTU"
+	  "placeholderMissing": "Veuillez intégrer une balise <div id='btu-placeholder'> pour utiliser la Dappbar BTU",
 	  }
 }
 
@@ -375,6 +377,7 @@ top: `
 	`,
 	bottom: `
 	<div id="btu-modal-content-inner">
+	<div id='btu-adress-txt' style= "font-size: 21px;">${sessionStorage.getItem("isConnected.BTU-addr")}</div>
 	<div id='btu-adress-txt'>${sessionStorage.getItem("BTU-walletAddr")}</div>
 	<div id='btu-change-wallet' class='btu-btn-blue'>
 		<button>
@@ -414,7 +417,7 @@ const BTUstyles = `
 #btu-input-title { display: block; color: #504F60; font-size: 16px; line-height: 24px; text-transform: uppercase; margin-bottom: 10px;}
 #btu-wallet-input { width: calc(100% - 20px); height: 45px; border: 1px solid #4B82ED; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); border-radius: 35px; margin-bottom: 20px; padding: 0 20px; background-color: transparent;}
 #btu-wallet-input:focus { outline:0; }
-#btu-adress-txt {margin: 0; color: #4B82ED; font-size: 15px; text-align: center;}
+#btu-adress-txt {margin: 0; color: #6e6e6e;; font-size: 15px; text-align: center; padding-bottom: 20px;}
 #btu-error { color: #e34652; margin: 0 auto;}
 #btu-provider-img {padding-right: 5px; width: 22px; height: 16px;}
 #btu-arrow {cursor: pointer; z-index: 1; left: 15px; top: 12px; position: absolute;}
