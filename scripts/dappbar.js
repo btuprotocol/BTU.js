@@ -377,7 +377,7 @@ top: `
 	`,
 	bottom: `
 	<div id="btu-modal-content-inner">
-	<div id='btu-adress-txt' style= "font-size: 21px;">${sessionStorage.getItem("isConnected.BTU-addr")}</div>
+	<div id='btu-adress-txt' style= "font-size: 21px;">${sessionStorage.getItem("isConnected.BTU-addr-txt")}</div>
 	<div id='btu-adress-txt'>${sessionStorage.getItem("BTU-walletAddr")}</div>
 	<div id='btu-change-wallet' class='btu-btn-blue'>
 		<button>
