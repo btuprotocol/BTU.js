@@ -103,7 +103,7 @@ const meta = {
  * Constants
  */
 
-var pages = 1;
+var page = 1;
 var walletinput = sessionStorage.getItem("BTU-inputwallet");
 const placeholderTag = "btu-placeholder"
 const defaultAddr = "0xd00551b9d6CB3C4dDfc36df874c642b19D2b9e22"
@@ -156,7 +156,6 @@ const findGetParameter = (parameterName) => {
 	}
 	return result;
 }
-
 
 // Afficher le wallet et le sauver dans le session storage
 const inputWallet = (addr) => {
@@ -316,7 +315,6 @@ const modalCreateContent = {
 		    </button>
 	    </div>
 	  </div>
-	</div>
 	`
 }
 
@@ -367,7 +365,6 @@ const modalTypeContent = {
 		    </button>
 	    </div>
 	  </div>
-	</div>
 	`
 }
 
@@ -459,17 +456,6 @@ $(() => {
 	  return
 	}
 	const debug = findGetParameter("debug") ? true : false
-	/* Already on html
-	const jquery = document.createElement("script")
-	const web3js = document.createElement("script")
-	jquery.src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-	jquery.async = true
-
-	web3js.src = "https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"
-	web3js.async = true
-	document.body.appendChild(jquery)
-	document.body.appendChild(web3js)
-	*/
 
 	let style = document.createElement('style')
 	style.type='text/css'
@@ -501,18 +487,27 @@ $(() => {
 	}
 
 //Va dans cette fonction si il trouve un navigateur qui possede un wallet
-	const onAccountGet = (err, res) => {
-	  if (err) {
-			console.log("BTU Dappbar Error getting ETH account:\n", err)
-	  } else {
-			inputWallet(res[0])
-	  }
-	}
+const onAccountGet = (err, res) => {
+  if (err) {
+    console.log("BTU Dappbar Error getting ETH account:\n", err)
+  } else {
+    inputWallet(res[0])
+  }
+}
 
 if (restrictDomain === undefined
   || (typeof restrictDomain === "string" && restrictDomain === window.location.hostname)
   || (Array.isArray(restrictDomain) && restrictDomain.includes(window.location.hostname))) {
+  // La dappbar est autorisée sur ce site
   $(document).ready(async () => {
+    // Sauvegarde de l'état de la dappbar
+    sessionStorage.setItem('BTU-dappbarEnabled', true)
+
+    // Création d'un événement indiquant que la dappbar est autorisée
+    let btuDappbarEnabledEvent = document.createEvent('Event')
+    btuDappbarEnabledEvent.initEvent('BTU-dappbarEnabled', true, true)
+    window.dispatchEvent(btuDappbarEnabledEvent)
+
     if (debug) {
       alert("document ready/" + window.location.hostname)
       alert((window.ethereum ? " detected wallet true" : "detected wallet false"))
@@ -549,6 +544,17 @@ if (restrictDomain === undefined
     }
   })
   } else {
+    // La dappbar n'est pas autorisée sur ce domaine
+
+    // Sauvegarde du statut d'activation de la dappbar
+    sessionStorage.setItem('BTU-dappbarEnabled', false)
+
+    // Masquage de la dappbar
+    let dappbarDiv = document.getElementById('btu-placeholder')
+    if (dappbarDiv) {
+      dappbarDiv.style.display = 'none'
+    }
+
     if (debug) {
       alert("Not connecting")
     }
@@ -653,7 +659,7 @@ $(() => {
 			$("#btu-modalOut").hide()
 	  }
 	  else {
-	  	pages = 1
+	  	page = 1
 	  	changeModal("download")
 	  }
 	})
@@ -691,14 +697,14 @@ $(() => {
 	})
 
 	$(document).on("click", "#btu-prev", () => {
-		if (pages === 1)
+		if (page === 1)
 			changeModal("create")
-		if (pages === 2)
+		if (page === 2)
 			changeModal("done")
 	})
 
 	$(document).on("click", "#btu-change-wallet", () => {
-	  pages = 2
+	  page = 2
 	  changeModal("type")
 	})
 	$(document).on("click", "#btu-close", () => {
