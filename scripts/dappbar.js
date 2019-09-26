@@ -103,7 +103,7 @@ const meta = {
  * Constants
  */
 
-var page = 1;
+var pages = 1;
 var walletinput = sessionStorage.getItem("BTU-inputwallet");
 const placeholderTag = "btu-placeholder"
 const defaultAddr = "0xd00551b9d6CB3C4dDfc36df874c642b19D2b9e22"
@@ -653,7 +653,7 @@ $(() => {
 			$("#btu-modalOut").hide()
 	  }
 	  else {
-	  	page = 1
+	  	pages = 1
 	  	changeModal("download")
 	  }
 	})
@@ -691,14 +691,14 @@ $(() => {
 	})
 
 	$(document).on("click", "#btu-prev", () => {
-		if (page === 1)
+		if (pages === 1)
 			changeModal("create")
-		if (page === 2)
+		if (pages === 2)
 			changeModal("done")
 	})
 
 	$(document).on("click", "#btu-change-wallet", () => {
-	  page = 2
+	  pages = 2
 	  changeModal("type")
 	})
 	$(document).on("click", "#btu-close", () => {
