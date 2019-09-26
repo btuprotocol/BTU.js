@@ -409,7 +409,8 @@ const BTUstyles = `
 #btu-modal-footer > a { padding-right: 15px; color: #797979; text-decoration: none;}
 #btu-modalBtn {color: white; cursor: pointer; font-size: 25px; height: 16px; width: 18px; box-sizing: border-box; text-align: center; fill: white;}
 #btu-btn-has {border: none; background: none; color: #4B82ED; font-style: normal; font-weight: normal; font-size: 12px; text-decoration-line: underline;}
-#btu-dappbarContainer {max-width: calc(100%); width: 100%; height: 24px; display: flex; background-color: #303030; justify-content: space-between; color: white; padding-left: 15px; padding-right: 15px; box-sizing: border-box;}
+#btu-placeholder {width:100%;box-sizing:border-box;}
+#btu-dappbarContainer {width: 100%; height: 24px; display: flex; background-color: #303030; justify-content: space-between; color: white; padding-left: 15px; padding-right: 15px; box-sizing: border-box;}
 #btu-conStatus {font-family: Lato; font-size: 13px; font-weight: 500; line-height: 20px; display: flex; align-items: center; cursor: pointer;}
 #btu-openModal {display: flex; align-items: center; cursor: pointer;}
 #btu-walletSpan {display: inline-block; font-family: Lato; font-size: 13px; font-weight: 400; padding-right: 5px;}
