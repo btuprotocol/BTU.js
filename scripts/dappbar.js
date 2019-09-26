@@ -157,6 +157,7 @@ const findGetParameter = (parameterName) => {
 	return result;
 }
 
+
 // Afficher le wallet et le sauver dans le session storage
 const inputWallet = (addr) => {
 	if (addr && /^0[xX][0-9A-Fa-f]{40}$/.test(addr)) {
