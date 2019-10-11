@@ -156,7 +156,6 @@ const _btu_getLanguage = () => {
  *
  * @param {string} language - Code langue
  */
-//const btuSetLanguage = (language) => {
 function _btu_setLanguage(language) {
   if (typeof language === 'string' && _btu_config.supportedLanguages.includes(language))
     _btu_config.currentLanguage = language
@@ -169,7 +168,7 @@ const _btu_initLanguage = () => {
   if (_btu_config.currentLanguage === null) {
     const languageParam = _btu_getParameter('hl')
     if (languageParam === 'fr' || document.documentElement.lang === 'fr')
-      btuSetLanguage('fr')
+    _btu_setLanguage('fr')
   }
 }
 
@@ -503,7 +502,6 @@ const _btu_cSS = `
  *
  * @param {bool} initTimer - true s'il faut également initialiser le timer d'ouverture de popup
  */
-//const _btu_loadDappbar = (initTimer = false) => {
 function _btu_loadDappbar(initTimer = false) {
   if ($(`#${_btu_config.placeholderTag}`).length === 0) {
 	  console.log(_btu_translate("placeholderMissing"))
