@@ -443,7 +443,7 @@ const _btu_templateModalDoneContent = () => {
 const _btu_cSS = `
 #btu-modal-close {position: absolute; top: 0; right: 16px; z-index: 1;}
 #btu-close { background: none; border: none; color: white; font-size: 26px; font-style: normal; font-weight: normal; padding: 0;}
-#btu-modalOut {max-width: 100%; cursor: default; display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 1300; background-color: rgba(0, 0, 0, 0.5); opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; box-sizing: border-box; font-family: "Poppins", sans-serif; padding: 20px;}
+#btu-modalOut {max-width: 100%; cursor: default; display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 1400; background-color: rgba(0, 0, 0, 0.5); opacity: 1; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; box-sizing: border-box; font-family: "Poppins", sans-serif; padding: 20px;}
 #btu-modalOut button { cursor: pointer;}
 #btu-modalOut button:focus, #btu-modalOut input[type="text"]:focus { outline: 0; }
 #btu-modalIn{position: absolute; top: 50%; left: 50%; height: 360px; width: calc(100% - 40px); max-width: 400px; max-height: 100%; background: #fafafa; box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12); border-radius: 10px; transform: translate(-50%, -50%); border: none; padding: 0; margin: 0;}
