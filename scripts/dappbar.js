@@ -6,9 +6,12 @@
 /*                                                                            */
 /******************************************************************************/
 
+// Protection contre les conflits de version jQuery
+var jQuery_btu = $.noConflict(true);
+
 // Refresh de la page si button back
 
-$(window).on('popstate', function() {
+jQuery_btu(window).on('popstate', function() {
 	location.reload(true);
 });
 
@@ -188,17 +191,17 @@ const _btu_inputWallet = (addr) => {
 	if (addr && /^0[xX][0-9A-Fa-f]{40}$/.test(addr)) {
 	  sessionStorage.setItem('BTU-walletAddr', addr)
 	  sessionStorage.setItem("BTU-walletConnected", true)
-	  $("#btu-conStatus").html(_btu_getWalletProvider() + " " + _btu_translate("connected"))
-    $("#btu-walletSpan").html(addr.substring(0, 5) + '...' + addr.substring(38, 42))
-	  $("#btu-statusLed > circle").css("color", "#0ca768")
-    $("#btu-statusLed > circle").css("fill", "#0ca768")
+	  jQuery_btu("#btu-conStatus").html(_btu_getWalletProvider() + " " + _btu_translate("connected"))
+    jQuery_btu("#btu-walletSpan").html(addr.substring(0, 5) + '...' + addr.substring(38, 42))
+	  jQuery_btu("#btu-statusLed > circle").css("color", "#0ca768")
+    jQuery_btu("#btu-statusLed > circle").css("fill", "#0ca768")
     _btu_popupIsOpen = false
-    $("#btu-modalOut").hide()
+    jQuery_btu("#btu-modalOut").hide()
     /*
     if (_btu_popupIsOpen === true) {
       _btu_changeModal(_btu_config.currentModalType)
-      $("#btu-address-txt").html(addr)
-      $("#btu-modalOut").show()
+      jQuery_btu("#btu-address-txt").html(addr)
+      jQuery_btu("#btu-modalOut").show()
     }
     */
 	}
@@ -503,7 +506,7 @@ const _btu_cSS = `
  * @param {bool} initTimer - true s'il faut également initialiser le timer d'ouverture de popup
  */
 function _btu_loadDappbar(initTimer = false) {
-  if ($(`#${_btu_config.placeholderTag}`).length === 0) {
+  if (jQuery_btu(`#${_btu_config.placeholderTag}`).length === 0) {
 	  console.log(_btu_translate("placeholderMissing"))
 	  return
   }
@@ -533,7 +536,7 @@ function _btu_loadDappbar(initTimer = false) {
 	sessionStorage.setItem('BTU-walletAddr', _btu_config.defaultWallet)
 	sessionStorage.setItem("BTU-walletConnected", false)
 
-	let restrictDomain = $(`#${_btu_config.placeholderTag}`).data("restrict-domain")
+	let restrictDomain = jQuery_btu(`#${_btu_config.placeholderTag}`).data("restrict-domain")
 
 	if (restrictDomain) {
 	  restrictDomain = restrictDomain.split(",")
@@ -554,7 +557,7 @@ function _btu_loadDappbar(initTimer = false) {
     || (typeof restrictDomain === "string" && restrictDomain === window.location.hostname)
     || (Array.isArray(restrictDomain) && restrictDomain.includes(window.location.hostname))) {
     // La dappbar est autorisée sur ce site
-    $(document).ready(async () => {
+    jQuery_btu(document).ready(async () => {
       // Sauvegarde de l'état de la dappbar
       sessionStorage.setItem('BTU-dappbarEnabled', true)
 
@@ -629,7 +632,7 @@ function _btu_loadDappbar(initTimer = false) {
       sessionStorage.setItem('BTU-walletAddr', _btu_config.defaultWallet)
     return null
 	} else {
-	  $(`#${_btu_config.placeholderTag}`).html(_btu_templateDappbar() + _btu_templateModal())
+	  jQuery_btu(`#${_btu_config.placeholderTag}`).html(_btu_templateDappbar() + _btu_templateModal())
     _btu_changeModal(_btu_config.currentModalType)
   }
 
@@ -640,13 +643,13 @@ function _btu_loadDappbar(initTimer = false) {
   } else {
     if (_btu_popupIsOpen === true) {
       _btu_changeModal(_btu_config.currentModalType)
-      $("#btu-modalOut").show()
+      jQuery_btu("#btu-modalOut").show()
     }
   }
 }
 
 // Chargement de la dappbar à la création du document
-$(() => {
+jQuery_btu(() => {
 	_btu_loadDappbar(true);
 });
 
@@ -674,11 +677,11 @@ const _btu_initPopupTimer = () => {
 
   // Initialisation du timer
   _btu_popupTimer = setTimeout(() => {
-    $(() => {
+    jQuery_btu(() => {
       if (_btu_openPopup === true) {
         _btu_popupIsOpen = true
         _btu_changeModal('create')
-        $("#btu-modalOut").show()
+        jQuery_btu("#btu-modalOut").show()
       }
     })
   }, 2000);
@@ -703,15 +706,15 @@ const _btu_changeModal = (type) => {
       return
   }
 
-	$(`#btu-modal-text`).html(next.top)
-  $(`#btu-modal-action`).html(next.bottom)
+	jQuery_btu(`#btu-modal-text`).html(next.top)
+  jQuery_btu(`#btu-modal-action`).html(next.bottom)
   
   _btu_config.currentModalType = type
 }
 
 // Gestion des actions à la souris
-$(() => {
-	$(document).on("click", "#btu-openModal", () => {
+jQuery_btu(() => {
+	jQuery_btu(document).on("click", "#btu-openModal", () => {
 	  const connected = sessionStorage.getItem("BTU-walletConnected")
 	  if (connected === 'true')
 			_btu_changeModal('done')
@@ -719,39 +722,39 @@ $(() => {
 			_btu_changeModal('create')
     //change content of div to create or logged depending on connected or not
     _btu_popupIsOpen = true
-	  $("#btu-modalOut").show()
+	  jQuery_btu("#btu-modalOut").show()
 	})
 
-	$(document).on("click", "#btu-conStatus", () => {
+	jQuery_btu(document).on("click", "#btu-conStatus", () => {
     const connected = sessionStorage.getItem("BTU-walletConnected")
     if (connected === 'true')
       _btu_changeModal('done')
     else
       _btu_changeModal('create')
       _btu_popupIsOpen = true
-    $("#btu-modalOut").show()
+    jQuery_btu("#btu-modalOut").show()
   })
 
-	$(document).on("click", "#btu-modalIn", (e) => {
+	jQuery_btu(document).on("click", "#btu-modalIn", (e) => {
 	  e.stopPropagation()
 	})
 
-	$(document).on("click", "#btu-modalOut", (e) => {
+	jQuery_btu(document).on("click", "#btu-modalOut", (e) => {
     _btu_popupIsOpen = false
-	  $("#btu-modalOut").hide()
+	  jQuery_btu("#btu-modalOut").hide()
 	  e.stopPropagation()
 	})
 
-	$(document).on("click", "#btu-btn-create", () => {
+	jQuery_btu(document).on("click", "#btu-btn-create", () => {
 	  if (/Android/i.test(navigator.userAgent)) {
       window.open('https://play.google.com/store/apps/details?id=com.btu_direct.wallet', '_blank')
       _btu_popupIsOpen = false
-			$("#btu-modalOut").hide()
+			jQuery_btu("#btu-modalOut").hide()
 	  }
 	  if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
       window.open('https://apps.apple.com/fr/app/btu-protocol/id1473117679', '_blank')
       _btu_popupIsOpen = false
-			$("#btu-modalOut").hide()
+			jQuery_btu("#btu-modalOut").hide()
 	  }
 	  else {
 	  	_btu_config.page = 1
@@ -759,51 +762,51 @@ $(() => {
 	  }
 	})
 
-	$(document).on("click", "#btu-btn-hasCreated", () => {
+	jQuery_btu(document).on("click", "#btu-btn-hasCreated", () => {
 	  window.reload()
 	})
 
-	$(document).on("click", "#btu-google", () => {
+	jQuery_btu(document).on("click", "#btu-google", () => {
     window.open('https://play.google.com/store/apps/details?id=com.btu_direct.wallet', '_blank')
 	})
 
-	$(document).on("click", "#btu-apple", () => {
+	jQuery_btu(document).on("click", "#btu-apple", () => {
     window.open('https://apps.apple.com/fr/app/btu-protocol/id1473117679', '_blank')
 	})
 
-	$(document).on("click", "#btu-btn-has", () => {
+	jQuery_btu(document).on("click", "#btu-btn-has", () => {
 	  _btu_changeModal("type")
 	})
 
-	$(document).on("click", "#btu-wallet-type", () => {
-	  const enteredWallet = $("input[data-btu-type='btu-input']").val() //Could not get input value
+	jQuery_btu(document).on("click", "#btu-wallet-type", () => {
+	  const enteredWallet = jQuery_btu("input[data-btu-type='btu-input']").val() //Could not get input value
 	  if (enteredWallet && /^0[xX][0-9A-Fa-f]{40}$/.test(enteredWallet)) {
 			sessionStorage.setItem("BTU-InputWallet", enteredWallet)
 			_btu_inputWallet(enteredWallet)
 			_btu_changeModal("done")
 	  } else {
-			$("#btu-wallet-input").css("border", "1.5px solid #e34652")
+			jQuery_btu("#btu-wallet-input").css("border", "1.5px solid #e34652")
 			if (enteredWallet && enteredWallet.length) {
-			  $("#btu-error").text(_btu_translate("inputWallet.invalidETH"))
+			  jQuery_btu("#btu-error").text(_btu_translate("inputWallet.invalidETH"))
 			} else {
-			  $("#btu-error").text(_btu_translate("inputWallet.requiredETH"))
+			  jQuery_btu("#btu-error").text(_btu_translate("inputWallet.requiredETH"))
 			}
 	  }
 	})
 
-	$(document).on("click", "#btu-prev", () => {
+	jQuery_btu(document).on("click", "#btu-prev", () => {
 		if (_btu_config.page === 1)
 			_btu_changeModal("create")
 		if (_btu_config.page === 2)
 			_btu_changeModal("done")
 	})
 
-	$(document).on("click", "#btu-change-wallet", () => {
+	jQuery_btu(document).on("click", "#btu-change-wallet", () => {
 	  _btu_config.page = 2
 	  _btu_changeModal("type")
 	})
-	$(document).on("click", "#btu-close", () => {
+	jQuery_btu(document).on("click", "#btu-close", () => {
     _btu_popupIsOpen = false
-		$("#btu-modalOut").hide()
+		jQuery_btu("#btu-modalOut").hide()
 	})
 })
