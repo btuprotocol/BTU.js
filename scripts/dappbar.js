@@ -42,6 +42,7 @@ const _btu_translations = {
       "choiceConnected": "Provide your BTU address OR create one in a few clicks.",
       "usingConnected": "In order to use this service, please connect to your wallet, BTU Direct for example",
       "createWallet": "Create a BTU wallet",
+      "downloadApp": "Download our free app",
       "hasWallet": "I already have a  BTU wallet",
       "changeWallet": "Change wallet",
       "connection": "Connection"
@@ -82,6 +83,7 @@ const _btu_translations = {
       "choiceConnected": "Utilisez votre adresse BTU ou créez-en une en quelques clics si vous n’en avez pas.",
       "usingConnected": "Pour utiliser ce service, veuillez vous connecter à un portefeuille, BTU Direct par exemple",
       "createWallet": "Je crée une adresse BTU",
+      "downloadApp": "Téléchargez notre app gratuite",
       "hasWallet": "J’ai une adresse BTU",
       "changeWallet": "Changer de portefeuille",
       "connection": "Connexion"
@@ -353,7 +355,10 @@ const _btu_templateModalCreateContent = () => {
       <div id="btu-modal-content-inner">
         <div id="btu-btn-create" class="btu-btn-blue">
           <button id="btu-btn-create">
-            ${_btu_translate("usingBTU.createWallet")}
+            ${/Android/i.test(navigator.userAgent) || /iPhone|iPad|iPod/i.test(navigator.userAgent)
+              ? _btu_translate("usingBTU.downloadApp")
+              : _btu_translate("usingBTU.createWallet")
+            }
           </button>
         </div>
         <div id="btu-btn-has-wrapper">
