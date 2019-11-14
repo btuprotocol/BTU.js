@@ -415,6 +415,14 @@ function btuSearch(searchQuery) {
     const guest = 1
     const pageNum = 1
 
+    let addressBtu = null
+    const container = document.getElementById('btu-hotel-container')
+    if (container && container.dataset && container.dataset.address) {
+      addressBtu = container.dataset.address
+    }
+
+    console.log(addressBtu)
+
     const query = {
       searchType: 'query',
       options: { searchQuery },
@@ -444,6 +452,9 @@ function btuSearch(searchQuery) {
               end: endDateString,
               city: data.cities[i].defaultName + ', ' + data.cities[i].region,
               countryCode: data.cities[i].countryCode,
+            }
+            if (addressBtu) {
+              parameters.w = addressBtu
             }
             url += Object.keys(parameters).map(function(key) {
               return [key, parameters[key]].map(encodeURIComponent).join("=").replace(/'/g, "%27")
