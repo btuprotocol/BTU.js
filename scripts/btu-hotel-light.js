@@ -197,7 +197,7 @@ const _btu_lightWidget = () => {
 const _btu_CSS = `
 #btu-hotel-container {
   width: 100%;
-  height: auto;
+  height: 100%;
   font-family: "Poppins", sans-serif;
   background-color: white;
   border: 1px solid #797979;
@@ -206,6 +206,7 @@ const _btu_CSS = `
 
 .btu-hotel-landing {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
