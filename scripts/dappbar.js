@@ -35,15 +35,19 @@ const _btu_config = {
 const _btu_translations = {
   "en": {
     "connected": "Connected",
-    "notConnected": "Not connected",
+    "notConnected": "Connect Wallet",
     "connectionRequired": "Connection required",
     "usingBTU": {
       "using": "To use this service, please provide us with your BTU address",
+      "usingMobile": "Connect or download your wallet",
       "choiceConnected": "Provide your BTU address OR create one in a few clicks.",
       "usingConnected": "In order to use this service, please connect to your wallet, BTU Direct for example",
       "createWallet": "Create a BTU wallet",
       "downloadApp": "Download our free app",
+      "btuDirect": "BTU Direct",
+      "trustWallet": "Trust Wallet",
       "hasWallet": "I already have a  BTU wallet",
+      "hasWalletMobile": "Write down my wallet address",
       "changeWallet": "Change wallet",
       "connection": "Connection"
     },
@@ -80,11 +84,15 @@ const _btu_translations = {
     "connectionRequired": "Connexion requise",
     "usingBTU": {
       "using": "Pour utiliser ce service, vous devez nous fournir une adresse BTU",
+      "usingMobile": "Pour utiliser ce service, vous devez nous fournir une adresse BTU",
       "choiceConnected": "Utilisez votre adresse BTU ou créez-en une en quelques clics si vous n’en avez pas.",
       "usingConnected": "Pour utiliser ce service, veuillez vous connecter à un portefeuille, BTU Direct par exemple",
       "createWallet": "Je crée une adresse BTU",
       "downloadApp": "Téléchargez notre app gratuite",
+      "btuDirect": "BTU Direct",
+      "trustWallet": "Trust Wallet",
       "hasWallet": "J’ai une adresse BTU",
+      "hasWalletMobile": "J’ai une adresse BTU",
       "changeWallet": "Changer de portefeuille",
       "connection": "Connexion"
     },
@@ -296,9 +304,9 @@ const _btu_getWalletProvider = () => {
 // Dapp bar
 const _btu_templateDappbar = () => {
   return `
-    <div id='btu-conStatus'>${_btu_translate("connectionRequired")}</div>
+    <div id='btu-conStatus'><span class='btu-barButton'>${_btu_translate("connectionRequired")}<span></div>
     <div id='btu-openModal'>
-      <span id='btu-walletSpan'>${_btu_translate("notConnected")}</span>
+      <span id='btu-walletSpan' class='btu-barButton'>${_btu_translate("notConnected")}</span>
       <svg id='btu-statusLed' focusable='false' viewBox='0 0 24 24' aria-hidden='true' role='presentation'>
         <circle id='btu-statusLedIn' cx='12' cy='12' r='10'></circle>
         <path fill='none' d='M0 0h24v24H0z'></path>
@@ -345,27 +353,134 @@ const _btu_templateModal = () => {
   `;
 }
 
+const _btu_downloadSection = () => {
+  if (_btu_getLanguage() === 'fr') {
+    return `
+      <div id="btu-btn-create" class="btu-btn-blue">
+        <button id="btu-btn-create">
+          ${_btu_translate("downloadApp")}
+        </button>
+      </div>
+    `
+  }
+
+  return `
+    <div id="btu-btn-create" class="btu-btn-blue">
+      <button id="btu-btn-create">
+        BTU Direct
+      </button>
+    </div>
+    <div id="btu-btn-create" class="btu-btn-blue">
+      <button id="btu-btn-create">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M17.493 7C21.335 9.948 25.741 9.766 27 9.766C26.725 26.532 24.627 24.299 17.493 29C10.360 24.299 8.275 26.532 8 9.7662C9.246 9.766 13.651 9.948 17.493 7Z" stroke="#ffffff" stroke-width="2.7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Trust Wallet
+      </button>
+    </div>
+  `
+}
+
+// Bloc non-connecté si mobile et français
+_btu_createMobileFr = () => {
+  return `
+    <div id="btu-btn-create" class="btu-btn-blue">
+      <button id="btu-btn-create">
+        ${_btu_translate("usingBTU.downloadApp")}
+      </button>
+    </div>
+    <div id="btu-btn-has-wrapper">
+      <button id="btu-btn-has" class="btu-btn-link">
+        ${_btu_translate("usingBTU.hasWallet")}
+      </button>
+    </div>
+  `
+}
+
+// Bloc non-connecté si mobile et anglais
+_btu_createMobileEn = () => {
+  return `
+    <div class="btu-create-list">
+      <button id="btu-btn-create" class="btu-create-list-btn">
+        <span class="btu-create-list-image">
+          <svg width="24px" height="23px" viewBox="0 0 48 46" version="1.1">
+            <path fill="#4B82ED" d="M18.3818,0.7637 C21.9810,-0.0989 25.7731,-0.0775 29.3789,0.7340 C29.4004,0.7653 29.4432,0.8263 29.4663,0.8577 C30.3224,2.0255 31.1521,3.2131 31.8878,4.4618 C32.5459,5.5472 33.1216,6.6771 33.6791,7.8169 C35.1637,7.7294 36.6548,7.6602 38.1426,7.7476 C39.2824,7.7773 40.4140,7.9125 41.5488,8.0164 L41.6824,8.0247 C43.0713,9.5686 44.2556,11.2907 45.2107,13.1331 C44.8164,14.3307 44.3826,15.5117 43.8828,16.6680 C43.0482,14.4577 41.8523,12.3975 40.3777,10.5534 C38.5187,10.3455 36.6432,10.3175 34.7744,10.3950 C35.6189,12.6268 36.2523,14.9344 36.6861,17.2816 C36.9072,18.6358 37.0952,19.9983 37.1744,21.3707 C37.0144,22.0701 37.7385,22.3637 37.9397,22.9459 C38.4428,24.0016 38.1096,25.3311 37.2239,26.0783 C37.2123,26.2169 37.1909,26.4907 37.1793,26.6276 C37.1397,27.2280 37.0952,27.8268 37.0193,28.4239 C36.9352,29.2404 36.8,30.0519 36.6680,30.8635 C36.2342,33.2437 35.5744,35.5793 34.7134,37.8408 C36.5476,37.9249 38.3835,37.8837 40.2111,37.7138 C41.8375,35.7624 43.1323,33.5307 43.9736,31.1307 C44.4206,29.9183 44.7059,28.6548 44.9352,27.3863 C45.5637,28.5839 46.1575,29.7979 46.6919,31.04 L46.7513,31.1719 C45.6527,34.6193 43.8020,37.8639 41.2734,40.4519 C38.7265,40.4684 36.1731,40.6284 33.6313,40.4041 C33.0193,41.5455 32.4453,42.7084 31.7723,43.8169 C30.5946,44.2754 29.3822,44.64 28.1451,44.8940 L27.8614,44.9567 C28.96,43.4078 29.9595,41.7880 30.8206,40.0956 C28.4981,39.7261 26.2037,39.1703 23.9851,38.3884 C22.7068,37.9364 21.4465,37.4268 20.2259,36.8395 C19.9686,36.7142 19.7113,36.5938 19.4540,36.4734 C18.7183,36.8016 17.8375,36.8280 17.1167,36.4453 C16.3101,36.0428 15.7591,35.2049 15.6832,34.3109 C15.5859,34.24 15.3913,34.0964 15.2940,34.0239 C14.0981,33.2470 12.9748,32.3645 11.8746,31.4573 C10.0651,29.9035 8.3892,28.1962 6.88,26.3505 C5.7880,28 4.8527,29.7468 4.0247,31.5414 C4.8643,33.8672 6.1905,35.9967 7.7723,37.8886 C9.7319,38.0569 11.7047,38.1030 13.6676,37.9694 C13.6841,38.0107 13.7171,38.0915 13.7319,38.1327 C14.0618,38.9426 14.4098,39.7443 14.7826,40.5360 C13.4630,40.6301 12.1435,40.7175 10.8206,40.6878 C9.4696,40.6696 8.1237,40.5723 6.7777,40.4437 C6.7018,40.4338 6.5501,40.4156 6.4742,40.4057 C3.3764,37.0837 1.2206,32.8808 0.4090,28.4057 C-0.1764,25.2420 -0.1336,21.9546 0.5723,18.8123 C1.4350,14.9096 3.3105,11.2412 5.9529,8.2457 C9.1909,4.5492 13.5950,1.8837 18.3818,0.7637 L18.3818,0.7637 Z M20.5080,3.0383 C19.2032,3.2626 17.9051,3.5694 16.6663,4.0445 C14.4428,4.8346 12.3810,6.0404 10.5303,7.4985 C9.4878,8.3760 8.4849,9.3113 7.6288,10.3752 C6.0750,12.2259 4.8098,14.3472 4.0032,16.6235 C4.8181,18.4511 5.7797,20.2144 6.8816,21.8870 C8.3562,20.0692 10.0156,18.4032 11.7657,16.8593 C12.8775,15.9901 13.9529,15.0597 15.1604,14.3257 L15.1587,14.2977 C15.3435,14.1756 15.5249,14.0486 15.7047,13.9167 C15.7080,13.3723 15.8432,12.8230 16.1550,12.3711 C16.8989,11.1967 18.6078,10.8404 19.7657,11.6057 C19.9620,11.5167 20.1583,11.4259 20.3562,11.3369 C21.5538,10.7447 22.8123,10.2927 24.0511,9.8012 C26.2828,9.0639 28.5756,8.5014 30.8948,8.1154 C30.0057,6.3802 29.0061,4.7010 27.8548,3.1257 C25.4334,2.6771 22.9410,2.6622 20.5080,3.0383 L20.5080,3.0383 Z M28.1253,11.3731 C26.8024,11.6931 25.4993,12.0940 24.2259,12.5707 L24.2787,12.5921 C23.1455,12.9006 22.0849,13.4713 21.0012,13.9331 C20.9105,14.6721 20.6020,15.4111 19.9983,15.8762 C19.2049,16.5426 18.0239,16.6432 17.1117,16.1632 C16.0280,16.8907 14.9525,17.6395 13.9694,18.5022 C12.8445,19.3913 11.8037,20.3859 10.8123,21.4202 C9.9859,22.2762 9.2206,23.1884 8.4816,24.1187 C9.2931,25.1414 10.1360,26.1410 11.0581,27.0663 L11.0531,27.0878 C12.0412,28.0610 13.0391,29.0292 14.1327,29.8853 C14.9971,30.6094 15.9158,31.2643 16.8445,31.8993 C17.6659,31.3550 18.7859,31.3187 19.6338,31.8235 C20.4964,32.3084 20.9863,33.2964 20.9567,34.2729 C22.0107,34.7711 23.0729,35.2527 24.1698,35.6470 C25.4630,36.1352 26.7876,36.5410 28.1303,36.8692 C29.3938,37.1826 30.6771,37.4070 31.9653,37.5917 C32.4684,36.3480 32.9204,35.0828 33.2767,33.7880 L33.2948,33.7797 C33.6544,32.4239 33.9744,31.0564 34.1888,29.6692 C34.3604,28.6152 34.4659,27.5529 34.5550,26.4874 C33.8721,26.1888 33.3030,25.6214 33.0606,24.9105 C32.5723,23.6288 33.2865,22.0898 34.5517,21.5901 C34.4692,20.5080 34.3620,19.4276 34.1789,18.3587 C33.9744,16.9731 33.6478,15.6090 33.2816,14.2597 C32.9204,13.0342 32.5063,11.8268 32.0346,10.6408 C30.72,10.8206 29.4119,11.0482 28.1253,11.3731 L28.1253,11.3731 Z M2.9459,20.4618 C2.5567,22.8783 2.5534,25.3525 2.9591,27.7674 C3.6387,26.5105 4.4057,25.3047 5.2008,24.1171 C4.3958,22.9311 3.6453,21.7121 2.9459,20.4618 Z"></path>
+            <g fill="#4B82ED" opacity="0.2">
+              <path d="M29.4663,0.8577 C29.7105,0.7637 29.9546,0.8973 30.1921,0.9468 C32.1781,1.5076 34.1344,2.2647 35.8861,3.3649 C35.2544,4.0725 34.3686,4.4767 33.6874,5.1315 C33.1035,4.8725 32.5459,4.4684 31.8878,4.4618 C31.1521,3.2131 30.3224,2.0255 29.4663,0.8577 Z"></path>
+              <path d="M16.6663,4.0445 C17.9051,3.5694 19.2032,3.2626 20.5080,3.0383 C19.4210,4.6482 18.3290,6.2713 17.5076,8.0379 C19.4903,8.3562 21.4465,8.8296 23.3534,9.4614 C23.6024,9.5373 23.8317,9.6593 24.0511,9.8012 C22.8123,10.2927 21.5538,10.7447 20.3562,11.3369 C19.0416,10.9855 17.7022,10.7134 16.3513,10.5468 C15.8779,11.6931 15.4408,12.8626 15.1323,14.0635 L15.1587,14.2977 L15.1604,14.3257 C13.9529,15.0597 12.8775,15.9901 11.7657,16.8593 C12.0824,14.5913 12.8676,12.4255 13.5653,10.2564 C11.5859,10.1377 9.6016,10.1872 7.6288,10.3752 C8.4849,9.3113 9.4878,8.3760 10.5303,7.4985 C11.9175,7.5810 13.3113,7.5612 14.6985,7.6734 C15.3336,6.4527 15.9719,5.2338 16.6663,4.0445 Z"></path>
+              <path d="M35.8861,3.3649 L35.9142,3.3319 C37.8457,4.4668 39.6189,5.8705 41.1694,7.4870 C41.3129,7.6486 41.4960,7.7954 41.5488,8.0164 C40.4140,7.9125 39.2824,7.7773 38.1426,7.7476 C37.5224,7.7410 37.0523,7.3220 36.5954,6.9591 C35.6849,6.2614 34.6853,5.6923 33.6874,5.1315 C34.3686,4.4767 35.2544,4.0725 35.8861,3.3649 Z"></path>
+              <path d="M24.2259,12.5707 C25.4993,12.0940 26.8024,11.6931 28.1253,11.3731 C29.2964,11.9950 30.4775,12.6037 31.5909,13.3294 C30.9179,13.9942 30.0519,14.4082 29.3591,15.0515 C27.7426,14.0849 26.0222,13.3047 24.2787,12.5921 L24.2259,12.5707 Z M10.8123,21.4202 C11.8037,20.3859 12.8445,19.3913 13.9694,18.5022 C14.1162,18.9624 14.0057,19.4408 13.9480,19.9059 C13.5422,23.2214 13.6577,26.5847 14.1327,29.8853 C13.0391,29.0292 12.0412,28.0610 11.0531,27.0878 L11.0581,27.0663 C11.1785,26.7480 11.1257,26.4065 11.1158,26.0767 C11.0185,24.5080 11.0432,22.9344 11.1290,21.3641 C11.0498,21.3789 10.8915,21.4070 10.8123,21.4202 Z"></path>
+              <path d="M43.8828,16.6680 C44.3826,15.5117 44.8164,14.3307 45.2107,13.1331 C46.4049,15.4045 47.1719,17.8969 47.5529,20.4321 C47.4837,20.7340 47.5628,21.1628 47.2296,21.3261 C46.5435,21.7715 45.9200,22.3274 45.1645,22.6556 C45.0919,22.0206 45.0688,21.3707 44.8742,20.7554 C44.3496,21.4268 44.0065,22.2169 43.5200,22.9129 C43.2857,23.3270 42.8668,23.7014 42.9212,24.2177 C42.5138,24.8445 41.8375,25.1760 41.2057,25.5274 C40.1237,26.3802 38.9426,27.1010 37.8903,27.9917 C37.6247,28.1797 37.3162,28.2936 37.0193,28.4239 C37.0952,27.8268 37.1397,27.2280 37.1793,26.6276 C38.1377,25.9331 38.8865,24.9632 39.5200,23.9752 C39.0301,23.2775 38.4049,22.6886 37.9068,21.9958 C38.5204,21.3723 39.4589,21.0952 39.8597,20.2738 C40.3249,20.7241 40.7191,21.2387 41.1265,21.7402 C42.2301,20.1583 43.0614,18.4082 43.8828,16.6680 Z M15.9307,36.4618 C16.1088,36.8577 16.2045,37.3047 16.4948,37.6379 C17.7567,37.4762 19.0152,37.2404 20.2259,36.8395 C21.4465,37.4268 22.7068,37.9364 23.9851,38.3884 C23.8301,38.5006 23.6635,38.5896 23.4837,38.6540 C21.5967,39.3105 19.6503,39.7839 17.6857,40.1468 C17.6560,40.7389 18.2119,41.1975 18.3769,41.7583 C17.6758,42.2482 16.8956,42.6325 16.3018,43.2626 C15.6964,42.4115 15.2857,41.4465 14.7826,40.5360 C14.4098,39.7443 14.0618,38.9426 13.7319,38.1327 C14.4164,37.5076 15.3319,37.1826 15.9307,36.4618 Z"></path>
+              <path d="M31.5909,13.3294 C32.1797,13.5901 32.6284,14.1740 33.2816,14.2597 C33.6478,15.6090 33.9744,16.9731 34.1789,18.3587 C32.6152,17.1942 31.0482,16.0313 29.3591,15.0515 C30.0519,14.4082 30.9179,13.9942 31.5909,13.3294 Z"></path>
+              <path d="M36.6861,17.2816 C36.9698,17.4053 37.2453,17.5571 37.4647,17.7814 C38.2861,18.5896 39.1224,19.3863 39.8597,20.2738 C39.4589,21.0952 38.5204,21.3723 37.9068,21.9958 C37.6907,21.7567 37.4367,21.5538 37.1744,21.3707 C37.0952,19.9983 36.9072,18.6358 36.6861,17.2816 Z"></path>
+              <path d="M47.5529,20.4321 C47.9142,22.1096 47.8647,23.8647 47.7954,25.5785 C47.5777,27.4193 47.3682,29.3030 46.6919,31.0400 C46.1575,29.7979 45.5637,28.5839 44.9352,27.3863 C44.7059,28.6548 44.4206,29.9183 43.9736,31.1307 C43.3105,30.2284 42.9327,29.1612 42.3769,28.1962 C43.0564,27.6832 43.7822,27.2214 44.5261,26.8140 C44.6218,26.8800 44.8131,27.0119 44.9072,27.0779 C45.2338,25.6395 45.1595,24.1286 45.1645,22.6556 C45.9199,22.3274 46.5435,21.7715 47.2296,21.3261 C47.5628,21.1628 47.4837,20.7340 47.5529,20.4321 Z"></path>
+              <path d="M42.9212,24.2177 C43.5826,24.9962 44.0758,25.9018 44.5261,26.8140 C43.7822,27.2214 43.0564,27.6832 42.3769,28.1962 C42.0008,27.5876 41.6676,26.9459 41.2041,26.3983 C40.4288,26.9261 39.9884,27.7971 39.2989,28.4206 C38.4181,29.2305 37.6940,30.2301 36.6680,30.8635 C36.8000,30.0519 36.9352,29.2404 37.0193,28.4239 C37.3162,28.2936 37.6247,28.1797 37.8903,27.9917 C38.9426,27.1010 40.1237,26.3802 41.2057,25.5274 C41.8375,25.1760 42.5138,24.8445 42.9212,24.2177 Z M18.3769,41.7583 C18.7628,42.2383 19.0070,42.8140 19.3600,43.3171 C19.7047,43.8845 20.1402,44.3975 20.4239,44.9995 C18.9509,45.0375 17.4762,44.9946 16.0032,45.0342 C15.2676,45.0210 14.5270,45.0919 13.7962,44.9764 C14.0453,44.8610 14.2647,44.6927 14.4527,44.4931 C14.7694,44.1352 15.3517,44.0956 15.5447,43.6189 C15.8515,43.7410 16.1682,43.8301 16.4931,43.8894 C16.4371,43.6783 16.3777,43.4672 16.3018,43.2626 C16.8956,42.6325 17.6758,42.2482 18.3769,41.7583 Z"></path>
+              <path d="M27.0465,34.3158 C29.6263,33.0985 31.9736,31.4540 34.1888,29.6692 C33.9744,31.0564 33.6544,32.4239 33.2948,33.7797 L33.2767,33.7880 C32.3579,34.1773 31.6140,34.8618 30.7414,35.3319 C29.8919,35.8812 28.9220,36.2375 28.1303,36.8692 C26.7876,36.5410 25.4630,36.1352 24.1698,35.6470 C25.1199,35.1835 26.1228,34.8321 27.0465,34.3158 Z"></path>
+              <path d="M11.8746,31.4573 C12.9748,32.3645 14.0981,33.2470 15.2940,34.0239 C15.2247,34.1954 15.2181,34.3670 15.2725,34.5402 C15.4688,35.1884 15.6898,35.8284 15.9307,36.4618 C15.3319,37.1826 14.4164,37.5076 13.7319,38.1327 C13.7171,38.0915 13.6841,38.0107 13.6676,37.9694 C12.9665,36.1105 12.3562,34.2136 11.9290,32.2721 C11.8795,32.0032 11.8795,31.7278 11.8746,31.4573 Z"></path>
+              <path d="M6.7777,40.4437 C8.1237,40.5723 9.4696,40.6696 10.8206,40.6878 C11.4655,41.3756 12.3002,41.8342 13.0886,42.3356 C13.8688,42.8321 14.7018,43.2412 15.5447,43.6189 C15.3517,44.0956 14.7694,44.1352 14.4527,44.4931 C14.2647,44.6927 14.0453,44.8610 13.7962,44.9764 C13.1892,45.0111 12.5129,45.1216 11.9802,44.7538 C10.1030,43.6701 8.3331,42.3637 6.8486,40.7802 C6.8305,40.6960 6.7958,40.5278 6.7777,40.4437 "></path>
+            </g>
+          </svg>
+        </span>
+        <span>${_btu_translate("usingBTU.btuDirect")}</span>
+      </button>
+    </div>
+    <div class="btu-create-list">
+      <button id="btu-btn-trust" class="btu-create-list-btn">
+        <span class="btu-create-list-image">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M17.493 7C21.335 9.948 25.741 9.766 27 9.766C26.725 26.532 24.627 24.299 17.493 29C10.360 24.299 8.275 26.532 8 9.7662C9.246 9.766 13.651 9.948 17.493 7Z" stroke="#4B82ED" stroke-width="2.7" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span>${_btu_translate("usingBTU.trustWallet")}</span>
+      </button>
+    </div>
+    <div class="btu-create-list">
+      <button id="btu-btn-has" class="btu-create-list-btn">
+        <span class="btu-create-list-image">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" fill="#4B82ED"/></svg>
+        </span>
+        <span>${_btu_translate("usingBTU.hasWalletMobile")}</span>
+      </button>
+    </div>
+  `
+}
+
+// Bloc non-connecté si mobile
+const _btu_createMobile = () => {
+  if (_btu_getLanguage() === 'fr')
+    return _btu_createMobileFr()
+  return _btu_createMobileEn()
+}
+
+// Bloc non-connecté si desktop
+const _btu_createDesktop = () => {
+  return `
+    <div id="btu-btn-create" class="btu-btn-blue">
+      <button id="btu-btn-create">
+        ${_btu_translate("usingBTU.createWallet")}
+      </button>
+    </div>
+    <div id="btu-btn-has-wrapper">
+      <button id="btu-btn-has" class="btu-btn-link">
+        ${_btu_translate("usingBTU.hasWallet")}
+      </button>
+    </div>
+  `
+}
+
 // Popup si on n'est pas connecté à une addresse wallet
 const _btu_templateModalCreateContent = () => {
   return {
     top: `
-      <h1>${_btu_translate("usingBTU.using")}</h1>
+      <h1>
+        ${/Android/i.test(navigator.userAgent) || /iPhone|iPad|iPod/i.test(navigator.userAgent)
+        ? _btu_translate("usingBTU.usingMobile")
+        : _btu_translate("usingBTU.using")
+        }
+      </h1>
     `,
     bottom: `
       <div id="btu-modal-content-inner">
-        <div id="btu-btn-create" class="btu-btn-blue">
-          <button id="btu-btn-create">
-            ${/Android/i.test(navigator.userAgent) || /iPhone|iPad|iPod/i.test(navigator.userAgent)
-              ? _btu_translate("usingBTU.downloadApp")
-              : _btu_translate("usingBTU.createWallet")
-            }
-          </button>
-        </div>
-        <div id="btu-btn-has-wrapper">
-          <button id="btu-btn-has">
-            ${_btu_translate("usingBTU.hasWallet")}
-          </button>
-        </div>
+        ${/Android/i.test(navigator.userAgent) || /iPhone|iPad|iPod/i.test(navigator.userAgent)
+        ? _btu_createMobile()
+        : _btu_createDesktop()
+        }
       </div>
     </div>
     `,
@@ -466,11 +581,12 @@ const _btu_cSS = `
 #btu-modal-footer { width: 100%; height: 30px; display: flex; justify-content: flex-end; align-items: center; font-size: 10px; background-color: #fafafa; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;}
 #btu-modal-footer > a { padding-right: 15px; color: #797979; text-decoration: none;}
 #btu-modalBtn {color: white; cursor: pointer; font-size: 25px; height: 16px; width: 18px; box-sizing: border-box; text-align: center; fill: white;}
-#btu-btn-has {border: none; background: none; color: #4B82ED; font-style: normal; font-weight: normal; font-size: 12px; text-decoration-line: underline;}
+.btu-btn-link {border: none; background: none; color: #4B82ED; font-style: normal; font-weight: normal; font-size: 12px; text-decoration-line: underline;}
 #btu-placeholder {max-width: calc(100%); width: 100%; height: 24px; display: flex; background-color: #303030; justify-content: space-between; color: white; padding-left: 15px; padding-right: 15px; box-sizing: border-box;}
-#btu-conStatus {font-family: Lato; font-size: 13px; font-weight: 500; line-height: 20px; display: flex; align-items: center; cursor: pointer;}
+#btu-conStatus {display: flex; align-items: center; cursor: pointer; }
 #btu-openModal {display: flex; align-items: center; cursor: pointer;}
-#btu-walletSpan {display: inline-block; font-family: Lato; font-size: 13px; font-weight: 400; padding-right: 5px;}
+#btu-walletSpan {display: inline-block; margin-right: 4px; }
+.btu-barButton {font-family: Lato; font-size: 13px; font-weight: 400; line-height:13px; }
 #btu-statusLed {color: rgb(227, 70, 82); font-size: 24px; height: 12px; } #btu-statusLedIn {fill: rgb(227, 70, 82); color: rgb(227, 70, 82); font-size: 24px;}
 #btu-input-title { display: block; color: #504F60; font-size: 16px; line-height: 24px; text-transform: uppercase; margin-bottom: 10px;}
 #btu-wallet-input { width: calc(100% - 20px); height: 45px; border: 1px solid #4B82ED; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); border-radius: 35px; margin-bottom: 20px; padding: 0 20px; background-color: transparent;}
@@ -491,6 +607,10 @@ const _btu_cSS = `
 .btu-btn-white {background: white !important; color: #4b82ed; !important; text-decoration: underline; width: 113%; margin-left: -4%;} .btu-btn-white:hover {text-decoration: none; background-color: rgba(0, 0, 0, 0.08);}
 .btu-btn-close {width: 30px; height: 30px; right: 0px; top: -7px; position: absolute;}
 .btu-btn-error { border: 1px solid #e34652 !important; margin-bottom: 5px !important;}
+.btu-create-list { margin-left:-20px; margin-right: -20px; border-bottom: 1px solid rgba(22,28,45,.125); }
+.btu-create-list-btn { display: flex; align-items: center; background: none; border: none; width: 100%; min-height: 46px; padding: 10px 20px; font-size:14px; }
+.btu-create-list-btn > span { text-align: left; }
+.btu-create-list-image { display: flex; justify-content: center; align-items: center; width: 36px; margin-right:10px; }
 @media screen and (min-width: 600px) {
 	#btu-modal-action::-webkit-scrollbar { width: 5px; }
 	#btu-modal-action::-webkit-scrollbar-track {background: white;}
@@ -765,7 +885,14 @@ jQuery_btu(() => {
 	  	_btu_config.page = 1
 	  	_btu_changeModal("download")
 	  }
-	})
+  })
+  
+  jQuery_btu(document).on("click", "#btu-btn-trust", () => {
+    const url = window.location
+    window.open('https://link.trustwallet.com/open_url?coin_id=60&url=' + url, '_blank')
+    _btu_popupIsOpen = false
+    jQuery_btu("#btu-modalOut").hide()
+  })
 
 	jQuery_btu(document).on("click", "#btu-btn-hasCreated", () => {
 	  window.reload()
