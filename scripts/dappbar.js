@@ -583,7 +583,7 @@ const _btu_cSS = `
 #btu-modalBtn {color: white; cursor: pointer; font-size: 25px; height: 16px; width: 18px; box-sizing: border-box; text-align: center; fill: white;}
 .btu-btn-link {border: none; background: none; color: #4B82ED; font-style: normal; font-weight: normal; font-size: 12px; text-decoration-line: underline;}
 #btu-placeholder {max-width: calc(100%); width: 100%; height: 24px; display: flex; background-color: #303030; justify-content: space-between; color: white; padding-left: 15px; padding-right: 15px; box-sizing: border-box;}
-#btu-conStatus {display: flex; align-items: center; cursor: pointer; font-family: Lato; font-size: 14px;}
+#btu-conStatus {display: flex; align-items: center; cursor: pointer; font-family: Lato; font-size: 13px;}
 #btu-openModal {display: flex; align-items: center; cursor: pointer;}
 #btu-walletSpan {display: inline-block; margin-right: 4px; }
 .btu-barButton {font-family: Lato; font-size: 13px; font-weight: 400; line-height:13px; }
