@@ -47,7 +47,7 @@ const _btu_translations = {
       "btuDirect": "BTU Direct",
       "trustWallet": "Trust Wallet",
       "hasWallet": "I already have a  BTU wallet",
-      "hasWalletMobile": "Write down my wallet address",
+      "hasWalletMobile": "Enter your wallet address",
       "changeWallet": "Change wallet",
       "connection": "Connection"
     },
