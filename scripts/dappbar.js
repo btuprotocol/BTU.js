@@ -652,8 +652,8 @@ const _btu_cSS = `
 #btu-modalOut button { cursor: pointer;}
 #btu-modalOut button:focus, #btu-modalOut input[type="text"]:focus { outline: 0; }
 #btu-modalIn{position: absolute; top: 50%; left: 50%; height: 360px; width: calc(100% - 40px); max-width: 400px; max-height: 100%; background: #fafafa; box-shadow: 0px 11px 15px -7px rgba(0,0,0,0.2),0px 24px 38px 3px rgba(0,0,0,0.14),0px 9px 46px 8px rgba(0,0,0,0.12); border-radius: 10px; transform: translate(-50%, -50%); border: none; padding: 0; margin: 0;}
-#btu-modal-text { color: white; background-color: #4B82ED;  display: flex;  flex-direction: column; align-items: center;  justify-content: center;  padding: 0 30px;  height: 120px;  border-top-left-radius: 10px;  border-top-right-radius: 10px;  position: relative;  overflow: hidden; clip-path: url("#btu-modal-text-clip"); text-align: center;}
-#btu-modal-text-back { position: absolute; top: 50px; left: 0; width: 100%; height: 70px; background: #dbe6fb; clip-path: url("#btu-modal-text-back-clip"); }
+#btu-modal-text { color: white; background-color: #4B82ED;  display: flex;  flex-direction: column; align-items: center;  justify-content: center; height: 120px;  border-top-left-radius: 10px;  border-top-right-radius: 10px;  position: relative;  overflow: hidden; clip-path: url("#btu-modal-text-clip"); -webkit-clip-path: url("#btu-modal-text-clip"); text-align: center;}
+#btu-modal-text-back { position: absolute; top: 50px; left: 0; width: 100%; height: 70px; background: #dbe6fb; clip-path: url("#btu-modal-text-back-clip");  -webkit-clip-path: url("#btu-modal-text-back-clip")}
 #btu-modal-text h1 {font-family: "Roboto", sans-serif; font-style: normal; font-weight: normal; font-size: 18px; line-height: 21px; margin: 0; text-align: center;}
 #btu-modal-text > p { margin: 0; font-style: normal; font-weight: normal; font-size: 14px; line-height: 16px; text-align: center;}
 #btu-modal-action { background-color: #fafafa; display: flex; align-items: center; padding: 0 20px; height: calc(100% - 150px); overflow: auto;}
