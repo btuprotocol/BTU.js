@@ -27,7 +27,7 @@ const _btu_config = {
   defaultWallet: '0xd00551b9d6CB3C4dDfc36df874c642b19D2b9e22',
   currentModalType: 'create',
   page: 1,
-  walletConnectUrl: 'http://localhost:3000/',
+  walletConnectUrl: 'https://wallet-connect.btu-direct.com/',
 }
 
 /**
