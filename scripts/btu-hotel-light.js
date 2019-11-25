@@ -476,7 +476,19 @@ function btuSearch(searchQuery) {
         }
         if (data.hotels) {
           for (let i = 0; i < data.hotels.length; i++) {
-            const url = 'https://hotel.travel-everywhere.com/hotel/' + data.hotels[i].hotelCode
+            let url = 'https://hotel.travel-everywhere.com/hotel/' + data.hotels[i].hotelCode
+            const parameters = {
+              persons: guest,
+              start: startDateString,
+              end: endDateString,
+            }
+            if (addressBtu) {
+              parameters.w = addressBtu
+            }
+            url += '?' + Object.keys(parameters).map(function(key) {
+              return [key, parameters[key]].map(encodeURIComponent).join("=").replace(/'/g, "%27")
+            }).join("&")
+
             const li = `
               <li class="btu-hotel-search-query-list-line" onclick="_btu_openInNewTab('${url}')">
                 <div class="btu-hotel-search-query-list-line-icon">
