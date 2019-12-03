@@ -15,6 +15,12 @@ const _btu_lightWidgetConfig = {
   defaultLanguage: 'fr',
   currentLanguage: null,
   placeholderTag: 'btu-hotel-container',
+  url: {
+    api: 'https://api.btu-direct.com/v1/hotel/search',
+    hotelList: 'https://hotel.travel-everywhere.com/list/',
+    hotelHotel: 'https://hotel.travel-everywhere.com/hotel/',
+    fonts: 'https://fonts.googleapis.com/css?family=Poppins&display=swap',
+  },
 }
 
 /**
@@ -435,7 +441,7 @@ function btuSearch(searchQuery) {
     }
 
     jQuery_btu.ajax({
-      url: 'https://api.btu-direct.com/v1/hotel/search',
+      url: _btu_lightWidgetConfig.url.api,
       type: 'POST',
       data: JSON.stringify(query),
       contentType: 'application/json; charset=utf-8',
@@ -444,7 +450,7 @@ function btuSearch(searchQuery) {
         jQuery_btu('#btu-hotel-container .btu-hotel-search-query-list').empty()
         if (data.cities) {
           for (let i = 0; i < data.cities.length; i++) {
-            let url = 'https://hotel.travel-everywhere.com/list/'
+            let url = _btu_lightWidgetConfig.url.hotelList
             const parameters = {
               lat: data.cities[i].location.lat,
               lon: data.cities[i].location.lon,
@@ -476,11 +482,11 @@ function btuSearch(searchQuery) {
         }
         if (data.hotels) {
           for (let i = 0; i < data.hotels.length; i++) {
-            let url = 'https://hotel.travel-everywhere.com/hotel/' + data.hotels[i].hotelCode
+            let url = _btu_lightWidgetConfig.url.hotelHotel + data.hotels[i].hotelCode
             const parameters = {
               persons: guest,
-              start: startDateString,
-              end: endDateString,
+              startDate: startDateString,
+              endDate: endDateString,
             }
             if (addressBtu) {
               parameters.w = addressBtu
@@ -533,7 +539,7 @@ function _btu_loadLightWidget() {
   document.getElementsByTagName('head')[0].appendChild(style)
 	let link = document.createElement('link')
 	link.rel = "stylesheet"
-	link.href = "https://fonts.googleapis.com/css?family=Poppins&display=swap"
+	link.href = _btu_lightWidgetConfig.url.fonts
   document.getElementsByTagName('head')[0].appendChild(link)
   
   // Injection du composant
