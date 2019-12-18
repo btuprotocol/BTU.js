@@ -47,83 +47,124 @@ const myBtujs = new btujs();
 
 ## Components
 
-### **DappBar**
+### Dappbar
 
-BTU Dappbar
-Technical documentation:
-The dappbar BTU is a tool for offer bringers to simplify cashback in BTU
-Token for their customers.
-In its current version (V2.1), the tool makes it possible to make the
-address of the wallet that is integrated in the user's browser available on
-the visited page in a uniform way.
-The dappbar use only requires HTML5, CSS3 and Javascript, (it is
-possible to integrate it on any JS framework: React, Angular etc ..). It
-allows to detect a wallet integrated to a Web3 compatible browser
-(Opera, plugins like Metamask, Dapp browsers like BTU-Direct, Trust,
-Coinbase etc ...)
+#### Overview
 
-1. Installation
+The BTU dappbar makes it simpler for business providers to cashback BTU tokens. In its current version (v2.1), the tool allows the wallet address of a user to be available on their browser in a uniform way.
 
-1. Additional scripts
-First, the integration of the following scripts is necessary for the
-operation of the dappbar:
-● JQuery (V3.4 or more)
-● Web3 (1.0 or more)
-● Dappbar.js (link updated)
+The dappbar requires only HTML5, CSS3 and Javascript. (It is thus possible to be included in any Javascript framework: React, Angular etc.) It is able to detect wallets integrated with a Web3-compatible browser. (Opera, plugins like Metamask, Dapp browsers like BTU-Direct, Trust, Coinbase, etc.)
 
-If you have an html file, you can directly place the following HTML tags in
-the <head></head> part of your file.
+#### Installation
+
+##### Script
+
+In order to initialize the dappbar, the dappbar.js script must first be integrated.
+
+In an HTML file, the script may ben called by the following tag, in the `<head></head>` section:
 
 ```
-<script type="text/javacript"
-src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"> </script>
 <script type="text/javascript"src="https://btu-cdn.s3.eu-west-3.amazonaws.com/public/dappbar.min.js"></script>
 ```
 
-Otherwise you can insert the scripts by calling a JS functions.
+Otherwise, the script can be injected by the following Javascript functions:
+
 ```javascript
 const script = document.createElement('script')
-script.src = 'https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js'
+script.src = 'https://btu-cdn.s3.eu-west-3.amazonaws.com/public/dappbar.min.js'
 script.async = true
 document.head.appendChild(script)
 ```
-Code to reproduce for each script previously mentioned.
 
-2. Place the dappbar
-First of all, for the Dappbar.js script to be able to generate the dappbar, it
-is necessary to decide on a place where it will be placed thanks to a <div> </ div> tag with the specific "btu-placeholder" id.
-It is recommended to place it as early as possible in the code so that it takes up all the top space of the page.
+If needed, the dappbar.js script injects by itself two other scripts:
+* JQuery (https://code.jquery.com/jquery-3.4.1.min.js)
+* Web3 (https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js)
+
+Unless the server prevents those scripts to be injected, they need not be manually initialized prior to the dappbar.js script.
+
+##### Dappbar container
+
+The dappbar needs a `<div>` tag with the specific "btu-placeholder" id in order to be deployed:
 ```javascript
 <div id="btu-placeholder"></div>
 ```
-2. Use
-Once the dappbar has been installed, the user who visits the page will
-see his wallet connected automatically (or with an approbation request
-according to the system) to the dappbar. His information will be saved in
-the sessionStorage
 
-● You can verify if the user is connected with the following call :
+This tag should be placed as early as possible in the page, so that it may take up all the top space.
+
+##### Domain restriction
+
+If your website is available with several domain names, and you need the wallet connection to be possible with only one of them, (e.g. if you want the users sharing the link to your website to earns the cashback instead of the final user,) you may explicit the domain names where the dappbar has to be displayed, by listing them in the "data-restrict-domain" attribute, separated by commas:
+```
+<div id="btu-placeholder" data-restrict-domain="<list of domain to restrict the dappbar to>"></div>
+```
+
+For example, if the dappbar should only be displayed on the domains test.com and test.fr:
 ```javascript
-sessionStorage.getItem("BTU-walletConnected") // Return "false" or "true"
+<div id="btu-placeholder" data-restrict-domain="test.com,test.fr"></div>
 ```
-● You also can have acces to his wallet address by this call :
+
+If the attribute is omitted, the dappbar will be displayed without any restriction.
+
+#### Use
+
+##### Overview
+Once the dappbar is installed, a user's wallet will be connected automatically to the dappbar. (Or a validation request will be displayed if the user hasn't yet authorized the dappbar to connect to their wallet.) The relevant informations are saved in the sessionStorage object.
+
+##### Dappbar enabled
+
+The status of the dappbar is given by the following command:
 ```javascript
-sessionStorage.getItem("BTU-walletAddr") // Return the BTU key (0xABF2...)
+sessionStorage.getItem('BTU-dappbarEnabled');
 ```
-Finally, if your website is available in different domain names and you want to make the connexion possible to the wallet only in one of them
-(e.g. in the case you want the users who share the link of your website earns the cashback instead of the buyer, it is possible to specify the domain name(s) where you want the bar to appear.
-To add this content, please add a
-```
-"data-restrict-domain ="
-```
-attribute with the value(s) of the domain name(s).
+
+This command returns a string:
+* "true" if the dappbar is enabled for the current website
+* "false" otherwise.
+
+##### Wallet connection
+
+The status of the wallet is given by the following command:
 ```javascript
-<div id="btu-placeholder" data-restrict-domain=”test.com,test.fr”></div>
+sessionStorage.getItem("BTU-walletConnected");
 ```
-in the case this attribute is not specified, the dappbar is displayed by
-default without restrictions.
-The refund wallet address is to specify in the page URL, thanks to a parameter “w”, exemple : test.com?w=0xAB21...
+
+This command returns a string:
+* "true" if a wallet is connected
+* "false" otherwise.
+
+##### Wallet address
+The current wallet address is given by the following command:
+```javascript
+sessionStorage.getItem("BTU-walletAddr");
+```
+
+This command returns a string with the current address. (42 characters : "0x" followed by 40 hexadecimal characters.)
+
+##### Reloading the dapp bar
+The dappbar may be reloaded with the following command:
+
+```javascript
+_btu_loadDappbar();
+```
+
+The current state is preserved: current wallet, current popup, etc.
+
+##### Changing language
+
+When first loaded, the dappbar is in French is the default language of the browser is French, and in English otherwise. 
+The language of the dappbar may be changed from French to English (or English to French). The dappbar needs reloading after the language is modified.
+
+To change the language to English:
+```javascript
+_btu_setLanguage('en');
+_btu_loadDappbar();
+```
+
+To change the language to French:
+```javascript
+_btu_setLanguage('fr');
+_btu_loadDappbar();
+```
 
 ## Resources methods
 
