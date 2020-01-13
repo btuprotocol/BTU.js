@@ -681,7 +681,7 @@ const _btu_cSS = `
 .btu-barButton {font-family: Lato; font-size: 13px; font-weight: 400; line-height:13px; }
 #btu-statusLed {color: rgb(227, 70, 82); font-size: 24px; height: 12px; } #btu-statusLedIn {fill: rgb(227, 70, 82); color: rgb(227, 70, 82); font-size: 24px;}
 #btu-input-title { display: block; color: #504F60; font-size: 16px; line-height: 24px; text-transform: uppercase; margin-bottom: 10px;}
-#btu-wallet-input { width: calc(100% - 20px); height: 45px; border: 1px solid #4B82ED; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); border-radius: 35px; margin-bottom: 20px; padding: 0 20px; background-color: transparent;}
+#btu-wallet-input { width: calc(100% - 20px); height: 45px; border: 1px solid #4B82ED; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25); border-radius: 35px; margin-bottom: 20px; padding: 0 20px; background-color: transparent; color: black;}
 #btu-wallet-input:focus { outline:0; }
 #btu-address-txt-title {color: #6e6e6e; font-size: 21px;}
 #btu-address-txt {margin: 0; color: #6e6e6e; font-size: 15px; text-align: center; padding-bottom: 20px; word-break: break-word;}
@@ -700,7 +700,7 @@ const _btu_cSS = `
 .btu-btn-close {width: 30px; height: 30px; right: 0px; top: -7px; position: absolute;}
 .btu-btn-error { border: 1px solid #e34652 !important; margin-bottom: 5px !important;}
 .btu-create-list { margin-left:-20px; margin-right: -20px; border-bottom: 1px solid rgba(22,28,45,.125); }
-.btu-create-list-btn { display: flex; align-items: center; background: none; border: none; width: 100%; min-height: 46px; padding: 10px 20px; font-size:14px; }
+.btu-create-list-btn { display: flex; align-items: center; background: none; border: none; width: 100%; min-height: 46px; padding: 10px 20px; font-size:14px; color:black;}
 .btu-create-list-btn > span { text-align: left; }
 .btu-create-list-image { display: flex; justify-content: center; align-items: center; width: 36px; margin-right:10px; }
 #btu-wallet-connect-container { width: 150px; height: 150px; box-sizing: border-box; margin: 0 auto; }
