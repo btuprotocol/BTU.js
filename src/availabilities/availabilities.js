@@ -112,6 +112,25 @@ class Availabilities {
    }
 
   /**
+   * @function bookResource
+   * @desc Request a booking
+   * @param {string} resourceType
+   * @param {string} resourceId
+   * @param {object} body
+   * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+   * @return The Json containing information about the reservation
+   **/
+  async getPrebookingToken(resourceType, resourceId, body, callback) {
+    return await http.postParameters(
+        this.serverUrl,
+        resourceType + '/booking/' + resourceId + '/prebook',
+        {},
+        body,
+        callback
+    )
+  }
+
+  /**
    * @function cancelBooking
    * @desc Cancel a booking
    * @param {string} resourceType
