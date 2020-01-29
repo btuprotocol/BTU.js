@@ -1,15 +1,27 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _resources = require('./resources/resources.js');
+
+var _resources2 = _interopRequireDefault(_resources);
+
+var _availabilities = require('./availabilities/availabilities.js');
+
+var _availabilities2 = _interopRequireDefault(_availabilities);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 /**
  * @file index.js
  * @desc This is Btujs definition file, main entry point of the library
  * @module Btujs
 **/
 
-import Resources from './resources/resources.js'
-import Availabilities from './availabilities/availabilities.js'
-import DappBar from './dappBar/src/DappBar'
-
-const defaultServerUrl = 'https://btu-api.btu-direct.com'
-const defaultVersion = '1'
+const defaultServerUrl = 'https://btu-api.btu-direct.com';
+const defaultVersion = '1';
 
 class Btujs {
 
@@ -19,27 +31,19 @@ class Btujs {
    * @param {string} serverUrl The base url of the server
   **/
   constructor({
-      serverUrl = defaultServerUrl,
-      version = defaultVersion
+    serverUrl = defaultServerUrl,
+    version = defaultVersion,
   } = {}) {
+    let versionUrl = serverUrl + '/v' + version;
 
-    let versionUrl = serverUrl + '/v' + version
+    this.resources = new _resources2.default({
+      serverUrl: versionUrl
+    });
 
-  	this.resources = new Resources({
-  		serverUrl: versionUrl
-  	});
-
-    this.availabilities = new Availabilities({
-        serverUrl: versionUrl
-    })
-
-    this.loadDappBar = () => {
-      return (<DappBar/>)
-    }
+    this.availabilities = new _availabilities2.default({
+      serverUrl: versionUrl
+    });
   }
 }
 
-export {
-  Btujs as default,
-  DappBar
-};
+module.exports = Btujs;
