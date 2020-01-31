@@ -818,6 +818,10 @@ function _btu_loadDappbar(initTimer = false) {
           alert("Simple web3 wallet")
         window.web3 = new Web3(web3.currentProvider)
         window.web3.eth.getAccounts(onAccountGet)
+        // Création d'un événement indiquant qu'un wallet ethereum a été créé
+        let btuDappbarEthereumEvent = document.createEvent('Event')
+        btuDappbarEthereumEvent.initEvent('BTU-dappbarEthereum', true, true)
+        window.dispatchEvent(btuDappbarEthereumEvent)
       } else {
         if (debug)
           alert("non ethereum browser")
