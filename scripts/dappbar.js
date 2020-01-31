@@ -72,7 +72,7 @@ const _btu_translations = {
       "hasWallet": "I already have a wallet"
     },
     "invalidAddress": "Invalid address",
-    "nonEtherumBrowser": "Non-Ethereum browser detected. You should consider trying BTU Direct!",
+    "nonEthereumBrowser": "Non-Ethereum browser detected. You should consider trying BTU Direct!",
     "placeholderMissing": "Please integrate a <div id='btu-placeholder'> tag in order to use the BTU Dappbar",
   },
   "fr": {
@@ -119,7 +119,7 @@ const _btu_translations = {
       "hasWallet": "J'ai déjà un portefeuille"
     },
     "invalidAddress": "Adresse invalide",
-    "nonEtherumBrowser": "Votre navigateur n'utilise pas Etherum. Vous devriez essayer BTU Direct!",
+    "nonEthereumBrowser": "Votre navigateur n'utilise pas Ethereum. Vous devriez essayer BTU Direct!",
     "placeholderMissing": "Veuillez intégrer une balise <div id='btu-placeholder'> pour utiliser la Dappbar BTU",
   }
 }
@@ -795,7 +795,7 @@ function _btu_loadDappbar(initTimer = false) {
       }
       if (window.ethereum) {
         if (debug)
-          alert("detected etherum wallet at " + result.browser.name + " browser")
+          alert("detected ethereum wallet at " + result.browser.name + " browser")
         window.web3 = new Web3(ethereum)
         try {
           if (debug)
@@ -805,6 +805,10 @@ function _btu_loadDappbar(initTimer = false) {
             alert("Connected")
           _btu_openPopup = false
           window.web3.eth.getAccounts(onAccountGet)
+          // Création d'un événement indiquant qu'un wallet ethereum a été créé
+          let btuDappbarEthereumEvent = document.createEvent('Event')
+          btuDappbarEthereumEvent.initEvent('BTU-dappbarEthereum', true, true)
+          window.dispatchEvent(btuDappbarEthereumEvent)
         }
         catch (error) {
           console.log("BTU Dappbar Error enabling ETH account:\n", error)
@@ -816,8 +820,8 @@ function _btu_loadDappbar(initTimer = false) {
         window.web3.eth.getAccounts(onAccountGet)
       } else {
         if (debug)
-          alert("non etherum browser")
-        console.log(_btu_translate("nonEtherumBrowser"));
+          alert("non ethereum browser")
+        console.log(_btu_translate("nonEthereumBrowser"));
       }
     })
   } else {
