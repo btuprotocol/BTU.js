@@ -13,6 +13,9 @@ The BTU dappbar makes it simpler for business providers to cashback BTU tokens.
     - [**Wallet address**](#wallet-address)
     - [**Reloading the dapp bar**](#reloading-the-dapp-bar)
     - [**Changing language**](#changing-language)
+  - [Window Events](#window-events)
+    - [**BTU-dappbarEnabled**](#btu-dappbarenabled)
+    - [**BTU-dappbarEthereum**](#btu-dappbarethereum)
 
 ## Overview
 
@@ -129,4 +132,39 @@ To change the language to French:
 ```javascript
 _btu_setLanguage('fr');
 _btu_loadDappbar();
+```
+
+### Window Events
+
+#### BTU-dappbarEnabled
+
+This event is dispatched when the dappbar is enabled.
+
+To listen to this event:
+```javascript
+window.addEventListener('BTU-dappbarEnabled', callback, false)
+```
+
+The dappbar status can be accessed with:
+```javascript
+sessionStorage.getItem("BTU-dappbarEnabled")
+```
+
+#### BTU-dappbarEthereum
+
+This event is dispatched when an ethereum account has been read.
+
+To listen to this event:
+```javascript
+window.addEventListener('BTU-dappbarEthereum', callback, false)
+```
+
+The wallet address can be accessed with:
+```javascript
+sessionStorage.getItem("BTU-walletAddr")
+```
+
+The Web3 Object is available with:
+```javascript
+window.web3
 ```
