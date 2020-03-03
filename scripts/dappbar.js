@@ -756,7 +756,9 @@ function _btu_loadDappbar(initTimer = false) {
 	sessionStorage.setItem('BTU-walletAddr', _btu_config.defaultWallet)
 	sessionStorage.setItem("BTU-walletConnected", false)
 
-	let restrictDomain = jQuery_btu(`#${_btu_config.placeholderTag}`).data("restrict-domain")
+  let restrictDomain = jQuery_btu(`#${_btu_config.placeholderTag}`).data("restrict-domain")
+  const noPopupData = jQuery_btu(`#${_btu_config.placeholderTag}`).data("no-popup")
+  _btu_noPopup = (typeof noPopupData !== "undefined" && noPopupData === true)
 
 	if (restrictDomain) {
 	  restrictDomain = restrictDomain.split(",")
@@ -826,7 +828,7 @@ function _btu_loadDappbar(initTimer = false) {
       } else {
         if (debug)
           alert("non ethereum browser")
-        console.log(_btu_translate("nonEthereumBrowser"));
+        // console.log(_btu_translate("nonEthereumBrowser"));
       }
     })
   } else {
@@ -896,6 +898,9 @@ var _btu_popupIsOpen = false
 // Timer BTU
 var _btu_popupTimer = null
 
+// true s'il ne faut pas afficher la popup au démarrage
+var _btu_noPopup = false
+
 /**
  * Appel de la modal de création si l'utilisateur n'est pas connecté au bout de 2 secondes
  */
@@ -908,7 +913,7 @@ const _btu_initPopupTimer = () => {
   // Initialisation du timer
   _btu_popupTimer = setTimeout(() => {
     jQuery_btu(() => {
-      if (_btu_openPopup === true) {
+      if (_btu_openPopup === true && !_btu_noPopup) {
         _btu_popupIsOpen = true
         _btu_changeModal('create')
         jQuery_btu("#btu-modalOut").show()
