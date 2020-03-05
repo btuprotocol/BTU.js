@@ -956,7 +956,10 @@ const _btu_changeModal = (type) => {
 const _btu_initJQuery = () => {
   // Refresh de la page si button back
   jQuery_btu(window).on('popstate', function() {
-    console.log('dappbar reload : popstate')
+    var popped = ('state' in window.history && window.history.state !== null), initialURL = location.href;
+    console.log('dappbar reload: popstate')
+    console.log('popped:', popped)
+    console.log('initialURL:', initialURL)
     location.reload(true);
   });
 
@@ -1026,7 +1029,6 @@ const _btu_initJQuery = () => {
     })
 
     jQuery_btu(document).on("click", "#btu-btn-hasCreated", () => {
-      console.log('dappbar reload : #btu-btn-hasCreated')
       window.reload()
     })
 
