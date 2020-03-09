@@ -810,7 +810,7 @@ function _btu_loadDappbar(initTimer = false) {
         try {
           if (debug)
             alert("Classic web3 wallet")
-          await window.ethereum.enable()
+          await ethereum.enable()
           if (debug)
             alert("Connected")
           _btu_openPopup = false
