@@ -250,6 +250,12 @@ const _btu_getWalletProvider = () => {
       return 'Localhost';
 		return '';
   }
+
+  // Gestion Status
+  if (window.ethereum && window.ethereum.isStatus) {
+    return 'Status'
+  }
+
   // Cherche si c'est un provider web3
 	if (!window.web3) return '';
   // Cherche quel est le provider 
@@ -276,8 +282,9 @@ const _btu_getWalletProvider = () => {
 			if (elem.icon)
 			  final = `<img id='btu-provider-img' alt="" src=${_btu_icons.walletProviders[elem.icon]}></img>` + final
 	  }
-	})
-	if (final.length)
+  })
+
+  if (final.length)
 	  return final
 	if (typeof window.__CIPHER__ !== 'undefined')
     return 'Cipher';
@@ -798,12 +805,12 @@ function _btu_loadDappbar(initTimer = false) {
       }
       if (window.ethereum) {
         if (debug)
-          alert("detected ethereum wallet at " + result.browser.name + " browser")
+          alert("detected ethereum wallet")
         window.web3 = new Web3(ethereum)
         try {
           if (debug)
             alert("Classic web3 wallet")
-          await ethereum.enable()
+          await window.ethereum.enable()
           if (debug)
             alert("Connected")
           _btu_openPopup = false
