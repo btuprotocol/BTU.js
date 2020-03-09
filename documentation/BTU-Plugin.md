@@ -19,9 +19,9 @@ The BTU dappbar makes it simpler for business providers to cashback BTU tokens.
 
 ## Overview
 
-The BTU dappbar makes it simpler for business providers to cashback BTU tokens. In its current version (v2.1), the tool allows the wallet address of a user to be available on their browser in a uniform way.
+The BTU dappbar makes it simpler for business providers to cashback BTU tokens. In its current version (v2.1), the tool enables the wallet address display in an uniform way and has been tested with most web3-enabled browser.
 
-The dappbar requires only HTML5, CSS3 and Javascript. (It is thus possible to be included in any Javascript framework: React, Angular etc.) It is able to detect wallets integrated with a Web3-compatible browser. (Opera, plugins like Metamask, Dapp browsers like BTU-Direct, Trust, Coinbase, etc.)
+The dappbar component is implemented with HTML5, CSS3 and Javascript only. It can be embedded in any Javascript framework: React, Angular etc... It is able to detect wallets integrated with a Web3-compatible browser such as Opera, plugins like Metamask installed on Chrome or Firefox, Dapp browsers like BTU-Direct, Trust, Coinbase Wallet or Status.
 
 ## Installation
 
@@ -44,7 +44,7 @@ script.async = true
 document.head.appendChild(script)
 ```
 
-If needed, the dappbar.js script injects by itself two other scripts:
+If not used in your project, the dappbar.js script injects by itself two other scripts:
 * JQuery (https://code.jquery.com/jquery-3.4.1.min.js)
 * Web3 (https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js)
 
@@ -61,7 +61,7 @@ This tag should be placed as early as possible in the page, so that it may take 
 
 ### Domain restriction
 
-If your website is available with several domain names, and you need the wallet connection to be possible with only one of them, (e.g. if you want the users sharing the link to your website to earns the cashback instead of the final user,) you may explicit the domain names where the dappbar has to be displayed, by listing them in the "data-restrict-domain" attribute, separated by commas:
+If your website is available with several domain names, and you need the wallet connection to be possible with only one of them, (e.g. if you want the users sharing the link to your website to earns the cashback instead of the final user,) you may explicitly specicify the domain names where the dappbar has to be displayed, by listing them in the "data-restrict-domain" attribute, separated by commas:
 ```
 <div id="btu-placeholder" data-restrict-domain="<list of domain to restrict the dappbar to>"></div>
 ```
@@ -76,7 +76,7 @@ If the attribute is omitted, the dappbar will be displayed without any restricti
 ## Use
 
 ### Overview
-Once the dappbar is installed, a user's wallet will be connected automatically to the dappbar. (Or a validation request will be displayed if the user hasn't yet authorized the dappbar to connect to their wallet.) The relevant informations are saved in the sessionStorage object.
+Once the dappbar is installed, a user's wallet will be connected automatically to the dappbar. (Or a validation request will be displayed if the user hasn't yet authorized the dappbar to connect to their wallet.) The relevant information are saved in the sessionStorage object.
 
 ### Dappbar enabled
 
