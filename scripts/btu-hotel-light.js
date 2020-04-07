@@ -378,6 +378,45 @@ const _btu_CSS = `
 }
 `
 
+/**
+ * CSS Leaderboard (typiquement 728×90 pixels)
+ */
+const _btu_CSS_leaderboard = `
+.btu-hotel-landing {
+  flex-direction: row-reverse;
+}
+
+.btu-hotel-title {
+  display: none;
+}
+
+.btu-hotel-landing-logo {
+  margin-top: 0;
+  margin-right: 15px;
+}
+
+.btu-hotel-landing-logo span {
+  white-space: nowrap;
+}
+
+.btu-hotel-search-input-container {
+  width: 50%;
+  flex: 1 1 auto;
+  height: 100%;
+  border-bottom: none;
+  border-right: 1px solid #797979;
+}
+
+.btu-hotel-search-query-container {
+  width: 50%;
+  height: 100%;
+}
+
+.btu-hotel-search {
+  flex-direction: row;
+}
+`
+
 /*******************************************************
  * Fonctions spécifiques
  *******************************************************/
@@ -526,15 +565,20 @@ function _btu_loadLightWidget() {
 	  return
   }
 
-  // Injection du css
+  const containerWidth = jQuery_btu('#btu-hotel-container').width()
+  const containerHeight = jQuery_btu('#btu-hotel-container').height()
+
+  // Injection du CSS
   let style = document.createElement('style')
-	style.type='text/css'
-	if (style.styleSheet) {
-    style.styleSheet.cssText = BTUstyle
-	} else {
-    style.appendChild(document.createTextNode(_btu_CSS))
+  style.type='text/css'
+  style.appendChild(document.createTextNode(_btu_CSS))
+
+  // CSS spécifiques suivant la taille du conteneur
+  if (containerWidth > 600 && containerHeight < 120) {
+    // Injection css Leaderboard
+    style.appendChild(document.createTextNode(_btu_CSS_leaderboard))
   }
-  
+
   // Injection de la police de caractères
   document.getElementsByTagName('head')[0].appendChild(style)
 	let link = document.createElement('link')
