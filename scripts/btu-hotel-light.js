@@ -5,6 +5,7 @@
 /******************************************************************************/
 
 // Protection contre les conflits de version jQuery
+// eslint-disable-next-line no-undef
 var jQuery_btu = $.noConflict(true);
 
 /**
@@ -34,6 +35,257 @@ const _btu_translations = {
     "brand": "Travel Everywhere",
     "placeholderMissing": "Veuillez intégrer une balise <div id=\"btu-hotel-container\">.",
   }
+}
+
+/**
+ * Pays
+ */
+const _btu_countries = {
+  af: 'Afghanistan',
+  ax: 'Åland, Îles',
+  al: 'Albanie',
+  dz: 'Algérie',
+  as: 'Samoa américaines',
+  ad: 'Andorre',
+  ao: 'Angola',
+  ai: 'Anguilla',
+  aq: 'Antarctique',
+  ag: 'Antigua-et-Barbuda',
+  ar: 'Argentine',
+  am: 'Arménie',
+  aw: 'Aruba',
+  au: 'Australie',
+  at: 'Autriche',
+  az: 'Azerbaïdjan',
+  bs: 'Bahamas',
+  bh: 'Bahreïn',
+  bd: 'Bangladesh',
+  bb: 'Barbade',
+  by: 'Biélorussie',
+  be: 'Belgique',
+  bz: 'Belize',
+  bj: 'Bénin',
+  bm: 'Bermudes',
+  bt: 'Bhoutan',
+  bo: 'Bolivie, État plurinational de',
+  ba: 'Bosnie-Herzégovine',
+  bw: 'Botswana',
+  bv: 'Bouvet, Île',
+  br: 'Brésil',
+  io: 'Océan Indien, Territoire britannique de l\'',
+  bn: 'Brunéi Darussalam',
+  bg: 'Bulgarie',
+  bf: 'Burkina Faso',
+  bi: 'Burundi',
+  kh: 'Cambodge',
+  cm: 'Cameroun',
+  ca: 'Canada',
+  cv: 'Cap-Vert',
+  ky: 'Caïmanes, Îles',
+  cf: 'Centrafricaine, République',
+  td: 'Tchad',
+  cl: 'Chili',
+  cn: 'Chine',
+  cx: 'Christmas, Île',
+  cc: 'Cocos (Keeling), Îles',
+  co: 'Colombie',
+  km: 'Comores',
+  cg: 'Congo',
+  cd: 'Congo, République démocratique du',
+  ck: 'Cook, Îles',
+  cr: 'Costa Rica',
+  ci: 'Cote d\'Ivoire',
+  hr: 'Croatie',
+  cu: 'Cuba',
+  cy: 'Chypre',
+  cz: 'République tchèque',
+  dk: 'Danemark',
+  dj: 'Djibouti',
+  dm: 'Dominique',
+  do: 'République dominicaine',
+  ec: 'Équateur',
+  eg: 'Égypte',
+  sv: 'Salvador',
+  gq: 'Guinée équatoriale',
+  er: 'Érithrée',
+  ee: 'Estonie',
+  et: 'Éthiopie',
+  fk: 'Îles Malouines',
+  fo: 'Îles Féroé',
+  fj: 'Fidji',
+  fi: 'Finlande',
+  fr: 'France',
+  gf: 'Guyane française',
+  pf: 'Polynésie française',
+  tf: 'Terres australes et antarctiques françaises',
+  ga: 'Gabon',
+  gm: 'Gambie',
+  ge: 'Géorgie',
+  de: 'Allemagne',
+  gh: 'Ghana',
+  gi: 'Gibraltar',
+  gr: 'Grèce',
+  gl: 'Groenland',
+  gd: 'Grenade',
+  gp: 'Guadeloupe',
+  gu: 'Guam',
+  gt: 'Guatemala',
+  gg: 'Guernesey',
+  gn: 'Guinée',
+  gw: 'Guinée-Bissau',
+  gy: 'Guyana',
+  ht: 'Haïti',
+  hm: 'Heard et Mcdonald, Îles',
+  va: 'Vatican',
+  hn: 'Honduras',
+  hk: 'Hong Kong',
+  hu: 'Hongrie',
+  is: 'Islande',
+  in: 'Inde',
+  id: 'Indonésie',
+  ir: 'Iran, République islamique d\'',
+  iq: 'Irak',
+  ie: 'Irlande',
+  im: 'Île de Man',
+  il: 'Israël',
+  it: 'Italie',
+  jm: 'Jamaïque',
+  jp: 'Japon',
+  je: 'Jersey',
+  jo: 'Jordanie',
+  kz: 'Kazakhstan',
+  ke: 'Kenya',
+  ki: 'Kiribati',
+  kr: 'Corée, République de',
+  kw: 'Koweït',
+  kg: 'Kirghizistan',
+  la: 'Lao, République démocratique populaire',
+  lv: 'Lettonie',
+  lb: 'Liban',
+  ls: 'Lesotho',
+  lr: 'Libéria',
+  ly: 'Libye',
+  li: 'Liechtenstein',
+  lt: 'Lituanie',
+  lu: 'Luxembourg',
+  mo: 'Macao',
+  mk: 'Macédoine du Nord',
+  mg: 'Madagascar',
+  mw: 'Malawi',
+  my: 'Malaysie',
+  mv: 'Maldives',
+  ml: 'Mali',
+  mt: 'Malte',
+  mh: 'Marshall, Îles',
+  mq: 'Martinique',
+  mr: 'Mauritanie',
+  mu: 'Maurice',
+  yt: 'Mayotte',
+  mx: 'Mexique',
+  fm: 'Micronésie, États fédérés de',
+  md: 'Moldavie',
+  mc: 'Monaco',
+  mn: 'Mongolie',
+  me: 'Monténégro',
+  ms: 'Montserrat',
+  ma: 'Maroc',
+  mz: 'Mozambique',
+  mm: 'Myanmar',
+  na: 'Namibie',
+  nr: 'Nauru',
+  np: 'Népal',
+  nl: 'Pays-Bas',
+  an: 'Antilles néerlandaises',
+  nc: 'Nouvelle-Calédonie',
+  nz: 'Nouvelle-Zélande',
+  ni: 'Nicaragua',
+  ne: 'Niger',
+  ng: 'Nigéria',
+  nu: 'Niué',
+  nf: 'Norfolk, Île',
+  mp: 'Mariannes du Nord, Îles',
+  no: 'Norvège',
+  om: 'Oman',
+  pk: 'Pakistan',
+  pw: 'Palaos',
+  ps: 'État de Palestine',
+  pa: 'Panama',
+  pg: 'Papouasie-Nouvelle-Guinée',
+  py: 'Paraguay',
+  pe: 'Pérou',
+  ph: 'Philippines',
+  pn: 'Pitcairn',
+  pl: 'Polagne',
+  pt: 'Portugal',
+  pr: 'Porto Rico',
+  qa: 'Qatar',
+  re: 'Réunion',
+  ro: 'Roumanie',
+  ru: 'Russie, Fédération de',
+  rw: 'Rwanda',
+  bl: 'Saint-Barthélemy',
+  sh: 'Saint-Hélène',
+  kn: 'Saint-Kitts-et-Nevis',
+  lc: 'Sainte-Lucie',
+  mf: 'Saint-Martin',
+  pm: 'Saint-Pierre-et-Miquelon',
+  vc: 'Saint-Vincent-et-les-Grenadines',
+  ws: 'Samoa',
+  sm: 'Saint-Marin',
+  st: 'Sao Tomé-et-Principe',
+  sa: 'Arabie Saoudite',
+  sn: 'Sénégal',
+  rs: 'Serbie',
+  sc: 'Seychelles',
+  sl: 'Sierra Leone',
+  sg: 'Singapour',
+  sk: 'Slovaquie',
+  si: 'Slovénie',
+  sb: 'Salomon, Îles',
+  so: 'Somalia',
+  za: 'Afrique du Sud',
+  gs: 'Géorgie du Sud et les îles Sandwich du Sud',
+  es: 'Espagne',
+  lk: 'Sri Lanka',
+  sd: 'Soudan',
+  sr: 'Suriname',
+  sj: 'Svalbard et Jan Mayen',
+  sz: 'Eswatini',
+  se: 'Suède',
+  ch: 'Suisse',
+  sy: 'Syrienne, République arabe',
+  tw: 'Taïwan',
+  tj: 'Tadjikistan',
+  tz: 'Tanzanie',
+  th: 'Thaïlande',
+  tl: 'Timor-Leste',
+  tg: 'Togo',
+  tk: 'Tokelau',
+  to: 'Tonga',
+  tt: 'Trinité-et-Tobago',
+  tn: 'Tunisie',
+  tr: 'Turquie',
+  tm: 'Turkménistan',
+  tc: 'Turks et Caïques, Îles',
+  tv: 'Tuvalu',
+  ug: 'Ouganda',
+  ua: 'Ukraine',
+  ae: 'Émirats arabes unis',
+  gb: 'Royaume-Uni',
+  us: 'États-Unis',
+  um: 'Îles mineures éloignées des États-Unis',
+  uy: 'Uruguay',
+  uz: 'Ouzbékistan',
+  vu: 'Vanuatu',
+  ve: 'Venezuela, République bolivarienne du',
+  vn: 'Viet Nam',
+  vg: 'Îles Vierges britanniques',
+  vi: 'Îles Vierges des États-Unis',
+  wf: 'Wallis-et-Futuna',
+  eh: 'Sahara occidental',
+  ye: 'Yémen',
+  zm: 'Zambie',
+  zw: 'Zimbabwe',
 }
 
 /*******************************************************
@@ -416,6 +668,23 @@ const _btu_CSS_leaderboard = `
   flex-direction: row;
 }
 `
+/**
+ * CSS Large Skyscraper (typiquement 300×600 pixels)
+ */
+const _btu_CSS_largeSkyscraper = `
+.btu-hotel-title {
+  text-align: center;
+}
+
+.btu-hotel-title span {
+  font-size: 18px;
+}
+
+.btu-hotel-landing-logo {
+  margin-top: 30px;
+}
+`
+
 
 /*******************************************************
  * Fonctions spécifiques
@@ -467,8 +736,6 @@ function btuSearch(searchQuery) {
       addressBtu = container.dataset.address
     }
 
-    console.log(addressBtu)
-
     const query = {
       searchType: 'query',
       options: { searchQuery },
@@ -487,6 +754,38 @@ function btuSearch(searchQuery) {
       dataType: 'json',
       success: function(data){
         jQuery_btu('#btu-hotel-container .btu-hotel-search-query-list').empty()
+        if (data.events) {
+          for (let i = 0; i < data.events.length; i++) {
+            let url = _btu_lightWidgetConfig.url.hotelList
+            const parameters = {
+              lat: data.events[i].location.lat,
+              lon: data.events[i].location.lon,
+              persons: guest,
+              start: startDateString,
+              end: endDateString,
+              city: data.events[i].name + ', ' + data.events[i].region,
+              countryCode: data.events[i].countryCode,
+            }
+            if (addressBtu) {
+              parameters.w = addressBtu
+            }
+            url += Object.keys(parameters).map(function(key) {
+              return [key, parameters[key]].map(encodeURIComponent).join("=").replace(/'/g, "%27")
+            }).join("&")
+            const li = `
+              <li class="btu-hotel-search-query-list-line" onclick="_btu_openInNewTab('${url}')">
+                <div class="btu-hotel-search-query-list-line-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" /></svg>
+                </div>
+                <div class="btu-hotel-search-query-list-line-text">
+                  <span>${data.events[i].name}</span>
+                  <span>${data.events[i].region}, ${_btu_countries[data.events[i].countryCode.toLowerCase()]}</span>
+                </div>
+              </li>
+            `
+            jQuery_btu('#btu-hotel-container .btu-hotel-search-query-list').append(li)
+          }
+        }
         if (data.cities) {
           for (let i = 0; i < data.cities.length; i++) {
             let url = _btu_lightWidgetConfig.url.hotelList
@@ -577,6 +876,10 @@ function _btu_loadLightWidget() {
   if (containerWidth > 600 && containerHeight < 120) {
     // Injection css Leaderboard
     style.appendChild(document.createTextNode(_btu_CSS_leaderboard))
+  } else
+  if (containerWidth < 350 && containerHeight >= containerWidth * 1.9) {
+    // Injection css Large Skyscraper
+    style.appendChild(document.createTextNode(_btu_CSS_largeSkyscraper))
   }
 
   // Injection de la police de caractères
@@ -590,7 +893,7 @@ function _btu_loadLightWidget() {
   jQuery_btu(`#${_btu_lightWidgetConfig.placeholderTag}`).html(_btu_lightWidget())
 
   // Gestion de l'input
-  _btu_numberOfKeysPressed = 0
+  let _btu_numberOfKeysPressed = 0
   const container = document.getElementById('btu-hotel-container')
   const input = _btu_findChildByClass(container, 'btu-hotel-search-input')
   if (input) {
