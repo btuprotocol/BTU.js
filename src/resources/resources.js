@@ -130,6 +130,24 @@ class Resources {
              callback
          )
      }
+
+     /**
+     * @function addContact
+     * @desc 
+     * @param {string} resourceType
+     * @param {object} body
+     * @param {callback} callback The callback called by the service, if there is not callback, the function returns a promise
+     * @return A json containing the results of the contact insertion
+     **/
+    async addContact(resourceType, body, callback) {
+      return await http.postParameters(
+          this.serverUrl,
+          resourceType + '/contact',
+          {},
+          body,
+          callback
+      )
+    }
 }
 
 module.exports = Resources;
