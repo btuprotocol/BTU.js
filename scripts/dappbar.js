@@ -748,8 +748,8 @@ function _btu_getAddressFromUrl() {
       params[decodeURIComponent(key)] = decodeURIComponent(value)
     })
 
-    if (params.hasOwnProperty('wf')) {
-      const address = params.wf
+    if (params.hasOwnProperty('fw')) {
+      const address = params.fw
       
       if (/^0[xX][0-9A-Fa-f]{40}$/.test(address)) {
         return address
