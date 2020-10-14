@@ -193,11 +193,11 @@ const _btu_getParameter = (parameterName) => {
 }
 
 // Afficher le wallet et le sauver dans le session storage
-const _btu_inputWallet = (addr) => {
+const _btu_inputWallet = (addr, forcedWallet = false) => {
 	if (addr && /^0[xX][0-9A-Fa-f]{40}$/.test(addr)) {
 	  sessionStorage.setItem('BTU-walletAddr', addr)
 	  sessionStorage.setItem("BTU-walletConnected", true)
-	  jQuery_btu("#btu-conStatus").html(_btu_getWalletProvider() + " " + _btu_translate("connected"))
+	  jQuery_btu("#btu-conStatus").html(_btu_getWalletProvider(forcedWallet) + " " + _btu_translate("connected"))
     jQuery_btu("#btu-walletSpan").html(addr.substring(0, 5) + '...' + addr.substring(38, 42))
 	  jQuery_btu("#btu-statusLed > circle").css("color", "#0ca768")
     jQuery_btu("#btu-statusLed > circle").css("fill", "#0ca768")
@@ -228,7 +228,12 @@ const _btu_translate = (path) => {
 var _btu_userAgent = navigator.userAgent;
 
 // Affiche le nom et le logo du provider du wallet, par example BTU direct
-const _btu_getWalletProvider = () => {
+const _btu_getWalletProvider = (forcedWallet = false) => {
+  if (forcedWallet) {
+    // Le paramètre "fw" a été passé dans l'url
+    return `<img id='btu-provider-img' alt="" src=${_btu_icons.walletProviders['btu']}></img>BTU Wallet`
+  }
+
 	// Cherche si le user agent est Opera
 	if (_btu_userAgent.indexOf("Opera") > -1 || _btu_userAgent.indexOf("OPR") > -1) {
 			const provider_opera = [{name: "Opera", icon: 'opera'}]
@@ -773,12 +778,6 @@ function _btu_loadDappbar(initTimer = false) {
 
   // Récupère l'éventuelle adresse provenant de l'url, via le paramètre "fw"
   const addressUrl = _btu_getAddressFromUrl()
-  if (addressUrl !== null) {
-    sessionStorage.setItem('BTU-InputWallet', addressUrl)
-    sessionStorage.setItem('BTU-walletAddr', addressUrl)
-    sessionStorage.setItem("BTU-walletConnected", true)
-    _btu_inputWallet(addressUrl)
-  }
 
   _btu_config.walletinput = sessionStorage.getItem("BTU-InputWallet")
 
@@ -841,43 +840,49 @@ function _btu_loadDappbar(initTimer = false) {
         alert("document ready/" + window.location.hostname)
         alert((window.ethereum ? " detected wallet true" : "detected wallet false"))
       }
-      if (_btu_config.walletinput) {
+      if (_btu_config.walletinput && addressUrl === null) {
         _btu_openPopup = false
         _btu_inputWallet(_btu_config.walletinput)
       }
-      if (window.ethereum) {
-        if (debug)
-          alert("detected ethereum wallet")
-        window.web3 = new Web3(ethereum)
-        try {
+      if (addressUrl === null) {
+        console.log('addressUrl:', addressUrl)
+        if (window.ethereum) {
           if (debug)
-            alert("Classic web3 wallet")
-          await ethereum.enable()
+            alert("detected ethereum wallet")
+          window.web3 = new Web3(ethereum)
+          try {
+            if (debug)
+              alert("Classic web3 wallet")
+            await ethereum.enable()
+            if (debug)
+              alert("Connected")
+            _btu_openPopup = false
+            window.web3.eth.getAccounts(onAccountGet)
+            // Création d'un événement indiquant qu'un wallet ethereum a été créé
+            let btuDappbarEthereumEvent = document.createEvent('Event')
+            btuDappbarEthereumEvent.initEvent('BTU-dappbarEthereum', true, true)
+            window.dispatchEvent(btuDappbarEthereumEvent)
+          }
+          catch (error) {
+            console.log("BTU Dappbar Error enabling ETH account:\n", error)
+          }
+        } else if (window.web3 && web3.currentProvider) {
           if (debug)
-            alert("Connected")
-          _btu_openPopup = false
+            alert("Simple web3 wallet")
+          window.web3 = new Web3(web3.currentProvider)
           window.web3.eth.getAccounts(onAccountGet)
           // Création d'un événement indiquant qu'un wallet ethereum a été créé
           let btuDappbarEthereumEvent = document.createEvent('Event')
           btuDappbarEthereumEvent.initEvent('BTU-dappbarEthereum', true, true)
           window.dispatchEvent(btuDappbarEthereumEvent)
+        } else {
+          if (debug)
+            alert("non ethereum browser")
+          // console.log(_btu_translate("nonEthereumBrowser"));
         }
-        catch (error) {
-          console.log("BTU Dappbar Error enabling ETH account:\n", error)
-        }
-      } else if (window.web3 && web3.currentProvider) {
-        if (debug)
-          alert("Simple web3 wallet")
-        window.web3 = new Web3(web3.currentProvider)
-        window.web3.eth.getAccounts(onAccountGet)
-        // Création d'un événement indiquant qu'un wallet ethereum a été créé
-        let btuDappbarEthereumEvent = document.createEvent('Event')
-        btuDappbarEthereumEvent.initEvent('BTU-dappbarEthereum', true, true)
-        window.dispatchEvent(btuDappbarEthereumEvent)
       } else {
-        if (debug)
-          alert("non ethereum browser")
-        // console.log(_btu_translate("nonEthereumBrowser"));
+        // L'adresse a été prise en compte par le paramètre d'url "fw"
+        _btu_inputWallet(addressUrl, true)
       }
     })
   } else {
