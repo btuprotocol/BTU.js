@@ -268,24 +268,28 @@ const _btu_getWalletProvider = () => {
 	  {tag: "constructor.name", compare: "EthereumProvider", name: "Mist", icon: null},
 	  {tag: "constructor.name", compare: "Web3FrameProvider", name: "Parity", icon: 'parity'}
 	]
-	let final = ""
-	providers.forEach(elem => {
-	  let tmp
-	  if (elem.tag.indexOf(".") !== -1)
-			tmp = window.web3.currentProvider[elem.tag.split(".")[0]][elem.tag.split(".")[1]]
-	  else
-			tmp = window.web3.currentProvider[elem.tag]
-	  if (tmp === elem.compare) {
-			final = elem.name
-			if (elem.icon)
-			  final = `<img id='btu-provider-img' alt="" src=${_btu_icons.walletProviders[elem.icon]}></img>` + final
-	  }
-  })
+  let final = ""
+  if (window.web3.currentProvider) {
+    providers.forEach(elem => {
+      let tmp
+      if (elem.tag.indexOf(".") !== -1)
+        tmp = window.web3.currentProvider[elem.tag.split(".")[0]][elem.tag.split(".")[1]]
+      else
+        tmp = window.web3.currentProvider[elem.tag]
+      if (tmp === elem.compare) {
+        final = elem.name
+        if (elem.icon)
+          final = `<img id='btu-provider-img' alt="" src=${_btu_icons.walletProviders[elem.icon]}></img>` + final
+      }
+    })
+  }
 
   if (final.length)
 	  return final
 	if (typeof window.__CIPHER__ !== 'undefined')
     return 'Cipher';
+  if (!window.web3.currentProvider)
+    return '';
 	if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('infura') !== -1)
     return 'Infura';
 	if (window.web3.currentProvider.host && window.web3.currentProvider.host.indexOf('localhost') !== -1)
@@ -725,6 +729,37 @@ const _btu_cSS = `
 @media screen and (max-width: 340px) { .btu-btn-blue button { padding: 10px 40px;} }
 @media screen and (max-width: 1024px) { #btu-address-txt {overflow-x: auto; word-break: break-all;} }
 `
+
+/**
+ * Récupère l'éventuelle adresse passée par l'url
+ *
+ * @return {string} L'adresse trouvée, null si inexistante
+ */
+function _btu_getAddressFromUrl() {
+  const url = window.location.href
+  const paramsPos = url.indexOf('?')
+  if (paramsPos >= 0) {
+    const params = {}
+    url
+    .substr(paramsPos + 1)
+    .split('&')
+    .map(item => {
+      [key, value] = item.split('=')
+      params[decodeURIComponent(key)] = decodeURIComponent(value)
+    })
+
+    if (params.hasOwnProperty('wf')) {
+      const address = params.wf
+      
+      if (/^0[xX][0-9A-Fa-f]{40}$/.test(address)) {
+        return address
+      }
+    }
+  }
+
+  return null
+}
+
 /**
  * Fonction principale
  *
@@ -735,7 +770,16 @@ function _btu_loadDappbar(initTimer = false) {
 	  console.log(_btu_translate("placeholderMissing"))
 	  return
   }
-  
+
+  // Récupère l'éventuelle adresse provenant de l'url, via le paramètre "fw"
+  const addressUrl = _btu_getAddressFromUrl()
+  if (addressUrl !== null) {
+    sessionStorage.setItem('BTU-InputWallet', addressUrl)
+    sessionStorage.setItem('BTU-walletAddr', addressUrl)
+    sessionStorage.setItem("BTU-walletConnected", true)
+    _btu_inputWallet(addressUrl)
+  }
+
   _btu_config.walletinput = sessionStorage.getItem("BTU-InputWallet")
 
 	const debug = _btu_getParameter("debug") ? true : false
@@ -821,7 +865,7 @@ function _btu_loadDappbar(initTimer = false) {
         catch (error) {
           console.log("BTU Dappbar Error enabling ETH account:\n", error)
         }
-      } else if (window.web3) {
+      } else if (window.web3 && web3.currentProvider) {
         if (debug)
           alert("Simple web3 wallet")
         window.web3 = new Web3(web3.currentProvider)
