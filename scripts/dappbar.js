@@ -883,6 +883,7 @@ function _btu_loadDappbar(initTimer = false) {
       } else {
         // L'adresse a été prise en compte par le paramètre d'url "fw"
         _btu_inputWallet(addressUrl, true)
+        _btu_openPopup = false
       }
     })
   } else {
