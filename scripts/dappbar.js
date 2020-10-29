@@ -845,7 +845,6 @@ function _btu_loadDappbar(initTimer = false) {
         _btu_inputWallet(_btu_config.walletinput)
       }
       if (addressUrl === null) {
-        console.log('addressUrl:', addressUrl)
         if (window.ethereum) {
           if (debug)
             alert("detected ethereum wallet")
