@@ -231,7 +231,7 @@ var _btu_userAgent = navigator.userAgent;
 const _btu_getWalletProvider = (forcedWallet = false) => {
   if (forcedWallet) {
     // Le paramètre "fw" a été passé dans l'url
-    return `<img id='btu-provider-img' alt="" src=${_btu_icons.walletProviders['btu']}></img>BTU Wallet`
+    return `<img id='btu-provider-img' alt="" src=${_btu_icons.walletProviders['btu']}></img>Verso`
   }
 
 	// Cherche si le user agent est Opera
