@@ -36,10 +36,10 @@ const _btu_translations = {
       "using": "To use this service, please provide us with your BTU address",
       "usingMobile": "Connect or download your wallet",
       "choiceConnected": "Provide your BTU address OR create one in a few clicks.",
-      "usingConnected": "In order to use this service, please connect to your wallet, BTU Direct for example",
+      "usingConnected": "In order to use this service, please connect to your wallet, Verso for example",
       "createWallet": "Create a BTU wallet",
       "downloadApp": "Download our free app",
-      "btuDirect": "BTU Direct",
+      "verso": "Verso",
       "trustWallet": "Trust Wallet",
       "walletConnect": "Wallet Connect",
       "hasWallet": "I already have a  BTU wallet",
@@ -54,7 +54,7 @@ const _btu_translations = {
     },
     "isDownload": {
     "other": "OR",
-    "download": "Download BTU Direct",
+    "download": "Download Verso",
     "download_bis": "to get your BTU address",
     },
     "inputWallet": {
@@ -72,7 +72,7 @@ const _btu_translations = {
       "hasWallet": "I already have a wallet"
     },
     "invalidAddress": "Invalid address",
-    "nonEthereumBrowser": "Non-Ethereum browser detected. You should consider trying BTU Direct!",
+    "nonEthereumBrowser": "Non-Ethereum browser detected. You should consider trying Verso!",
     "placeholderMissing": "Please integrate a <div id='btu-placeholder'> tag in order to use the BTU Dappbar",
   },
   "fr": {
@@ -83,10 +83,10 @@ const _btu_translations = {
       "using": "Pour utiliser ce service, vous devez nous fournir une adresse BTU",
       "usingMobile": "Pour utiliser ce service, vous devez nous fournir une adresse BTU",
       "choiceConnected": "Utilisez votre adresse BTU ou créez-en une en quelques clics si vous n’en avez pas.",
-      "usingConnected": "Pour utiliser ce service, veuillez vous connecter à un portefeuille, BTU Direct par exemple",
+      "usingConnected": "Pour utiliser ce service, veuillez vous connecter à un portefeuille, Verso par exemple",
       "createWallet": "Je crée une adresse BTU",
       "downloadApp": "Téléchargez notre app gratuite",
-      "btuDirect": "BTU Direct",
+      "verso": "Verso",
       "trustWallet": "Trust Wallet",
       "walletConnect": "Wallet Connect",
       "hasWallet": "J’ai une adresse BTU",
@@ -100,7 +100,7 @@ const _btu_translations = {
       "switchWallet": "Changer de portefeuille"
     },
     "isDownload": {
-      "download": "Télécharger BTU Direct",
+      "download": "Télécharger Verso",
       "download_bis": "pour obtenir votre adresse BTU",
       "other": "OU"
     },
@@ -119,7 +119,7 @@ const _btu_translations = {
       "hasWallet": "J'ai déjà un portefeuille"
     },
     "invalidAddress": "Adresse invalide",
-    "nonEthereumBrowser": "Votre navigateur n'utilise pas Ethereum. Vous devriez essayer BTU Direct!",
+    "nonEthereumBrowser": "Votre navigateur n'utilise pas Ethereum. Vous devriez essayer Verso!",
     "placeholderMissing": "Veuillez intégrer une balise <div id='btu-placeholder'> pour utiliser la Dappbar BTU",
   }
 }
@@ -129,7 +129,7 @@ const _btu_translations = {
  */
 
 const _btu_icons = {
-  qrcode: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQgAAAEIAQMAAACZOPi8AAAABlBMVEUAAAD///+l2Z/dAAAAAWJLR0QB/wIt3gAAAORJREFUaN7tmcEOwzAIQ/3/P+0dCsZZV03q1URq1NJ3sgImCfhvYIkllljimcA1SII1KxJJlDT1HxNJJQAcnEWCiZ65xPUN0yyaaK5Ky3POZRCKWz79rMkZxLhvZdOzZ0cQpdekFWRHkQQllNQCGUywFJOAXXBiicONzmTKI7ratgWNgpmEmpN5v1WYLAL9yJxxZlQYMZWmSy9w2w4mEepfzaHJVIL0hXQZEHIJ+L4G1tOnElpGMMUYTMiTZ7f3pVgk4f0slyhfJny3E0no5MzaFOYSsDMBnncUicTezy2xxBIviA9nicl6Yc/fjQAAAABJRU5ErkJggg==',
+  qrcode: 'data:image/png;base64,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',
 	arrow: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAdUlEQVQ4je2Tuw2AMAxEbcQCbMEi/ETFNFBQUDIimxDRPBoiISGDkrRc63v+nGSRFwEjML95vmAAB5Sh8HLBO1ClwHUK3MTCDmhT4C4U9mlHKRORImiiscV6O6GPbeJzOIDhb/II1nym3Cqo6gQ4EUFVN8t3Apiw/NlVkDkiAAAAAElFTkSuQmCC',
 	walletProviders: {
     metamask: 'data:image/png;base64,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',
@@ -227,7 +227,7 @@ const _btu_translate = (path) => {
 // Navigateur courant
 var _btu_userAgent = navigator.userAgent;
 
-// Affiche le nom et le logo du provider du wallet, par example BTU direct
+// Affiche le nom et le logo du provider du wallet, par example Verso
 const _btu_getWalletProvider = (forcedWallet = false) => {
   if (forcedWallet) {
     // Le paramètre "fw" a été passé dans l'url
@@ -267,8 +267,8 @@ const _btu_getWalletProvider = (forcedWallet = false) => {
 	  {tag: "isMetaMask", compare: true, name: "Metamask", icon: 'metamask'},
 	  {tag: "isTrust", compare: true, name: "Trust", icon: 'trust'},
 	  {tag: "isGoWallet", compare: true, name: "GoWallet", icon: 'go'},
-    {tag: "isAlphaWallet", compare: true, name: "BTU Direct", icon: 'btu'},
-    {tag: "isBTUDirect", compare: true, name: "BTU Direct", icon: 'btu'},
+    {tag: "isAlphaWallet", compare: true, name: "Verso", icon: 'btu'},
+    {tag: "isVerso", compare: true, name: "Verso", icon: 'btu'},
 	  {tag: "isToshi", compare: true, name: "Coinbase", icon: 'coinbase'},
 	  {tag: "constructor.name", compare: "EthereumProvider", name: "Mist", icon: null},
 	  {tag: "constructor.name", compare: "Web3FrameProvider", name: "Parity", icon: 'parity'}
@@ -372,7 +372,7 @@ const _btu_downloadSection = () => {
   return `
     <div id="btu-btn-create" class="btu-btn-blue">
       <button id="btu-btn-create">
-        BTU Direct
+        Verso
       </button>
     </div>
     <div id="btu-btn-create" class="btu-btn-blue">
@@ -424,7 +424,7 @@ _btu_createMobileEn = () => {
             </g>
           </svg>
         </span>
-        <span>${_btu_translate("usingBTU.btuDirect")}</span>
+        <span>${_btu_translate("usingBTU.verso")}</span>
       </button>
     </div>
     <div class="btu-create-list">
@@ -477,7 +477,7 @@ const _btu_createDesktop = () => {
             </g>
           </svg>
         </span>
-        <span>${_btu_translate("usingBTU.btuDirect")}</span>
+        <span>${_btu_translate("usingBTU.verso")}</span>
       </button>
     </div>
     <div class="btu-create-list">
@@ -1054,12 +1054,12 @@ const _btu_initJQuery = () => {
 
     jQuery_btu(document).on("click", "#btu-btn-create", () => {
       if (/Android/i.test(navigator.userAgent)) {
-        window.open('https://play.google.com/store/apps/details?id=com.btu_direct.wallet', '_blank')
+        window.open('https://play.google.com/store/apps/details?id=com.btuprotocol.btu_wallet', '_blank')
         _btu_popupIsOpen = false
         jQuery_btu("#btu-modalOut").hide()
       }
       if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        window.open('https://apps.apple.com/fr/app/btu-protocol/id1473117679', '_blank')
+        window.open('https://apps.apple.com/fr/app/btu-protocol/id1539304605', '_blank')
         _btu_popupIsOpen = false
         jQuery_btu("#btu-modalOut").hide()
       }
@@ -1086,11 +1086,11 @@ const _btu_initJQuery = () => {
     })
 
     jQuery_btu(document).on("click", "#btu-google", () => {
-      window.open('https://play.google.com/store/apps/details?id=com.btu_direct.wallet', '_blank')
+      window.open('https://play.google.com/store/apps/details?id=com.btuprotocol.btu_wallet', '_blank')
     })
 
     jQuery_btu(document).on("click", "#btu-apple", () => {
-      window.open('https://apps.apple.com/fr/app/btu-protocol/id1473117679', '_blank')
+      window.open('https://apps.apple.com/fr/app/btu-protocol/id1539304605', '_blank')
     })
 
     jQuery_btu(document).on("click", "#btu-btn-has", () => {
